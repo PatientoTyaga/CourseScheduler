@@ -5,4 +5,6 @@
 | Simrandeep Sappal | 7784215 |
 | Jianzhi Wang | cell |
 | Ruslan Yanyshyn| 7850109 |
-| cell | cell |
+| Mohammad Inan | cell |
+| Guannan Zhu | cell |
+| Patiento | cell |
