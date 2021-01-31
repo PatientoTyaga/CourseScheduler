@@ -2,7 +2,7 @@ Add the user story here
 I want to be able to delete the course comp 3350 in winter term, because i have already passed it.(User can delete courses)
 I want to be able to register more than 5 courses in summer term, then i will graduate from university.(User can register courses according their needs)
 
-I want to be able to view previously saved schedules(User can see saved schedules)
+As I user I want to make different schedules for one course with different sections and compare which schedule I prefer(User can see saved schedules)
 I want to be able to share my schedules with others (User can share their schedules)
 
 As a student, I want to see all previously saved schedules and share with my friends.
