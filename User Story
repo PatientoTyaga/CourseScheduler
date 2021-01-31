@@ -1,25 +1,25 @@
 Features:
-1. User can delete courses
-2. User can register courses according their needs
-3. User can see saved schedules
-4. User can share their schedules
+1. User can delete courses(Guannanzhu)
+2. User can register courses according their needs(Guannanzhu)
+3. User can see saved schedules (Simran)
+4. User can share their schedules (Simran)
 5. User should have an option where they can click and see the instructor,User should have an option to email an instructor, User should have an option to view instructors availability( Patient)
 6. User should have option to view calendar with their courses on them, User should have option to edit calendar I.e add things to it or highlight somethings (Patient)
-7. User can attach files or link for specific courses and see them later. (Mohammad)
-8. User can set a reminder before every class. (Mohammad)
+7. User can attach files or link for specific courses and see them later.
+8. User can set a reminder before every class.
 9. User should be able to reduce external scheduling conflicts.
 10. User will be able to know the study load. 
 
 User Stories:
-1. I want to be able to delete the course comp 3350 in winter term, because i have already passed it.
-2. I want to be able to register more than 5 courses in summer term, then i will graduate from university.
-3. As I user I want to make different schedules for one course with different sections and compare which schedule I prefer
-4. I want to be able to share my schedules with others
+1. I want to be able to delete the course comp 3350 in winter term, because i have already passed it.(Guannanzhu)
+2. I want to be able to register more than 5 courses in summer term, then i will graduate from university.(Guannanzhu)
+3. As I user I want to make different schedules for one course with different sections and compare which schedule I prefer (Simran)
+4. I want to be able to share my schedules with others (Simran)
 5. As a student, I need to store different courses' info to my Scheduler and download it to print out
 6. I want to be able to see the instructors name for each course (Patient)
 7. I want a calendar that I can add things to my liking (Patient)
-8. As a student, I need to be able to look at my course history. (Mohammad)
-9. As a student, I would like to share my schedule. (Mohammad)
+8. As a student, I need to be able to look at my course history.
+9. As a student, I would like to share my schedule.
 10. As a student, I need to keep track of time.
 
 
