@@ -1,19 +1,22 @@
-Add the user story here
-I want to be able to delete the course comp 3350 in winter term, because i have already passed it.(User can delete courses)
-I want to be able to register more than 5 courses in summer term, then i will graduate from university.(User can register courses according their needs)
-
-As I user I want to make different schedules for one course with different sections and compare which schedule I prefer(User can see saved schedules)
-I want to be able to share my schedules with others (User can share their schedules)
-
-As a student, I want to see all previously saved schedules and share with my friends.
-As a student, I need to store different courses' info to my Scheduler and download it to print out.
-
-I want to be able to see all the instructors in my (User should have an option where they can click and see the instructor, 
-    User should have an option to email an instructor, User should have an option to view instructors availability)
-I want a calendar that I can add things to my liking (User should have option to view calendar with their courses on them, 
-    User should have option to edit calendar I.e add things to it or highlight somethings)
+Features:
+1. User can delete courses
+2. User can register courses according their needs
+3. User can see saved schedules
+4. User can share their schedules
+5. User should have an option where they can click and see the instructor,User should have an option to email an instructor, User should have an option to view instructors availability
+6. User should have option to view calendar with their courses on them, User should have option to edit calendar I.e add things to it or highlight somethings
+7.
 
 
+User Stories:
+1. I want to be able to delete the course comp 3350 in winter term, because i have already passed it.
+2. I want to be able to register more than 5 courses in summer term, then i will graduate from university.
+3. As I user I want to make different schedules for one course with different sections and compare which schedule I prefer
+4. I want to be able to share my schedules with others
+5. As a student, I need to store different courses' info to my Scheduler and download it to print out
+6. I want to be able to see the instructors name for each course
+7. I want a calendar that I can add things to my liking
+8. 
 
 
 
