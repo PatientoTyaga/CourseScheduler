@@ -7,8 +7,8 @@ Features:
 6. User should have option to view calendar with their courses on them, User should have option to edit calendar I.e add things to it or highlight somethings (Patient)
 7. User can attach files or link for specific courses and see them later.
 8. User can set a reminder before every class.
-9. User should be able to reduce external scheduling conflicts.
-10. User will be able to know the study load. 
+9. User should be able to reduce external scheduling conflicts.(Jianzhi Wang)
+10. User will be able to know the study load. (Jianzhi Wang)
 
 User Stories:
 1. I want to be able to delete the course comp 3350 in this term, because i have already passed it.(Guannanzhu)
