@@ -10,7 +10,8 @@
 | Patient Ndayizeye | 7795261 |
 
 
-#Course Scheduler Vision Statement
+# Course Scheduler Vision Statement
+
 Course Scheduler app will be used to help students plan their schedule and simplify course slot selection. 
 This system will be designed primarily for University of Manitoba students, but also might be used by student advisors. Main part of the app will be used only once a year during registration period, but other features such as notifications for classes or emailing a professor might make the app more useful.
 Since this app won’t be used for registering for the courses itself, but only to see the sections a course offers, there would be not a lot of security implemented for this app. Students might want to create an account where they will add courses that they have already taken and passed, so there would be an option not to display some courses if a student doesn’t satisfy prerequisites for it.
