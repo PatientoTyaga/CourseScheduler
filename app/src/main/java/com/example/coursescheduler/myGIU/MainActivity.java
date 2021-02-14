@@ -1,10 +1,12 @@
-package com.example.coursescheduler;
+package com.example.coursescheduler.myGIU;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.coursescheduler.R;
 
 public class MainActivity extends AppCompatActivity {
 
