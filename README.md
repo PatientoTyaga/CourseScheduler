@@ -39,3 +39,8 @@ It will be easier for the user to alter the input values and create schedules.
 After the user is done creating the schedules for both terms, they just need to copy CRN numbers for those courses sections from the app and insert them in Aurora to register.
 
 This app will be considered successful if more than 50% of surveyed students would decide to use it to make schedules for the rest of their education.
+
+
+
+# Branching Strategy
+
