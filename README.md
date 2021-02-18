@@ -43,4 +43,9 @@ This app will be considered successful if more than 50% of surveyed students wou
 
 
 # Branching Strategy
-Branching strategy is a wlp the development team move forward quickly. It can coordinate parallel development, allowing developers to work on tasks simultaneously as part of a team. Parallel building and testing ensure that developers get the feedback they need quickly.
+Create own Branch and merge them togther helps us working as a team.
+Branching strategy help the development team move forward quickly. It can coordinate parallel development, allowing developers to work on tasks simultaneously as part of a team.
+Parallel building and testing ensure that developers get the feedback they need quickly.
+But with the growth of projects and teams, working in parallel become more complex. Because it's not only about merging change files in the team, but also the complex code need merging by people.
+Because code may have conflict.
+The “merge early and often” strategy helps us fix the merge problem at start.
