@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseScheduler">
-        <activity android:name=".myGIU.CourseActivity"></activity>
+        <activity android:name=".myGIU.ScheduleActivity"></activity>
+        <activity android:name=".myGIU.CourseActivity" />
         <activity android:name=".myGIU.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
