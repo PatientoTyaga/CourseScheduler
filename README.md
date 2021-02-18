@@ -43,4 +43,4 @@ This app will be considered successful if more than 50% of surveyed students wou
 
 
 # Branching Strategy
-
+Branching strategy is a wlp the development team move forward quickly. It can coordinate parallel development, allowing developers to work on tasks simultaneously as part of a team. Parallel building and testing ensure that developers get the feedback they need quickly.
