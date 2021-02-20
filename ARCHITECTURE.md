@@ -1,14 +1,14 @@
-
 package:
     com.example.coursescheduler
-        com.example.coursescheduler.objects
+        objects
             Course
             SC (student and course)
             Student
             
-        com.example.coursescheduler.myGIU;
+        myGIU;
             CourseActivity
             MainActivity
             ScheduleActivity
 
-        ExampleInstrumentedTest
+        ExampleInstrumentedTest(androidTest)
+        ExampleUnitTest(unitTest)
