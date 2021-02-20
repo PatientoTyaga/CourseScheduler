@@ -1,14 +1,15 @@
-package:
-    com.example.coursescheduler
-        objects
-            Course
-            SC (student and course)
-            Student
-            
-        myGIU;
-            CourseActivity
-            MainActivity
-            ScheduleActivity
-
-        ExampleInstrumentedTest(androidTest)
-        ExampleUnitTest(unitTest)
+package:com.example.coursescheduler
++
+|
+|
++------>objects
+|          +----+Course.java
+|          |----|SC.java (student and course)
+|          +----+Student.java
++------>objects
+|          +----+CourseActivity.java
+|          |----|MainActivity.java
+|          +----+ScheduleActivity.java
++------>(Tests)
+           +----+ExampleInstrumentedTest.java(androidTest)
+           +----+ExampleUnitTest.java(unitTest)
