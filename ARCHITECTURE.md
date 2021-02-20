@@ -1,15 +1,1 @@
-package:com.example.coursescheduler
-+
-|
-|
-+------>objects
-|          +----+Course.java
-|          |----|SC.java (student and course)
-|          +----+Student.java
-+------>objects
-|          +----+CourseActivity.java
-|          |----|MainActivity.java
-|          +----+ScheduleActivity.java
-+------>(Tests)
-           +----+ExampleInstrumentedTest.java(androidTest)
-           +----+ExampleUnitTest.java(unitTest)
+¥§$jœ¢g±jjeyÊ.®Ç¬rºW«ûêç-³ï‚¢êìz6¯i £jö¬¶ç^Ö§uÊ.®Ç¾ù+nuéí«Úú†ãyËlûà¨º»Ëb¾+r«Ú1¨§Ëb¾+r«Úûäœ…çn•à¶+â·(Ú½¯“zËlûá1jjex‰ì¶»¦z{^u7¬¶6¯i©İ®ˆMë-ûá1jjeyIâµ7¬¶6¯jéâµ7¬
