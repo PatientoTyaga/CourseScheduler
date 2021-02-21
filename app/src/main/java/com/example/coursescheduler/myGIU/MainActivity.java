@@ -13,9 +13,8 @@ import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.Database.Database;
 import com.example.coursescheduler.R;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class MainActivity extends AppCompatActivity {
 
-    private List<Student> studentList;
     private List<String> studentName = new ArrayList<String>();
 
     @Override
@@ -45,15 +44,5 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 startActivity(scheduleIntent);
             }
         });
-    }
-
-    @Override
-    public void onItemSelected (AdapterView < ? > parent, View view,int position, long id){
-
-    }
-
-    @Override
-    public void onNothingSelected (AdapterView < ? > parent){
-
     }
 }
