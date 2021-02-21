@@ -28,10 +28,6 @@ public class SC {
         return (course.getCourseName());
     }
 
-    public String getCourseInstructor(){
-        return(course.getCourseInstructor());
-    }
-
     public String getCourseTime(){
         return(course.getCourseTime());
     }
