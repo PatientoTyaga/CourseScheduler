@@ -7,14 +7,14 @@ public class Course {
     private final String courseName;
     private final String courseId;
     private final String courseTime;
-    private final String courseInstructor;
+    private final String courseDay;
 
     public Course(final String courseName, final String courseId, final String courseTime,
-                  final String courseInstructor){
+                  final String courseDay){
         this.courseName = courseName;
         this.courseId = courseId;
         this.courseTime = courseTime;
-        this. courseInstructor = courseInstructor;
+        this.courseDay = courseDay;
     }
 
     public String getCourseName() {
@@ -29,8 +29,8 @@ public class Course {
         return courseTime;
     }
 
-    public String getCourseInstructor() {
-        return courseInstructor;
+    public String getCourseDay() {
+        return courseDay;
     }
 
     public boolean equals(final Course o) {
@@ -38,10 +38,10 @@ public class Course {
         return Objects.equals(courseName, o.courseName) &&
                 Objects.equals(courseId, o.courseId) &&
                 Objects.equals(courseTime, o.courseTime) &&
-                Objects.equals(courseInstructor, o.courseInstructor);
+                Objects.equals(courseDay, o.courseDay);
     }
 
     public int hashCode() {
-        return Objects.hash(courseName, courseId, courseTime, courseInstructor);
+        return Objects.hash(courseName, courseId, courseTime, courseDay);
     }
 }
