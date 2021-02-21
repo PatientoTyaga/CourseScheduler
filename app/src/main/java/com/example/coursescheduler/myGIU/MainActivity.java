@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Spinner dropdown = findViewById(R.id.spinner1);
+        Spinner dropdown = findViewById(R.id.spinnerStudentName);
 
 
         try {
