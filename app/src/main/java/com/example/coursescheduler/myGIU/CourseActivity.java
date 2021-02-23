@@ -17,7 +17,7 @@ public class CourseActivity extends AppCompatActivity {
     }
 
     public void buttonPreviousOnClick(View v) {
-        Intent coursesIntent = new Intent(CourseActivity.this, MainActivity.class);
+        Intent coursesIntent = new Intent(CourseActivity.this, ScheduleActivity.class);
         CourseActivity.this.startActivity(coursesIntent);
     }
 }
