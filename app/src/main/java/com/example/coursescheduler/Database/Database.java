@@ -1,14 +1,14 @@
 package com.example.coursescheduler.Database;
 
 public class Database {
-    String [] timeArea ={
+    public static String [] timeArea ={
             "08:30-09:30",
             "10:30-11:20",
             "11:20-12:30",
             "13:30-14:20"
     };
     //10 test students Info
-    String [][] studentInfo = {
+    public static String [][] studentInfo = {
             { "Simrandeep", "7784215" },
             { "Mohammad", "7853346" },
             { "Rusty", "7850109"},
@@ -22,7 +22,7 @@ public class Database {
             {"Jill","7847416"}
     };
     //10 test course Info
-    String [][] courseInfo = {
+    public static String [][] courseInfo = {
             { "Comp1010", "Intro Computer Science 1", timeArea[0], "TR" },
             { "Comp2080", "Analysis of Algorithms", timeArea[1], "MWF" },
             { "Comp2150", "Object Orientation", timeArea[1], "MWF"},
