@@ -1,15 +1,43 @@
-package:com.example.coursescheduler
-+
-|
-|
-+------>objects
-|          +----+Course.java
-|          |----|SC.java (student and course)
-|          +----+Student.java
-+------>objects
-|          +----+CourseActivity.java
-|          |----|MainActivity.java
-|          +----+ScheduleActivity.java
-+------>(Tests)
-           +----+ExampleInstrumentedTest.java(androidTest)
-           +----+ExampleUnitTest.java(unitTest)
+                 +------------------------------------------------------------+
+                 |                                                            |
+                 |                                                            |
+                 |      +--------------------+                                |
+                 |      |GUI+playing activity|                                |
+                 |      |by mainactivity.java|                                |
+Presentation     |      |organization        |                                |
+                 |      |                    |                                |
+                 |      |  course, schedule  <---+                            |
+                 |      +----+---------------+   |                            |
+                 |           |                   |                            |
+                 |           |                   |                            |
+                 |           |                   |                            |
+                 |           |                   |                            |
+                 +------------------------------------------------------------+
+                 |           |                   |                            |
+                 |           |                   |                            |
+                 |           |                   |interface                   |
+                 |      +----v---------------+ +----------------+             |
+                 |      |  objects           | |take database   +             |
+Logic            |      |  create student,   | |input and save as             |
+                 |      |  course, and pair  | |object.         |             |
+                 |      |  of students and   | |                |             |
+                 |      |  course with info  | |                |             |
+                 |      +----+---------------+ +------^---------+             |
+                 |           |                        |                       |
+                 |           |                        |                       |
+                 |           |                        |                       |
+                 |           |                        |                       |
+                 |           |                        |                       |
+                 +------------------------------------------------------------+
+                 |           |                        |                       |
+                 |           |                        |                       |
+                 |           |                        |                       |
+                 |      +----v--------------+         |                       |
+Data             |      |                   |         |                       |
+                 |      |  Database store   +---------+                       |
+                 |      |  in students and  |                                 |
+                 |      |  course info      |                                 |
+                 |      |                   |                                 |
+                 |      +-------------------+                                 |
+                 |                                                            |
+                 +------------------------------------------------------------+
