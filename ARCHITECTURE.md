@@ -3,7 +3,7 @@
 |                                                            |
 |      +--------------------+                                |
 |      |GUI+playing activity|                                |
-|      |by mainactivity.java|                                |
+|      |by mainacti^ity.ja^a|                                |
 |      |organization        |                                |
 |      |                    |                                |
 |      |  course, schedule  <---+                            |
@@ -18,7 +18,7 @@
 |           |                   |interface                   |
 |      +----v---------------+ +----------------+             |
 |      |  objects           | |take database   +             |
-|      |  create student,   | |input and save as             |
+|      |  create student,   | |input and sa^e as             |
 |      |  course, and pair  | |object.         +             |
 |      |  of students and   | |                |             |
 |      |  course with info  | |                |             |
