@@ -13,6 +13,8 @@ import com.example.coursescheduler.R;
 public class ScheduleActivity extends AppCompatActivity {
 
     String Name;
+    String Fall;
+    String Winter;
     TextView result;
     TextView theFall;
     TextView theWinter;
@@ -22,15 +24,21 @@ public class ScheduleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
+
         result = (TextView)findViewById(R.id.displaySchedule);
         Name = getIntent().getExtras().getString("Name");
         result.setText("Name:"+" " + Name);
-        theFall = (TextView)findViewById(R.id.fall);
-        theFall.setText("Fall: ");
-        theWinter = (TextView)findViewById(R.id.winter);
-        theWinter.setText("Winter: ");
-        Button add = (Button)findViewById(R.id.adding);
 
+
+        theFall = (TextView)findViewById(R.id.displayFallCourse);
+        Fall = getIntent().getExtras().getString("Fall");
+        theFall.setText("Fall: " + Fall);
+
+        theWinter = (TextView)findViewById(R.id.displayWinterCourse);
+        Winter = getIntent().getExtras().getString("Winter");
+        theWinter.setText("Winter: " + Winter);
+
+        Button add = (Button)findViewById(R.id.adding);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,7 +49,6 @@ public class ScheduleActivity extends AppCompatActivity {
         });
 
         Button back = (Button)findViewById(R.id.Back);
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

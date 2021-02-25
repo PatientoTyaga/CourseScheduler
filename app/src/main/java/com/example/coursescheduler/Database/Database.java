@@ -23,16 +23,16 @@ public class Database {
     };
     //10 test course Info
     public static String [][] courseInfo = {
-            { "Comp1010", "Intro Computer Science 1", timeArea[0], "TR" },
-            { "Comp2080", "Analysis of Algorithms", timeArea[1], "MWF" },
-            { "Comp2150", "Object Orientation", timeArea[1], "MWF"},
-            { "Comp3020", "Human-Computer Interaction 1", timeArea[2], "TR" },
-            { "Comp3040", "Technical Communication", timeArea[1], "TR" },
-            { "Comp3350", "Software Engineering 1", timeArea[2], "MWF"},
-            { "Comp4380", "Database Implementation", timeArea[0], "TR" },
-            { "Stat2000", "Basic Statistical Analysis 2", timeArea[3], "MWF"},
-            { "Econ2010", "MicroEconomics Theory 1", timeArea[1], "TR"},
-            { "Econ2020", "MacroEconomics Theory 1", timeArea[1], "TR"}
+            { "Comp1010", "Intro Computer Science 1", "08:30-09:30", "TR" },
+            { "Comp2080", "Analysis of Algorithms", "10:30-11:20", "MWF" },
+            { "Comp2150", "Object Orientation", "10:30-11:20", "MWF"},
+            { "Comp3020", "Human-Computer Interaction 1", "11:20-12:30", "TR" },
+            { "Comp3040", "Technical Communication", "10:30-11:20", "TR" },
+            { "Comp3350", "Software Engineering 1", "11:20-12:30", "MWF"},
+            { "Comp4380", "Database Implementation", "08:30-09:30", "TR" },
+            { "Stat2000", "Basic Statistical Analysis 2", "13:30-14:20", "MWF"},
+            { "Econ2010", "MicroEconomics Theory 1", "10:30-11:20", "TR"},
+            { "Econ2020", "MacroEconomics Theory 1", "10:30-11:20", "TR"}
     };
 
 }
