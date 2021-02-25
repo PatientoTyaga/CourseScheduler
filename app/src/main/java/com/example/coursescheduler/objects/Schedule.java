@@ -2,12 +2,12 @@ package com.example.coursescheduler.objects;
 
 import java.util.Objects;
 
-public class SC {
+public class Schedule {
 
     private final Student student;
     private final Course course;
 
-    public SC(final Student student, final Course course){
+    public Schedule(final Student student, final Course course){
         this.course = course;
         this.student = student;
     }
@@ -34,7 +34,7 @@ public class SC {
 
 
     public String toString() {
-        return "SC{" +
+        return "Schedule{" +
                 "student=" + student.getStudentID() +
                 ", course=" + course.getCourseId() +
                 '}';
@@ -44,9 +44,9 @@ public class SC {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SC sc = (SC) o;
-        return Objects.equals(student, sc.student) &&
-                Objects.equals(course, sc.course);
+        Schedule schedule = (Schedule) o;
+        return Objects.equals(student, schedule.student) &&
+                Objects.equals(course, schedule.course);
     }
 
     @Override

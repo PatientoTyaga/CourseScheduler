@@ -1,4 +1,4 @@
-package com.example.coursescheduler.myGIU;
+package com.example.coursescheduler.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,11 +19,11 @@ public class ScheduleActivity extends AppCompatActivity {
     TextView theFall;
     TextView theWinter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
+
 
         result = (TextView)findViewById(R.id.displaySchedule);
         Name = getIntent().getExtras().getString("Name");
