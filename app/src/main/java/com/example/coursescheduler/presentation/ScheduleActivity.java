@@ -4,39 +4,78 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.coursescheduler.R;
+import com.example.coursescheduler.objects.Course;
+import com.example.coursescheduler.persistence.Database;
+
+import java.io.Console;
 
 public class ScheduleActivity extends AppCompatActivity {
 
+    String fallCourseList;
+    String winterCourseList;
     String Name;
-    String Fall;
-    String Winter;
+    String fallCourse;
+    String winterCourse;
     TextView result;
-    TextView theFall;
-    TextView theWinter;
+    TextView fallTextView;
+    TextView winterTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
 
+        fallCourseList = "";
+        winterCourseList = "";
 
         result = (TextView)findViewById(R.id.displaySchedule);
         Name = getIntent().getExtras().getString("Name");
-        result.setText("Name:"+" " + Name);
+        if(Name != null) {
+            Database.currentStudent = Name;
+        }
+        result.setText("Name:"+" " + Database.currentStudent);
 
 
-        theFall = (TextView)findViewById(R.id.displayFallCourse);
-        Fall = getIntent().getExtras().getString("Fall");
-        theFall.setText("Fall: " + Fall);
+        Log.i("myTag1", "hi: ");
 
-        theWinter = (TextView)findViewById(R.id.displayWinterCourse);
-        Winter = getIntent().getExtras().getString("Winter");
-        theWinter.setText("Winter: " + Winter);
+        fallTextView = (TextView)findViewById(R.id.displayFallCourse);
+        fallCourse = getIntent().getExtras().getString("Fall");
+
+        winterTextView = (TextView)findViewById(R.id.displayWinterCourse);
+        winterCourse = getIntent().getExtras().getString("Winter");
+
+        try {
+            for (Course c : Database.courseList) {
+                if (c.getCourseId().matches(fallCourse)) {
+                    Database.fallCourse.add(c);
+                    for(int i=0; i<Database.fallCourse.size(); i++){
+                        Log.i("myTag", "hi: " +Database.fallCourse.get(Database.fallCourse.size()-1).getCourseId() + " , " + Database.fallCourse.size());
+                        fallCourseList += "" + Database.fallCourse.get(i).getCourseId() + ", \n";
+                    }
+                }
+//                if (c.getCourseId().matches(winterCourse)) {
+//                    Database.winterCourse.add(c);
+//                    for(int i=0; i<Database.winterCourse.size(); i++){
+//                        Log.i("myTag", "hi: " +Database.winterCourse.get(Database.winterCourse.size()-1).getCourseId() + " , " + Database.winterCourse.size());
+//                        winterCourseList += "" + Database.winterCourse.get(i).getCourseId() + ", \n";
+//                    }
+//                }
+            }
+            fallTextView.setText(fallCourseList);
+//            winterTextView.setText(winterCourseList);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+
 
         Button add = (Button)findViewById(R.id.adding);
         add.setOnClickListener(new View.OnClickListener() {

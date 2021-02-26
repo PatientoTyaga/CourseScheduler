@@ -16,6 +16,9 @@ public class Database implements SchedulePersistence{
 
     public static ArrayList<Student> studentList = new ArrayList<Student>();
     public static ArrayList<Course> courseList = new ArrayList<Course>();
+    public static ArrayList<Course> fallCourse = new ArrayList<Course>();
+    public static ArrayList<Course> winterCourse = new ArrayList<Course>();
+    public static String currentStudent = "dummy";
 
     public Database() {
         s1 = null;
