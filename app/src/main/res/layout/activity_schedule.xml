@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".myGIU.ScheduleActivity">
+    tools:context=".presentation.ScheduleActivity">
 
     <TextView
         android:id="@+id/displaySchedule"
@@ -18,24 +18,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
+
     <TextView
         android:id="@+id/fall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="41dp"
+        android:layout_height="21dp"
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
-        android:layout_marginTop="77dp"
         android:layout_marginEnd="309dp"
         android:layout_marginRight="309dp"
-        android:layout_marginBottom="635dp"
-        android:text="fall"
+        android:text="Fall"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.108" />
 
     <TextView
         android:id="@+id/winter"
@@ -43,16 +41,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
-        android:layout_marginTop="275dp"
+        android:layout_marginTop="375dp"
         android:layout_marginEnd="328dp"
         android:layout_marginRight="328dp"
         android:layout_marginBottom="437dp"
-        android:text="winter"
+        android:text="Winter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.69" />
 
     <Button
         android:id="@+id/adding"
@@ -87,6 +86,19 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+<!--    <ListView-->
+<!--        android:id="@+id/displayFallCourse"-->
+<!--        android:layout_width="235dp"-->
+<!--        android:layout_height="135dp"-->
+<!--        tools:layout_editor_absoluteX="24dp"-->
+<!--        tools:layout_editor_absoluteY="43dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.636"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.129"/>-->
 
     <TextView
         android:id="@+id/displayFallCourse"
