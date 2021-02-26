@@ -1,6 +1,6 @@
 Iteration 1 Worksheet
 =====================
-Add Course
+Adding Feature
 -----------------
 
 Tell the story of how one of your features was added to the project:
