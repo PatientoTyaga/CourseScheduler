@@ -13,7 +13,9 @@ Provide links to the feature, user stories, and merge requests (if used), associ
 that was used complete the feature:
 
 Link to the Add schedule Feature: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/25
+
 Link to user story Add schedule: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/26
+
 Link to merge requests: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/merge_requests/6
 
 
