@@ -13,8 +13,8 @@ Have save option on screen that user can click to save schedule.
 
 
 Tell the story of how one of your features was added to the project.
-Provide links to the
-feature, user stories, and merge requests (if used), associated tests, and merge commit
+
+Provide links to the feature, user stories, and merge requests (if used), associated tests, and merge commit
 that was used complete the feature.
 
 Use one or two paragraphs which can have point-form within them.
