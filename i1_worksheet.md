@@ -46,12 +46,7 @@ Screenshot of feature inside branching strategy:
 SOLID
 -----
 
-Find a SOLID violation in the project of group `(n%12)+1` (group 12 does group 1).
-Open an issue in their project with the violation,
-clearly explaining the SOLID violation - specifying the type, provide a link to that issue. Be sure
-your links in the issues are to **specific commits** (not to `main`, or `develop` as those will be changed).
-
-Provide a link to the issue you created here.
+Link: https://code.cs.umanitoba.ca/3350-winter-2021-a03/winter-2021-a03-group-10/-/issues/40
 
 Agile Planning
 --------------
