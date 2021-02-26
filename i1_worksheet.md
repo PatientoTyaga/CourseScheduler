@@ -2,17 +2,6 @@ Iteration 1 Worksheet
 =====================
 Add Course
 -----------------
-As a user when I create my schedule I want to be able to add a new course to my schedule and see it on the appropriate term. 
-Eg. If I select a course from the list and select the term when the course is available, 
-it should display the course on the appropriate term on my schedule.
-I can use the saved schedule to organize my study time when my classes are complete for the day.
-
-Developer Tasks:
-
-Have add course option
-Have database where added courses will be stored.
-Be able to display added courses for student on GUI
-
 
 Tell the story of how one of your features was added to the project:
 
