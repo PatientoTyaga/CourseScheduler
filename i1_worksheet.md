@@ -34,10 +34,10 @@ Provide a link to where you describe your branching strategy.
 https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/master/README.md
 
 
-
 Link: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/network/master
 
-![image](https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/master/Graph.png)
+Click on link below to access graph png
+![Graph](https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/master/Graph.png)
 
 
 Provide screen shot of a feature being added using your branching strategy
