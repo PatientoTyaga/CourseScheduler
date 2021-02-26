@@ -13,7 +13,9 @@ Have add course option
 Have database where added courses will be stored.
 Be able to display added courses for student on GUI
 
+
 Tell the story of how one of your features was added to the project:
+
 We had originally planned to implement save schedule feature but due to the constraints we had due to the fake database
 we decided to instead implement the add course feature since this feature only requires us to save the courses at the point 
 in time when it is being used.
