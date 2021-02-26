@@ -25,17 +25,15 @@
         android:layout_height="21dp"
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
-        android:layout_marginTop="150dp"
         android:layout_marginEnd="309dp"
         android:layout_marginRight="309dp"
-        android:layout_marginBottom="635dp"
         android:text="Fall"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.72" />
+        app:layout_constraintVertical_bias="0.108" />
 
     <TextView
         android:id="@+id/winter"

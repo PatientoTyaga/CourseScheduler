@@ -43,12 +43,14 @@ public class MainActivity extends AppCompatActivity {
                 String spinText = dropdown.getSelectedItem().toString();
                 Intent scheduleIntent = new Intent(MainActivity.this, ScheduleActivity.class); //Goes to ScheduleActivity Page
                 for(int i=0; i<Database.studentList.size(); i++){
-                    if (Database.studentList.get(i).getStudentName().matches(spinText)){
-                        scheduleIntent.putExtra("Name", Database.studentList.get(i).getStudentName());
+                    if (Database.studentList.get(i).getStudentName().matches(spinText)){ //if dropdown value matches the student's name inside the list of student object in Database
+                        scheduleIntent.putExtra("Name", Database.studentList.get(i).getStudentName()); //send the Student's name from the student object
                     }
                 }
-                 //sends the student name as a parameter to the scheduleActivity Page
-                startActivity(scheduleIntent);
+                Database.scheduleCourseList.get(0).clear(); //clears the arraylist for fall term courses for the previous student
+                Database.scheduleCourseList.get(1).clear(); //clears the arraylist for the winter term courses for the previous student
+
+                startActivity(scheduleIntent); //sends the student name as a parameter to the scheduleActivity Page
             }
         });
     }

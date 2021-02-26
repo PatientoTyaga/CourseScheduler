@@ -22,8 +22,6 @@ public class ScheduleActivity extends AppCompatActivity {
     String fallCourseList;
     String winterCourseList;
     String Name;
-    String fallCourse;
-    String winterCourse;
     TextView result;
     TextView fallTextView;
     TextView winterTextView;
@@ -37,45 +35,30 @@ public class ScheduleActivity extends AppCompatActivity {
         winterCourseList = "";
 
         result = (TextView)findViewById(R.id.displaySchedule);
+        fallTextView = (TextView)findViewById(R.id.displayFallCourse);
+        winterTextView = (TextView)findViewById(R.id.displayWinterCourse);
+
         Name = getIntent().getExtras().getString("Name");
         if(Name != null) {
             Database.currentStudent = Name;
         }
         result.setText("Name:"+" " + Database.currentStudent);
 
-
-        Log.i("myTag1", "hi: ");
-
-        fallTextView = (TextView)findViewById(R.id.displayFallCourse);
-        fallCourse = getIntent().getExtras().getString("Fall");
-
-        winterTextView = (TextView)findViewById(R.id.displayWinterCourse);
-        winterCourse = getIntent().getExtras().getString("Winter");
-
         try {
-            for (Course c : Database.courseList) {
-                if (c.getCourseId().matches(fallCourse)) {
-                    Database.fallCourse.add(c);
-                    for(int i=0; i<Database.fallCourse.size(); i++){
-                        Log.i("myTag", "hi: " +Database.fallCourse.get(Database.fallCourse.size()-1).getCourseId() + " , " + Database.fallCourse.size());
-                        fallCourseList += "" + Database.fallCourse.get(i).getCourseId() + ", \n";
-                    }
-                }
-//                if (c.getCourseId().matches(winterCourse)) {
-//                    Database.winterCourse.add(c);
-//                    for(int i=0; i<Database.winterCourse.size(); i++){
-//                        Log.i("myTag", "hi: " +Database.winterCourse.get(Database.winterCourse.size()-1).getCourseId() + " , " + Database.winterCourse.size());
-//                        winterCourseList += "" + Database.winterCourse.get(i).getCourseId() + ", \n";
-//                    }
-//                }
+            for(Course c:Database.scheduleCourseList.get(0)){ //concatenates  the fall courses ID to a string
+                fallCourseList += "" + c.getCourseId() + "\n";
             }
-            fallTextView.setText(fallCourseList);
-//            winterTextView.setText(winterCourseList);
+            for(Course c:Database.scheduleCourseList.get(1)){ //concatenates  the winter courses ID to a string
+                winterCourseList += "" + c.getCourseId() + "\n";
+            }
+            Log.i("myTag", "FallCourseList: " + fallCourseList);
+            Log.i("myTag", "WinterCourseList: " + winterCourseList);
+            fallTextView.setText(fallCourseList); //display the fall courses inside the Fall Term TextView
+            winterTextView.setText(winterCourseList); //display the winter courses inside the Winter Term TextView
         }
         catch (Exception e){
             System.out.println(e);
         }
-
 
         Button add = (Button)findViewById(R.id.adding);
         add.setOnClickListener(new View.OnClickListener() {

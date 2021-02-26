@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -48,9 +49,23 @@ public class CourseActivity extends AppCompatActivity {
                 CheckBox winterTerm = (CheckBox) findViewById(R.id.checkBoxWinter);
                 if (fallTerm.isChecked()){
                     scheduleIntent.putExtra("Fall", spinText);
+
+                    for (Course c : Database.courseList) {
+                        if (c.getCourseId().matches(spinText)) {
+                            Database.scheduleCourseList.get(0).add(c);
+                            Log.i("myTag", "hi: Fall: " +c.getCourseId() + " , " + Database.scheduleCourseList.get(0).size());
+                        }
+                    }
+
                 }
-                else if(winterTerm.isChecked()){
+                if(winterTerm.isChecked()){
                     scheduleIntent.putExtra("Winter", spinText);
+                    for (Course c : Database.courseList) {
+                        if (c.getCourseId().matches(spinText)) {
+                            Database.scheduleCourseList.get(1).add(c);
+                            Log.i("myTag", "hi: Winter: " +c.getCourseId() + " , " + Database.scheduleCourseList.get(0).size());
+                        }
+                    }
                 }
 
                 startActivity(scheduleIntent);

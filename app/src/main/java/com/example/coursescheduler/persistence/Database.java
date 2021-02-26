@@ -16,9 +16,10 @@ public class Database implements SchedulePersistence{
 
     public static ArrayList<Student> studentList = new ArrayList<Student>();
     public static ArrayList<Course> courseList = new ArrayList<Course>();
-    public static ArrayList<Course> fallCourse = new ArrayList<Course>();
-    public static ArrayList<Course> winterCourse = new ArrayList<Course>();
     public static String currentStudent = "dummy";
+
+    public static ArrayList<ArrayList<Course>> scheduleCourseList = new ArrayList<ArrayList<Course>>();
+
 
     public Database() {
         s1 = null;
@@ -30,6 +31,10 @@ public class Database implements SchedulePersistence{
     }
 
     public static void initData() {
+
+        scheduleCourseList.add(new ArrayList<Course>());
+        scheduleCourseList.add(new ArrayList<Course>());
+
         Student student1 = new Student("7784215", "Simrandeep");
         Student student2 = new Student("7853346", "Mohammad");
         Student student3 = new Student("7850109", "Rusty");
@@ -55,10 +60,10 @@ public class Database implements SchedulePersistence{
         studentList.add(student10);
         studentList.add(student11);
 
-        Course course1 = new Course("Intro Computer Science", "COMP1010", "08:30-09:30", "TR");
-        Course course2 = new Course("Analysis of Algorithms", "Comp2080", "10:30-11:30", "TR");
-        Course course3 = new Course("Object Orientation", "Comp2150", "10:30-11:30", "MWF");
-        Course course4 = new Course("Human-Computer Interaction 1", "Comp3020", "11:20-12:30", "TR");
+        Course course1 = new Course("Intro Computer Science", "COMP 1010", "08:30-09:30", "TR");
+        Course course2 = new Course("Analysis of Algorithms", "COMP 2080", "10:30-11:30", "TR");
+        Course course3 = new Course("Object Orientation", "COMP 2150", "10:30-11:30", "MWF");
+        Course course4 = new Course("Human-Computer Interaction 1", "COMP 3020", "11:20-12:30", "TR");
 
 
         courseList.add(course1);
