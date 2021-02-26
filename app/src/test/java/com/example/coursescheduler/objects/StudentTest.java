@@ -8,13 +8,6 @@ import static org.junit.Assert.*;
 
 public class StudentTest {
 
-    @Before
-    public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
 
     @Test
     public void constructorTest(){
@@ -26,19 +19,35 @@ public class StudentTest {
 
     }
 
-    @Test
-    public void getStudentID() {
-    }
-
-    @Test
-    public void getStudentName() {
-    }
 
     @Test
     public void testEquals() {
+        Student newStudent1 = new Student("7888888","Greta Thunberg");
+        Student newStudent2 = new Student("7888888","Greta Thunberg");
+        Student newStudent3 = new Student("7888888","Not Greta");
+        Student newStudent4 = new Student("7999999","Greta Thunberg");
+        assertNotNull(newStudent1);
+        assertNotNull(newStudent2);
+        assertNotNull(newStudent3);
+        assertNotNull(newStudent4);
+        assertTrue((newStudent1.equals(newStudent1)));
+        assertTrue(newStudent1.equals(newStudent2));
+        assertTrue(newStudent1.equals(newStudent2));
+        assertFalse(newStudent1.equals(newStudent3));
+        assertFalse(newStudent1.equals(newStudent4));
+
+
     }
 
     @Test
     public void testHashCode() {
+        Student newStudent1 = new Student("7888888","Greta Thunberg");
+        Student newStudent2 = new Student("7888888","Greta Thunberg");
+        Student newStudent3 = new Student("7888888","Anti Greta");
+        assertNotNull(newStudent1);
+        assertNotNull(newStudent2);
+        assertNotNull(newStudent3);
+        assertEquals(newStudent1.hashCode(),newStudent2.hashCode());
+        assertNotEquals(newStudent1.hashCode(),newStudent3.hashCode());
     }
 }

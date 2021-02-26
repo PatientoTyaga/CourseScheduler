@@ -26,28 +26,15 @@ public class CourseTest {
 
     }
 
-    @Test
-    public void getCourseName() {
-    }
-
-    @Test
-    public void getCourseId() {
-    }
-
-    @Test
-    public void getCourseTime() {
-    }
-
-    @Test
-    public void getCourseDay() {
-    }
 
     @Test
     public void testEquals() {
         Course newCourse1 = new Course("Intro to COMP", "COMP1010", "1", "MWF");
         Course newCourse2 = new Course("Intro to COMP", "COMP1010", "1", "MWF");
+        Course newCourse3 = new Course("Intro to COMP", "COMP1010", "2", "MWF");
         assertNotNull(newCourse1);
         assertNotNull(newCourse2);
+        assertFalse(newCourse1.equals(newCourse3));
         assertTrue(newCourse1.getCourseName().equals(newCourse2.getCourseName()));
         assertTrue(newCourse1.getCourseId().equals(newCourse2.getCourseId()));
         assertTrue(newCourse1.getCourseTime().equals(newCourse2.getCourseTime()));
@@ -59,8 +46,10 @@ public class CourseTest {
     public void testHashCode() {
         Course newCourse1 = new Course("Intro to COMP", "COMP1010", "1", "MWF");
         Course newCourse2 = new Course("Intro to COMP", "COMP1010", "1", "MWF");
+        Course newCourse3 = new Course("Intro to COMP", "COMP1010", "2", "MWF");
         assertNotNull(newCourse1);
         assertNotNull(newCourse2);
         assertEquals(newCourse1.hashCode(),newCourse2.hashCode());
+        assertNotEquals(newCourse1.hashCode(),newCourse3.hashCode());
     }
 }
