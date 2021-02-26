@@ -23,9 +23,7 @@ Use one or two paragraphs which can have point-form within them.
 Exceptional code
 ----------------
 
-Provide a link to a test of exceptional code. In a few sentences,
-provide an explanation of why the exception is handled or thrown
-in the code you are testing.
+N/A
 
 Branching
 ----------
