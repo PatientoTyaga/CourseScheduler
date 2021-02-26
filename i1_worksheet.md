@@ -2,19 +2,25 @@ Iteration 1 Worksheet
 =====================
 Add Course
 -----------------
-As a user I want to be able to save the course schedule that I have made. 
+As a user when I create my schedule I want to be able to add a new course to my schedule and see it on the appropriate term. 
+Eg. If I select a course from the list and select the term when the course is available, 
+it should display the course on the appropriate term on my schedule.
 I can use the saved schedule to organize my study time when my classes are complete for the day.
 
 Developer Tasks:
 
-Have database where saved schedules will be stored.
-Have save option on screen that user can click to save schedule.
+Have add course option
+Have database where added courses will be stored.
+Be able to display added courses for student on GUI
 
-
-Tell the story of how one of your features was added to the project.
+Tell the story of how one of your features was added to the project:
+We had originally planned to implement save schedule feature but due to the constraints we had due to the fake database
+we decided to instead implement the add course feature since this feature only requires us to save the courses at the point 
+in time when it is being used.
 
 Provide links to the feature, user stories, and merge requests (if used), associated tests, and merge commit
-that was used complete the feature.
+that was used complete the feature:
+
 
 Use one or two paragraphs which can have point-form within them.
 
