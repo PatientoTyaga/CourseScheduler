@@ -33,6 +33,10 @@ The branching is described inside the readme file and link is provided below
 Provide a link to where you describe your branching strategy.
 https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/master/README.md
 
+
+
+Link: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/network/master
+
 Provide screen shot of a feature being added using your branching strategy
 successfully. The [GitLab Graph tool can do this](https://code.cs.umanitoba.ca/comp3350-summer2019/cook-eBook/-/network/develop),
 as well as using `git log --graph`.
