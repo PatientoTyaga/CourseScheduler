@@ -8,9 +8,9 @@ I can use the saved schedule to organize my study time when my classes are compl
 
 Developer Tasks:
 
-Have database where saved schedules will be stored
-Have save option on screen that user can click to save schedule
-Time estimate: 4 hours
+Have database where saved schedules will be stored.
+Have save option on screen that user can click to save schedule.
+
 
 Tell the story of how one of your features was added to the project.
 Provide links to the
