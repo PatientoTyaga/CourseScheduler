@@ -23,6 +23,10 @@ in time when it is being used.
 Provide links to the feature, user stories, and merge requests (if used), associated tests, and merge commit
 that was used complete the feature:
 
+Link to the Add schedule Feature: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/25
+Link to user story Add schedule: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/26
+
+
 
 Use one or two paragraphs which can have point-form within them.
 
