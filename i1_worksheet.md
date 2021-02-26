@@ -37,7 +37,7 @@ https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-g
 
 Link: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/network/master
 
-![Alt text](https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/master/Graph.png)
+![Alt text](/relative/path/to/img.jpg?raw=true "Graph")
 
 
 Provide screen shot of a feature being added using your branching strategy
