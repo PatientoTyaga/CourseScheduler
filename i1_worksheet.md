@@ -20,8 +20,6 @@ Link to merge requests: https://code.cs.umanitoba.ca/3350-winter-2021-a03/course
 
 
 
-Use one or two paragraphs which can have point-form within them.
-
 Exceptional code
 ----------------
 
