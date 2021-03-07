@@ -7,33 +7,34 @@ import com.example.coursescheduler.objects.Student;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Database implements SchedulePersistence{
+public class Database implements ISchedulePersistence, ICoursePersistence, IStudentPersistence {
 
-    private static Schedule s1;
-    private static Schedule s2;
-    private static Schedule s3;
-    private static Schedule s4;
+    private static Schedule schedule1;
+    private static Schedule schedule2;
+    private static Schedule schedule3;
 
-    public static ArrayList<Student> studentList = new ArrayList<Student>();
-    public static ArrayList<Course> courseList = new ArrayList<Course>();
-    public static String currentStudent = "dummy";
+    public static ArrayList<Student> studentArrayList = new ArrayList<Student>();
+    public static ArrayList<Course> courseArrayList = new ArrayList<Course>();
+    public static ArrayList<Course> courseArrayList2 = new ArrayList<Course>();
+//    public static ArrayList<Course> currentCourseArrayList = new ArrayList<Course>();
 
-    public static ArrayList<ArrayList<Course>> scheduleCourseList = new ArrayList<ArrayList<Course>>();
+    public static ArrayList<Schedule> currentScheduleList = new ArrayList<Schedule>();
 
+    public static Student currentStudent;
+    public static Course currentCourse;
+    public static Schedule currentSchedule;
+
+    public static ArrayList<Schedule> scheduleArrayList = new ArrayList<Schedule>();
 
     public Database() {
-        s1 = null;
-        s2 = null;
-        s3 = null;
-        s4 = null;
+        schedule1 = null;
+        schedule2 = null;
+        schedule3 = null;
 
-        initData();
+//        initData();
     }
 
     public static void initData() {
-
-        scheduleCourseList.add(new ArrayList<Course>());
-        scheduleCourseList.add(new ArrayList<Course>());
 
         Student student1 = new Student("7784215", "Simrandeep");
         Student student2 = new Student("7853346", "Mohammad");
@@ -47,102 +48,97 @@ public class Database implements SchedulePersistence{
         Student student10 = new Student("7849975", "Lucy");
         Student student11 = new Student("7847416", "Jill");
 
-
-        studentList.add(student1);
-        studentList.add(student2);
-        studentList.add(student3);
-        studentList.add(student4);
-        studentList.add(student5);
-        studentList.add(student6);
-        studentList.add(student7);
-        studentList.add(student8);
-        studentList.add(student9);
-        studentList.add(student10);
-        studentList.add(student11);
+        studentArrayList.add(student1);
+        studentArrayList.add(student2);
+        studentArrayList.add(student3);
+        studentArrayList.add(student4);
+        studentArrayList.add(student5);
+        studentArrayList.add(student6);
+        studentArrayList.add(student7);
+        studentArrayList.add(student8);
+        studentArrayList.add(student9);
+        studentArrayList.add(student10);
+        studentArrayList.add(student11);
 
         Course course1 = new Course("Intro Computer Science", "COMP 1010", "08:30-09:30", "TR");
         Course course2 = new Course("Analysis of Algorithms", "COMP 2080", "10:30-11:30", "TR");
         Course course3 = new Course("Object Orientation", "COMP 2150", "10:30-11:30", "MWF");
         Course course4 = new Course("Human-Computer Interaction 1", "COMP 3020", "11:20-12:30", "TR");
 
+        courseArrayList.add(course1);
+        courseArrayList.add(course2);
+        courseArrayList.add(course3);
+        courseArrayList.add(course4);
 
-        courseList.add(course1);
-        courseList.add(course2);
-        courseList.add(course3);
-        courseList.add(course4);
+        courseArrayList2.add(course1);
+        courseArrayList2.add(course2);
 
-        s1 = new Schedule(student1, course1);
-        s2 = new Schedule(student1, course2);
-        s3 = new Schedule(student2, course3);
-        s4 = new Schedule(student4, course4);
+        schedule1 = new Schedule("Schedule 1", student1, courseArrayList); //creates a schedule with Student 1 having 4 courses
+        schedule2 = new Schedule("Schedule 2", student1, courseArrayList2); //creates a schedule with Student 1 having 4 courses
+        schedule3 = new Schedule("Schedule 2", student3, courseArrayList); //creates a schedule with Student 3 having 4 courses
+
+        scheduleArrayList.add(schedule1);
+        scheduleArrayList.add(schedule2);
+        scheduleArrayList.add(schedule3);
 
     }
 
     @Override
     public List<Schedule> getScheduleSequential() {
-        List<Schedule> list = new ArrayList<Schedule>();
-        list.add(s1);
-        list.add(s2);
-        list.add(s3);
-        list.add(s4);
+        return scheduleArrayList;
+    }
 
-        return list;
+    @Override
+    public List<Schedule> getScheduleSequential(Student student) {
+        for (Schedule s: scheduleArrayList) {
+            if(s.getStudent().getStudentID().matches(student.getStudentID())){
+                currentScheduleList.add(s);
+            }
+        }
+        return currentScheduleList;
+    }
+
+    @Override
+    public List<Course> getCourseSequential(){
+        return courseArrayList;
+    }
+
+    @Override
+    public void setCurrentCourse(Course course) {
+        currentCourse = course;
+    }
+
+    @Override
+    public Course getCurrentCourse() {
+        return currentCourse;
+    }
+
+    @Override
+    public List<Student> getStudentSequential(){ return studentArrayList; }
+
+    @Override
+    public void setCurrentStudent(Student student){
+        currentStudent = student;
+    }
+
+    @Override
+    public Student getCurrentStudent(){
+        return currentStudent;
+    }
+
+    @Override
+    public void addCourse(Course course) {
+        currentSchedule.addToCourseList(course);
+    }
+
+    @Override
+    public Schedule getCurrentSchedule() {
+        return currentSchedule;
+    }
+
+    @Override
+    public void setCurrentSchedule(Schedule schedule) {
+        currentSchedule = schedule;
     }
 
 }
-
-//    public static String [] timeArea ={
-//            "08:30-09:30",
-//            "10:30-11:20",
-//            "11:20-12:30",
-//            "13:30-14:20"
-//    };
-//    //10 test students Info
-//    public static String [][] studentInfo = {
-//            { "Simrandeep", "7784215" },
-//            { "Mohammad", "7853346" },
-//            { "Rusty", "7850109"},
-//            {"Alan","7840761"},
-//            {"Verne","7841354"},
-//            {"Rudolf", "7854451"},
-//            {"Norman","7843879"},
-//            {"Shirley","7846612"},
-//            {"Mamie","7841106"},
-//            {"Lucy","7849975"},
-//            {"Jill","7847416"}
-//    };
-//
-//    public static Student[] studentList = {
-//            new Student("7784215", "Simrandeep"),
-//            new Student("7853346", "Mohammad"),
-//            new Student("7850109", "Rusty"),
-//            new Student("7840761", "Alan"),
-//            new Student("7841354", "Verne"),
-//            new Student("7854451", "Rudolf"),
-//            new Student("7843879", "Norman"),
-//            new Student("7846612", "Shirley"),
-//            new Student("7841106", "Mamie"),
-//            new Student("7849975", "Lucy"),
-//            new Student("7847416", "Jill"),
-//    };
-//
-//    //10 test course Info
-//    public static String [][] courseInfo = {
-//            { "Comp1010", "Intro Computer Science 1", "08:30-09:30", "TR" },
-//            { "Comp2080", "Analysis of Algorithms", "10:30-11:20", "MWF" },
-//            { "Comp2150", "Object Orientation", "10:30-11:20", "MWF"},
-//            { "Comp3020", "Human-Computer Interaction 1", "11:20-12:30", "TR" },
-//            { "Comp3040", "Technical Communication", "10:30-11:20", "TR" },
-//            { "Comp3350", "Software Engineering 1", "11:20-12:30", "MWF"},
-//            { "Comp4380", "Database Implementation", "08:30-09:30", "TR" },
-//            { "Stat2000", "Basic Statistical Analysis 2", "13:30-14:20", "MWF"},
-//            { "Econ2010", "MicroEconomics Theory 1", "10:30-11:20", "TR"},
-//            { "Econ2020", "MacroEconomics Theory 1", "10:30-11:20", "TR"}
-//    };
-//
-//    public static Course[] courseList = {
-//            new Course("Intro Computer Science", "COMP1010", "08:30-09:30", "TR"),
-//            new Course("Analysis of Algorithms", "Comp2080", "10:30-11:30", "TR"),
-//            new Course("Object Orientation", "Comp2150", "10:30-11:30", "MWF"),
-//            new Course("Human-Computer Interaction 1", "Comp3020", "11:20-12:30", "TR"),
-//    };

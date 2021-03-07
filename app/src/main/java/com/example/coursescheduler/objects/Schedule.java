@@ -1,56 +1,55 @@
 package com.example.coursescheduler.objects;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Schedule {
 
+    private final String scheduleID;
     private final Student student;
-    private final Course course;
+    private final ArrayList<Course> courseArrayList;
 
-    public Schedule(final Student student, final Course course){
-        this.course = course;
+    public Schedule(final String scheduleID, Student student, ArrayList<Course> courseArrayList){
+        this.scheduleID = scheduleID;
         this.student = student;
+        this.courseArrayList = courseArrayList;
     }
 
-    public String getStudentID(){
-        return (student.getStudentID());
+    public String getScheduleID(){
+        return scheduleID;
     }
 
-    public String getStudentName(){
-        return (student.getStudentName());
+    public ArrayList<Course> getCourseList(){
+        return courseArrayList;
     }
 
-    public String getCourseID(){
-        return (course.getCourseId());
+    public Student getStudent(){
+        return student;
     }
 
-    public String getCourseName(){
-        return (course.getCourseName());
+    public Course getCourseAtPos(int pos){
+        return courseArrayList.get(pos);
     }
 
-    public String getCourseTime(){
-        return(course.getCourseTime());
+    public void addToCourseList(Course course){
+        courseArrayList.add(course);
     }
 
+//    public String toString() {
+//        return "Schedule{" +
+//                "student=" + student.getStudentID() +
+//                ", course=" + studentCourse.getCourseID() +
+//                '}';
+//    }
 
-    public String toString() {
-        return "Schedule{" +
-                "student=" + student.getStudentID() +
-                ", course=" + course.getCourseId() +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Schedule schedule = (Schedule) o;
-        return Objects.equals(student, schedule.student) &&
-                Objects.equals(course, schedule.course);
+    public boolean equals(final Schedule o) {
+        return Objects.equals(scheduleID, o.scheduleID) &&
+                Objects.equals(student, o.student) &&
+                Objects.equals(courseArrayList, o.courseArrayList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(student, course);
+        return Objects.hash(scheduleID, student, courseArrayList);
     }
 }
