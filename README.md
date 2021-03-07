@@ -12,8 +12,8 @@
 
 # Course Scheduler Vision Statement
 
-Course Scheduler app will permit students to plan their schedule and simplify course slot selection. 
-The app will output a calendar like UM Aurora’s ‘Week at a Glance’ that would allow the user to view their schedule for the desired courses before registering for them. 
+Course Scheduler app will permit students to plan their studentCourse and simplify course slot selection.
+The app will output a calendar like UM Aurora’s ‘Week at a Glance’ that would allow the user to view their studentCourse for the desired courses before registering for them.
 The user can save multiple schedules based on different time slots that a course offers and allow them to plan accordingly.
 
 This system is designed primarily for University of Manitoba students, but also might be used by student advisors. 
@@ -21,8 +21,8 @@ The app will be used by students during their course registration period to help
 Other faculty members such as student advisors can use the system to plan out schedules for students seeking advise for their course planning. 
 
 The app will permit user to input course information such as available terms, time slots, CRN numbers and instructor name. 
-The app will process all possible combinations for the schedules from the provided input and allow the user to select the preferred schedule. 
-Users can also edit a schedule’s time slots, available term, or instructor name to generate a modified schedule.
+The app will process all possible combinations for the schedules from the provided input and allow the user to select the preferred studentCourse.
+Users can also edit a studentCourse’s time slots, available term, or instructor name to generate a modified studentCourse.
 
 Since the system will be used by all levels of users to view the possible schedules for the desired courses, there is no necessity for a security implementation. 
 The system is not for registering courses, so the system does not need to recognize the dependencies of course prerequisites. 
