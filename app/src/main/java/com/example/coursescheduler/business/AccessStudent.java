@@ -30,27 +30,6 @@ public class AccessStudent{
         return Collections.unmodifiableList(students);
     }
 
-    public Student getSequential()
-    {
-        if (students == null)
-        {
-            students = studentPersistence.getStudentSequential();
-            currentStudent = 0;
-        }
-        if (currentStudent < students.size())
-        {
-            student = students.get(currentStudent);
-            currentStudent++;
-        }
-        else
-        {
-            students = null;
-            student = null;
-            currentStudent = 0;
-        }
-        return student;
-    }
-
 
     public void setCurrentStudent(Student student) {
         studentPersistence.setCurrentStudent(student);

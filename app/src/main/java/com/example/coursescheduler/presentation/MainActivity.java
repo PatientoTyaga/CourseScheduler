@@ -76,7 +76,10 @@ public class MainActivity extends AppCompatActivity {
 
         studentID.setText("Student ID: "+ selected.getStudentName());
         studentName.setText("Student Name: "+ selected.getStudentID());
+    }
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 }

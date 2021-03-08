@@ -2,28 +2,20 @@ package com.example.coursescheduler.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.coursescheduler.Service.Service;
 import com.example.coursescheduler.business.AccessCourse;
 import com.example.coursescheduler.R;
 import com.example.coursescheduler.business.AccessSchedule;
 import com.example.coursescheduler.objects.Course;
-import com.example.coursescheduler.persistence.Database;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +33,7 @@ public class CourseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
 
-        accessCourse = new AccessCourse(Service.getCoursePersistence());
+        accessCourse = new AccessCourse();
         accessSchedule = new AccessSchedule();
 
         try {
@@ -86,8 +78,6 @@ public class CourseActivity extends AppCompatActivity {
                     }
                 }
             });
-
-
         } catch (final Exception e) {
             System.out.println(e);
         }
@@ -97,8 +87,6 @@ public class CourseActivity extends AppCompatActivity {
         Course selected = courseArrayAdapter.getItem(position);
         accessCourse.setCurrentCourse(selected);
 
-//        accessCourse.getCurrentSchedule().addToCourseList(selected);
-//        Log.i("myTag", String.valueOf(accessCourse.getCurrentCourse()));
         TextView courseID = (TextView)findViewById(R.id.textCourseID);
         TextView courseName = (TextView)findViewById(R.id.textCourseName);
         TextView courseTime = (TextView)findViewById(R.id.textCourseTime);
@@ -110,5 +98,9 @@ public class CourseActivity extends AppCompatActivity {
         courseDay.setText("Day: "+ selected.getCourseDay());
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
 }

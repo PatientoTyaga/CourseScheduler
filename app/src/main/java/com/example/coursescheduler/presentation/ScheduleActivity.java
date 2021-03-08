@@ -14,7 +14,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.coursescheduler.R;
-import com.example.coursescheduler.Service.Service;
 import com.example.coursescheduler.business.AccessSchedule;
 import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Schedule;
