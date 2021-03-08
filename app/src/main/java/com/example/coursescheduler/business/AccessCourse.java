@@ -11,13 +11,10 @@ import java.util.List;
 public class AccessCourse implements IAccessCourse{
     private ICoursePersistence coursePersistence;
     private List<Course> courses;
-    private Course currentCourse;
-    private Schedule currentSchedule;
 
     public AccessCourse(ICoursePersistence coursePersistence){
         this.coursePersistence = coursePersistence;
         courses = null;
-        currentCourse = null;
     }
 
     @Override
@@ -28,18 +25,7 @@ public class AccessCourse implements IAccessCourse{
 
     @Override
     public void setCurrentCourse(Course course) {
-        currentCourse = course;
+        coursePersistence.setCurrentCourse(course);
     }
 
-    @Override
-    public Course getCurrentCourse() {
-        currentCourse = coursePersistence.getCurrentCourse();
-        return currentCourse;
-    }
-
-    @Override
-    public Schedule getCurrentSchedule() {
-        currentSchedule = coursePersistence.getCurrentSchedule();
-        return currentSchedule;
-    }
 }

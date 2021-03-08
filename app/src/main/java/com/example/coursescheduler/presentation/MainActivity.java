@@ -6,23 +6,17 @@ import java.util.*;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.provider.ContactsContract;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 
-import com.example.coursescheduler.Service.Service;
-import com.example.coursescheduler.business.AccessCourse;
 import com.example.coursescheduler.business.AccessStudent;
-import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.Database;
 import com.example.coursescheduler.R;
-import com.example.coursescheduler.persistence.IStudentPersistence;
 
 public class MainActivity extends AppCompatActivity {
 
-//    private List<String> studentName = new ArrayList<String>();
     private AccessStudent accessStudent;
     private List<Student> studentList;
     private ArrayAdapter<Student> studentArrayAdapter;
@@ -35,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Database.initData(); //initialize the database and initializes up the ArrayList list in Database
-        accessStudent = new AccessStudent(Service.getStudentPersistence());
+        accessStudent = new AccessStudent();
 
         try {
             studentList = new ArrayList<>();

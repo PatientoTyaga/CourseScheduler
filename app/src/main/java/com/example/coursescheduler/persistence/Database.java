@@ -13,18 +13,18 @@ public class Database implements ISchedulePersistence, ICoursePersistence, IStud
     private static Schedule schedule2;
     private static Schedule schedule3;
 
-    public static ArrayList<Student> studentArrayList = new ArrayList<Student>();
-    public static ArrayList<Course> courseArrayList = new ArrayList<Course>();
-    public static ArrayList<Course> courseArrayList2 = new ArrayList<Course>();
+    public static ArrayList<Student> studentArrayList = new ArrayList<>();
+    public static ArrayList<Course> courseArrayList = new ArrayList<>();
+    public static ArrayList<Course> courseArrayList2 = new ArrayList<>();
 //    public static ArrayList<Course> currentCourseArrayList = new ArrayList<Course>();
-
-    public static ArrayList<Schedule> currentScheduleList = new ArrayList<Schedule>();
+//
+//    public static ArrayList<Schedule> currentScheduleList = new ArrayList<>();
 
     public static Student currentStudent;
     public static Course currentCourse;
     public static Schedule currentSchedule;
 
-    public static ArrayList<Schedule> scheduleArrayList = new ArrayList<Schedule>();
+    public static ArrayList<Schedule> scheduleArrayList = new ArrayList<>();
 
     public Database() {
         schedule1 = null;
@@ -83,13 +83,14 @@ public class Database implements ISchedulePersistence, ICoursePersistence, IStud
 
     }
 
-    @Override
-    public List<Schedule> getScheduleSequential() {
-        return scheduleArrayList;
-    }
+//    @Override
+//    public List<Schedule> getScheduleSequential() {
+//        return scheduleArrayList;
+//    }
 
     @Override
     public List<Schedule> getScheduleSequential(Student student) {
+        ArrayList<Schedule> currentScheduleList = new ArrayList<>();
         for (Schedule s: scheduleArrayList) {
             if(s.getStudent().getStudentID().matches(student.getStudentID())){
                 currentScheduleList.add(s);
@@ -129,6 +130,16 @@ public class Database implements ISchedulePersistence, ICoursePersistence, IStud
     @Override
     public void addCourse(Course course) {
         currentSchedule.addToCourseList(course);
+    }
+
+    @Override
+    public List<Course> getCourseList(Schedule schedule) {
+        for (Schedule s: scheduleArrayList) {
+            if(s.getScheduleID().matches(schedule.getScheduleID()) && s.getStudent().getStudentID().matches(schedule.getStudent().getStudentID())){
+                return s.getCourseList();
+            }
+        }
+        return null;
     }
 
     @Override
