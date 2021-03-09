@@ -8,10 +8,12 @@ import java.util.List;
 
 
 public interface ISchedulePersistence {
-    List<Schedule> getScheduleSequential();
+//    List<Schedule> getScheduleSequential();
     List<Schedule> getScheduleSequential(Student student);
     void setCurrentSchedule(Schedule schedule);
     Schedule getCurrentSchedule();
     Student getCurrentStudent();
     void addCourse(Course course);
+    List<Course> getCourseList(Schedule schedule);
+    Course getCurrentCourse();
 }

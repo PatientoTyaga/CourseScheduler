@@ -4,24 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.coursescheduler.R;
-import com.example.coursescheduler.Service.Service;
 import com.example.coursescheduler.business.AccessSchedule;
 import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Schedule;
 import com.example.coursescheduler.objects.Student;
-import com.example.coursescheduler.persistence.Database;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +25,9 @@ import java.util.List;
 public class ScheduleActivity extends AppCompatActivity {
 
     private AccessSchedule accessSchedule;
-    private List<Schedule> scheduleList;
-    private List<Course> courseList;
-    private Student currentStudent;
     private ArrayAdapter<Schedule> scheduleArrayAdapter;
-    private ArrayAdapter<Course> courseListAdaptor;
+    private ArrayList<Schedule> scheduleList;
+    private Student currentStudent;
     private int selectedSchedulePos = -1;
 
     @Override
@@ -41,12 +35,12 @@ public class ScheduleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
 
-        accessSchedule = new AccessSchedule(Service.getSchedulePersistence());
-
         try {
+            accessSchedule = new AccessSchedule();
             scheduleList = new ArrayList<>();
             currentStudent = accessSchedule.getCurrentStudent(); //sets the current student that has opened the schedule
             scheduleList.addAll(accessSchedule.getScheduleSequential(currentStudent)); //adds the schedules that the currentStudent has to a list
+
             scheduleArrayAdapter = new ArrayAdapter<Schedule>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, scheduleList) {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
@@ -74,15 +68,10 @@ public class ScheduleActivity extends AppCompatActivity {
                         addCourseToSchedule.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
                                 // Do something in response to button click
-//                                accessSchedule.getCurrentSchedule().addToCourseList(accessCourse.getCurrentCourse());
-//                                accessCourse.getCurrentSchedule().addToCourseList(accessCourse.getCurrentCourse());
-
                                 Intent scheduleIntent = new Intent(ScheduleActivity.this, CourseActivity.class); //Goes to ScheduleActivity Page
                                 startActivity(scheduleIntent);
                             }
                         });
-//                        Intent scheduleIntent = new Intent(ScheduleActivity.this, CourseActivity.class); //Goes to ScheduleActivity Page
-//                        startActivity(scheduleIntent);
                     }
                 }
             });
@@ -94,12 +83,12 @@ public class ScheduleActivity extends AppCompatActivity {
         Schedule selected = scheduleArrayAdapter.getItem(position);
         accessSchedule.setCurrentSchedule(selected);
         Log.i("myTag", String.valueOf(selected.getCourseList()));
-//        selected.addToCourseList(Database.currentCourse);
+
         try {
             TextView studentName = (TextView)findViewById(R.id.textScheduleStudentName);
-            courseList = new ArrayList<>();
+            List<Course> courseList = new ArrayList<>();
             courseList.addAll(selected.getCourseList()); //adds the schedules that the currentStudent has to a list
-            courseListAdaptor = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text2, courseList) {
+            ArrayAdapter<Course> courseListAdaptor = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text2, courseList) {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
                     View view = super.getView(position, convertView, parent);
@@ -116,4 +105,10 @@ public class ScheduleActivity extends AppCompatActivity {
             System.out.println(e);
         }
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
 }

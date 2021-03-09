@@ -2,35 +2,27 @@ package com.example.coursescheduler.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.coursescheduler.Service.Service;
 import com.example.coursescheduler.business.AccessCourse;
 import com.example.coursescheduler.R;
 import com.example.coursescheduler.business.AccessSchedule;
 import com.example.coursescheduler.objects.Course;
-import com.example.coursescheduler.persistence.Database;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CourseActivity extends AppCompatActivity {
 
-//    private AccessSchedule accessSchedule;
+    private AccessSchedule accessSchedule;
     private AccessCourse accessCourse;
     private List<Course> courseList;
     private ArrayAdapter<Course> courseArrayAdapter;
@@ -41,8 +33,8 @@ public class CourseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
 
-        accessCourse = new AccessCourse(Service.getCoursePersistence());
-//        accessSchedule = new AccessSchedule(Service.getSchedulePersistence());
+        accessCourse = new AccessCourse();
+        accessSchedule = new AccessSchedule();
 
         try {
             accessCourse.setCurrentCourse(null);
@@ -64,7 +56,6 @@ public class CourseActivity extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    Button updateButton = (Button) findViewById(R.id.addCourse);
                     Button addCourseButton = (Button) findViewById(R.id.addCourse);
                     if (position == selectedCoursePos) {
                         listView.setItemChecked(position, false);
@@ -79,11 +70,7 @@ public class CourseActivity extends AppCompatActivity {
                         addCourseButton.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
                                 // Do something in response to button click
-//                                accessSchedule.getCurrentSchedule().addToCourseList(accessCourse.getCurrentCourse());
-//                                accessCourse.getCurrentSchedule().addToCourseList(accessCourse.getCurrentCourse());
-
-
-//                                accessCourse.getCurrentSchedule().addToCourseList(accessCourse.getCurrentCourse());
+                                accessSchedule.getCurrentSchedule().addToCourseList(accessSchedule.getCurrentCourse());
                                 Intent scheduleIntent = new Intent(CourseActivity.this, ScheduleActivity.class); //Goes to ScheduleActivity Page
                                 startActivity(scheduleIntent);
                             }
@@ -91,8 +78,6 @@ public class CourseActivity extends AppCompatActivity {
                     }
                 }
             });
-
-
         } catch (final Exception e) {
             System.out.println(e);
         }
@@ -101,8 +86,7 @@ public class CourseActivity extends AppCompatActivity {
     public void selectCourseAtPosition(int position) {
         Course selected = courseArrayAdapter.getItem(position);
         accessCourse.setCurrentCourse(selected);
-//        accessCourse.getCurrentSchedule().addToCourseList(selected);
-//        Log.i("myTag", String.valueOf(accessCourse.getCurrentCourse()));
+
         TextView courseID = (TextView)findViewById(R.id.textCourseID);
         TextView courseName = (TextView)findViewById(R.id.textCourseName);
         TextView courseTime = (TextView)findViewById(R.id.textCourseTime);
@@ -112,17 +96,11 @@ public class CourseActivity extends AppCompatActivity {
         courseName.setText("Name: "+ selected.getCourseName());
         courseTime.setText("Time: "+ selected.getCourseTime());
         courseDay.setText("Day: "+ selected.getCourseDay());
-
-//        Button button = (Button) findViewById(R.id.addCourse);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                // Do something in response to button click
-//                accessSchedule.addCourse(selected);
-//                Intent scheduleIntent = new Intent(CourseActivity.this, ScheduleActivity.class); //Goes to ScheduleActivity Page
-//                startActivity(scheduleIntent);
-//            }
-//        });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
 }

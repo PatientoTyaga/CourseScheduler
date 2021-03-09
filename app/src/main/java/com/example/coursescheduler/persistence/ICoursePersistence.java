@@ -8,6 +8,4 @@ import java.util.List;
 public interface ICoursePersistence {
     List<Course> getCourseSequential();
     void setCurrentCourse(Course course);
-    Course getCurrentCourse();
-    Schedule getCurrentSchedule();
 }
