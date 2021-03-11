@@ -9,6 +9,8 @@ import com.example.coursescheduler.persistence.ISchedulePersistence;
 import java.util.*;
 
 public class AccessSchedule{
+
+    /*
     private ISchedulePersistence schedulePersistence;
     private List<Schedule> currentStudentScheduleList;
     private Schedule currentSchedule;
@@ -53,4 +55,6 @@ public class AccessSchedule{
         return currentCourse;
     }
 
+
+     */
 }

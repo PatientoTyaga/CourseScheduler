@@ -11,6 +11,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class AccessCourse{
+
+    /*
     private ICoursePersistence coursePersistence;
     private List<Course> courses;
 
@@ -32,4 +34,6 @@ public class AccessCourse{
         coursePersistence.setCurrentCourse(course);
     }
 
+
+     */
 }

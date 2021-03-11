@@ -1,21 +1,27 @@
 package com.example.coursescheduler.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.*;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.*;
 
-import com.example.coursescheduler.business.AccessStudent;
-import com.example.coursescheduler.objects.Student;
-import com.example.coursescheduler.persistence.Database;
+import com.example.coursescheduler.database.DatabaseHelper;
 import com.example.coursescheduler.R;
 
 public class MainActivity extends AppCompatActivity {
+
+    DatabaseHelper myDb;
+    EditText editName;
+    Button btnAddData;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+
+    }
+/*
 
     private AccessStudent accessStudent;
     private List<Student> studentList;
@@ -28,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Database.initData(); //initialize the database and initializes up the ArrayList list in Database
+        //Database.initData(); //initialize the database and initializes up the ArrayList list in Database
         accessStudent = new AccessStudent();
 
         try {
@@ -82,4 +88,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
     }
+
+     */
 }

@@ -6,6 +6,6 @@ import com.example.coursescheduler.objects.Schedule;
 import java.util.List;
 
 public interface ICoursePersistence {
-    List<Course> getCourseSequential();
-    void setCurrentCourse(Course course);
+   // List<Course> getCourseSequential();
+    //void setCurrentCourse(Course course);
 }

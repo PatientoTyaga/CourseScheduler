@@ -7,6 +7,7 @@ import com.example.coursescheduler.persistence.IStudentPersistence;
 
 public class Service {
 
+    /*
     private static ICoursePersistence coursePersistence = null;
     private static IStudentPersistence studentPersistence = null;
     private static ISchedulePersistence schedulePersistence = null;
@@ -31,4 +32,6 @@ public class Service {
         }
         return schedulePersistence;
     }
+
+     */
 }

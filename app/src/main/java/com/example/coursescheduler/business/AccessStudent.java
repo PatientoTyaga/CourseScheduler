@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class AccessStudent{
+    /*
+
     private IStudentPersistence studentPersistence;
     private List<Student> students;
     private Student student;
@@ -34,4 +36,6 @@ public class AccessStudent{
     public void setCurrentStudent(Student student) {
         studentPersistence.setCurrentStudent(student);
     }
+
+     */
 }

@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ScheduleActivity extends AppCompatActivity {
+    /*
 
     private AccessSchedule accessSchedule;
     private ArrayAdapter<Schedule> scheduleArrayAdapter;
@@ -111,4 +112,6 @@ public class ScheduleActivity extends AppCompatActivity {
         super.onStart();
     }
 
+
+     */
 }

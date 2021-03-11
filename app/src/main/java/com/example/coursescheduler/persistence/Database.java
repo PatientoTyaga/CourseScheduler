@@ -7,8 +7,9 @@ import com.example.coursescheduler.objects.Student;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Database implements ISchedulePersistence, ICoursePersistence, IStudentPersistence {
+public class Database {
 
+    /*
     private static Schedule schedule1;
     private static Schedule schedule2;
     private static Schedule schedule3;
@@ -151,5 +152,7 @@ public class Database implements ISchedulePersistence, ICoursePersistence, IStud
     public void setCurrentSchedule(Schedule schedule) {
         currentSchedule = schedule;
     }
+
+     */
 
 }

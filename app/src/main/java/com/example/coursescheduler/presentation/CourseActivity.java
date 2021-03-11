@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseActivity extends AppCompatActivity {
-
+/*
     private AccessSchedule accessSchedule;
     private AccessCourse accessCourse;
     private List<Course> courseList;
@@ -103,4 +103,6 @@ public class CourseActivity extends AppCompatActivity {
         super.onStart();
     }
 
+
+ */
 }

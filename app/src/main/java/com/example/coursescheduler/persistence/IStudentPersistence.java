@@ -5,6 +5,9 @@ import com.example.coursescheduler.objects.Student;
 import java.util.List;
 
 public interface IStudentPersistence {
+
     List<Student> getStudentSequential();
-    void setCurrentStudent(Student student);
+   // void setCurrentStudent(Student student);
+
+
 }
