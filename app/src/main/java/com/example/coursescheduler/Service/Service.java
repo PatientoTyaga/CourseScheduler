@@ -6,6 +6,7 @@ import com.example.coursescheduler.persistence.ISchedulePersistence;
 import com.example.coursescheduler.persistence.IStudentPersistence;
 
 public class Service {
+    //to delete this class as one has already been made under application
 
     /*
     private static ICoursePersistence coursePersistence = null;

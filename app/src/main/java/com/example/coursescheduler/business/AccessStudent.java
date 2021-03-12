@@ -1,6 +1,7 @@
 package com.example.coursescheduler.business;
 
 import com.example.coursescheduler.Service.Service;
+import com.example.coursescheduler.application.Services;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.IStudentPersistence;
 
@@ -8,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class AccessStudent{
-    /*
+
 
     private IStudentPersistence studentPersistence;
     private List<Student> students;
@@ -16,7 +17,7 @@ public class AccessStudent{
     private int currentStudent;
 
     public AccessStudent(){
-        studentPersistence = Service.getStudentPersistence();
+        studentPersistence = Services.getStudentPersistence();
         students = null;
         student = null;
         currentStudent = 0;
@@ -33,9 +34,4 @@ public class AccessStudent{
     }
 
 
-    public void setCurrentStudent(Student student) {
-        studentPersistence.setCurrentStudent(student);
-    }
-
-     */
 }

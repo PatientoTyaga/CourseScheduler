@@ -3,7 +3,6 @@ package com.example.coursescheduler.persistence.hsqldb;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.coursescheduler.database.DatabaseHelper;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.IStudentPersistence;
 
@@ -17,23 +16,40 @@ import java.util.List;
 
 public class StudentPersistenceHSQLDB implements IStudentPersistence {
 
-    DatabaseHelper mydb;
-    Cursor cursor;
+    private final String dbPath;
+
+    public StudentPersistenceHSQLDB(final String dbPath) {
+        this.dbPath = dbPath;
+    }
+
+    private Connection connection() throws SQLException {
+        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
+    }
+
+    private Student fromResultSet(final ResultSet rs) throws SQLException {
+        final String studentID = rs.getString("studentID");
+        final String studentName = rs.getString("name");
+
+        return new Student(studentID,studentName);
+    }
 
     @Override
     public List<Student> getStudentSequential() {
-        cursor = mydb.getStudentData();
         final List<Student> students = new ArrayList<>();
-        Student student;
+        try (final Connection c = connection()) {
+            final Statement st = c.createStatement();
+            final ResultSet rs = st.executeQuery("SELECT * FROM students");
+            while (rs.next()) {
+                final Student student = fromResultSet(rs);
+                students.add(student);
+            }
+            rs.close();
+            st.close();
 
-        while(cursor != null){
-            student = new Student(cursor.getString(0), cursor.getString(1));
-            students.add(student);
+            return students;
+        } catch (final SQLException e) {
+            throw new PersistenceException(e);
         }
-
-        return students;
     }
-
-
 
 }

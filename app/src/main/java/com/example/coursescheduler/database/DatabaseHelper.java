@@ -9,7 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper {
+
+    //to delete this class
+    /*
 
     //create Student database
     public static final String DATABASE_NAME = "newDatabase.db";
@@ -119,4 +122,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("select * from student", null);
         return cursor;
     }
+
+     */
 }

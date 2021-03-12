@@ -8,23 +8,20 @@ import com.example.coursescheduler.persistence.hsqldb.StudentPersistenceHSQLDB;
 
 public class Services {
 
-    /*
+    private static IStudentPersistence studentPersistence = null;
 
-    private static DatabaseHelper db;
-    private static IStudentPersistence istudentPersistence = null;
 
     public static synchronized IStudentPersistence getStudentPersistence()
     {
-        if (istudentPersistence == null)
+        if (studentPersistence == null)
         {
             //studentPersistence = new StudentPersistenceStub();
-            istudentPersistence = new StudentPersistenceHSQLDB(db.getDbPath());
+            studentPersistence = new StudentPersistenceHSQLDB(Main.getDBPathName());
         }
 
-        return istudentPersistence;
+        return studentPersistence;
     }
 
-     */
 
 
 }
