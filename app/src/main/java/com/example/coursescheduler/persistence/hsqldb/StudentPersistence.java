@@ -63,6 +63,8 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
 
     @Override
     public String loadHandler() {
+        //get list of students in database to be shown
+
         String result = "";
         String query = "Select * FROM " + STUDENT_TABLE;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -123,6 +125,8 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
 
     @Override
     public boolean updateHandler(int ID, String name) {
+        //update student
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues args = new ContentValues();
         args.put(COLUMN_ID,ID);

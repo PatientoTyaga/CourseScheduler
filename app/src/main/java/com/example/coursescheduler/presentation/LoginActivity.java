@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity {
         Student student = studentPersistence.findHandler(studentName.getText().toString());
         if(student != null){
             text_view.setText(String.valueOf(student.getStudentID() + " " + student.getStudentName()
-            + System.getProperty("line")));
+            + System.getProperty("line.separator")));
             studentID.setText("");
             studentName.setText("");
         }else{
