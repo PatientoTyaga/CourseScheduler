@@ -4,16 +4,28 @@ import java.util.Objects;
 
 public class Student {
 
-    private final String studentID;
-    private final String studentName;
+    private int studentID;
+    private String studentName;
 
-    public Student(final String studentID, final String studentName){
+    //constructors
+    public Student(){}
+
+    public Student(final int studentID, final String studentName){
         this.studentID = studentID;
         this.studentName = studentName;
     }
 
-    public String getStudentID() {
+    public void setStudentID(int id){
+        this.studentID = id;
+    }
+
+    //properties
+    public int getStudentID() {
         return studentID;
+    }
+
+    public void setStudentName(String name){
+        this.studentName = name;
     }
 
     public String getStudentName() {

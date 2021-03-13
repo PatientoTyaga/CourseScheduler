@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface ISchedulePersistence {
     /*
+    to delete this interface as we will be using IDatabase
 //    List<Schedule> getScheduleSequential();
     List<Schedule> getScheduleSequential(Student student);
     void setCurrentSchedule(Schedule schedule);

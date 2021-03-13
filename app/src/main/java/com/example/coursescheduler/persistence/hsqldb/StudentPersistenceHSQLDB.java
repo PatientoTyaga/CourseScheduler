@@ -14,8 +14,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentPersistenceHSQLDB implements IStudentPersistence {
-
+public class StudentPersistenceHSQLDB {
+/*
+    to use StudentPersistence class instead
+    to delete this class
     private final String dbPath;
 
     public StudentPersistenceHSQLDB(final String dbPath) {
@@ -23,7 +25,17 @@ public class StudentPersistenceHSQLDB implements IStudentPersistence {
     }
 
     private Connection connection() throws SQLException {
-        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
+
+
+            try {
+                Class.forName("org.hsqldb.jdbc.JDBCDriver");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath, "SA", "");
+
     }
 
     private Student fromResultSet(final ResultSet rs) throws SQLException {
@@ -51,5 +63,7 @@ public class StudentPersistenceHSQLDB implements IStudentPersistence {
             throw new PersistenceException(e);
         }
     }
+
+ */
 
 }

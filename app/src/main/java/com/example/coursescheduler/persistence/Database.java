@@ -10,6 +10,8 @@ import java.util.List;
 public class Database {
 
     /*
+        to delete this class
+
     private static Schedule schedule1;
     private static Schedule schedule2;
     private static Schedule schedule3;

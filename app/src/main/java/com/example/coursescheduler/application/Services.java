@@ -7,6 +7,7 @@ import com.example.coursescheduler.persistence.IStudentPersistence;
 import com.example.coursescheduler.persistence.hsqldb.StudentPersistenceHSQLDB;
 
 public class Services {
+    /*
 
     private static IStudentPersistence studentPersistence = null;
 
@@ -21,6 +22,8 @@ public class Services {
 
         return studentPersistence;
     }
+
+     */
 
 
 

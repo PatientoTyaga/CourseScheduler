@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AccessStudent{
 
-
+/*
     private IStudentPersistence studentPersistence;
     private List<Student> students;
     private Student student;
@@ -32,6 +32,8 @@ public class AccessStudent{
         students = studentPersistence.getStudentSequential();
         return Collections.unmodifiableList(students);
     }
+
+ */
 
 
 }

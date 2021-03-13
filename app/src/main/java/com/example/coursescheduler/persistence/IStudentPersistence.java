@@ -5,8 +5,8 @@ import com.example.coursescheduler.objects.Student;
 import java.util.List;
 
 public interface IStudentPersistence {
-
-    List<Student> getStudentSequential();
+//    to delete this interface as we will be using IDatabase
+   // List<Student> getStudentSequential();
    // void setCurrentStudent(Student student);
 
 
