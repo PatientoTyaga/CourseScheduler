@@ -3,15 +3,16 @@ package com.example.coursescheduler.business;
 import com.example.coursescheduler.Service.Service;
 import com.example.coursescheduler.application.Services;
 import com.example.coursescheduler.objects.Student;
+import com.example.coursescheduler.persistence.IDatabase;
 import com.example.coursescheduler.persistence.IStudentPersistence;
 
 import java.util.Collections;
 import java.util.List;
 
-public class AccessStudent{
+public class AccessStudent {
 
-/*
-    private IStudentPersistence studentPersistence;
+
+    private IDatabase studentPersistence;
     private List<Student> students;
     private Student student;
     private int currentStudent;
@@ -23,17 +24,15 @@ public class AccessStudent{
         currentStudent = 0;
     }
 
-    public AccessStudent(final IStudentPersistence studentPersistence){
+    public AccessStudent(final IDatabase studentPersistence){
         this();
         this.studentPersistence = studentPersistence;
     }
 
     public List<Student> getStudentSequential() {
-        students = studentPersistence.getStudentSequential();
+        students = studentPersistence.getSequential();
         return Collections.unmodifiableList(students);
     }
-
- */
 
 
 }

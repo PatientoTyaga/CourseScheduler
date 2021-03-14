@@ -1,8 +1,11 @@
 package com.example.coursescheduler.application;
 
+import android.content.Context;
+
 public class Main
 {
-    private static String dbName="schedulerDatabase";
+    private static Context dbName;
+//    private static String dbName="schedulerDatabase";
 
     public static void main(String[] args)
     {
@@ -10,20 +13,20 @@ public class Main
         System.out.println("All done");
     }
 
-    public static void setDBPathName(final String name) {
-        try {
-            Class.forName("org.hsqldb.jdbcDriver").newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        dbName = name;
-    }
+//    public static void setDBPathName(final String name) {
+//        try {
+//            Class.forName("org.hsqldb.jdbcDriver").newInstance();
+//        } catch (InstantiationException e) {
+//            e.printStackTrace();
+//        } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        dbName = name;
+//    }
 
-    public static String getDBPathName() {
+    public static Context getDBPathName() {
         return dbName;
     }
 }
