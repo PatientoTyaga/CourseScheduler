@@ -11,7 +11,6 @@ public class Services {
     {
         if (studentPersistence == null)
         {
-            studentPersistence = new StudentPersistence(this);
             studentPersistence = new StudentPersistence(Main.getDBPathName());
         }
 

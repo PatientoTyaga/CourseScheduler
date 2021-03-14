@@ -4,8 +4,8 @@ import android.content.Context;
 
 public class Main
 {
-    private static Context dbName;
-//    private static String dbName="schedulerDatabase";
+   // private static Context dbName;
+     private static Context dbName;
 
     public static void main(String[] args)
     {
@@ -27,6 +27,6 @@ public class Main
 //    }
 
     public static Context getDBPathName() {
-        return dbName;
+        return dbName.getApplicationContext();
     }
 }
