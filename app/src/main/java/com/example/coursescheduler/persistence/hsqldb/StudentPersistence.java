@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.IDatabase;
 
+import java.util.List;
+
 public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<Student>{
 
     public static final String DATABASE_NAME = "schedulerDatabase.db";
@@ -22,25 +24,10 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         //create tables
-        String student_table = "CREATE TABLE " + STUDENT_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, "
-        + COLUMN_NAME + " TEXT )";
-
-
+        String student_table = "CREATE TABLE " + STUDENT_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT )";
         db.execSQL(student_table);
-
-        // db.execSQL("create table " + STUDENT_TABLE + " (ID INTEGER PRIMARY KEY, " + "NAME TEXT) "); //creates table and elements in table and sets primary key
     }
-
-    /*
-    @Override
-
-    public boolean insert(String value, String j) {
-        return false;
-    }
-
-     */
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -49,7 +36,7 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     }
 
     @Override
-    public void addHandler(Student student) {
+    public void insert(Student student) {
         //add a new student to student database
 
         ContentValues values = new ContentValues();
@@ -62,17 +49,18 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
 
 
     @Override
-    public String loadHandler() {
+    public List<Student> getSequential() {
         //get list of students in database to be shown
 
-        String result = "";
+        List<Student> result = null;
         String query = "Select * FROM " + STUDENT_TABLE;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query,null);
         while (cursor.moveToNext()){
             int studentId = cursor.getInt(0);
             String studentName = cursor.getString(1);
-            result += String.valueOf(studentId) + " " + studentName;
+            Student student = new Student(studentId, studentName);
+            result.add(student);
             System.getProperty("line.separator");
         }
         cursor.close();
@@ -80,7 +68,7 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
         return result;
     }
 
-    public Student findHandler(String studentname){
+    public Student fetch(String studentname){
         //find student by name
 
         String query = "Select * From " + STUDENT_TABLE + " WHERE " + COLUMN_NAME + " = " + " ' " +
@@ -100,20 +88,19 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     }
 
     @Override
-    public boolean deleteHandler(int ID) {
+    public boolean delete(Student student) {
         //delete student by id
 
         boolean result = false;
-        String query = "Select * From " + STUDENT_TABLE + " WHERE " + COLUMN_ID + " = ' " + String.valueOf(ID)
-                + " ' ";
+        String query = "Select * From " + STUDENT_TABLE + " WHERE " + COLUMN_ID + " = ' " + student.getStudentID() + " ' ";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
-        Student student = new Student();
+        Student newStudent = new Student();
         if(cursor.moveToFirst()){
-            student.setStudentID(Integer.parseInt(cursor.getString(0)));
+            newStudent.setStudentID(Integer.parseInt(cursor.getString(0)));
             db.delete(STUDENT_TABLE, COLUMN_ID + "=?",
             new String[]{
-                    String.valueOf(student.getStudentID())
+                    String.valueOf(newStudent.getStudentID())
             });
             cursor.close();
             result = true;
@@ -124,34 +111,13 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     }
 
     @Override
-    public boolean updateHandler(int ID, String name) {
+    public boolean update(Student student) {
         //update student
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues args = new ContentValues();
-        args.put(COLUMN_ID,ID);
-        args.put(COLUMN_NAME,name);
-        return db.update(STUDENT_TABLE,args, COLUMN_ID + "=" + ID, null) > 0;
+        args.put(COLUMN_ID,student.getStudentID());
+        args.put(COLUMN_NAME,student.getStudentName());
+        return db.update(STUDENT_TABLE,args, COLUMN_ID + "=" + student.getStudentID(), null) > 0;
     }
-
-    /*
-    @Override
-    public boolean insert(String ID){
-        SQLiteDatabase db = this.getWritableDatabase(); //creates database and table
-        ContentValues studentContentValues = new ContentValues();
-
-        //adding columns to student table
-        studentContentValues.put(COL_1,ID);
-        studentContentValues.put(COL_2, name);
-
-
-        long result = db.insert(STUDENT_TABLE,null,studentContentValues);
-        if(result == -1){
-            return false;
-        }else {
-            return true;
-        }
-    }
-
-     */
 }
