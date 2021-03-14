@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Database.initData(); //initialize the database and initializes up the ArrayList list in Database
         accessStudent = new AccessStudent(this);
 
         try {
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         listView.setItemChecked(position, true);
                         selectedStudentPos = position;
-//                        selectStudentAtPosition(position); //calls the method to set the current student in database
+                        selectStudentAtPosition(position); //calls the method to set the current student in database
 //                        Intent scheduleIntent = new Intent(MainActivity.this, ScheduleActivity.class); //Goes to ScheduleActivity Page
 //                        startActivity(scheduleIntent);
                     }
@@ -69,16 +68,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    public void selectStudentAtPosition(int position) {
-//        Student selected = studentArrayAdapter.getItem(position);
-//        accessStudent.setCurrentStudent(selected);
-//
-//        TextView studentID = (TextView)findViewById(R.id.textStudentID);
-//        TextView studentName = (TextView)findViewById(R.id.textStudentName);
-//
-//        studentID.setText("Student ID: "+ selected.getStudentName());
-//        studentName.setText("Student Name: "+ selected.getStudentID());
-//    }
+    public void selectStudentAtPosition(int position) {
+        Student selected = studentArrayAdapter.getItem(position);
+
+        TextView studentID = (TextView)findViewById(R.id.textStudentID);
+        TextView studentName = (TextView)findViewById(R.id.textStudentName);
+
+        studentID.setText("Student ID: "+ selected.getStudentName());
+        studentName.setText("Student Name: "+ selected.getStudentID());
+    }
 
     @Override
     protected void onStart() {

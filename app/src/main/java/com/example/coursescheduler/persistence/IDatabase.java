@@ -13,5 +13,5 @@ public interface IDatabase<T>{
     boolean delete(T deleteObject); //used to delete by id (we can update this later)
     boolean update(T updateObject); //used to update by id(we can delete this if it isn't needed)
     List<T> getSequential(); //used to get list of what is in database. like list elements in student table
-    T fetch(String find); //used to find e.g find student by student name
+    T fetch(T fetchObject); //used to find e.g find student by student name
 }

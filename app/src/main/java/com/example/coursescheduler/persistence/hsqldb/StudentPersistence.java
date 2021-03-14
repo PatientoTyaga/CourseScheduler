@@ -55,7 +55,7 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     public List<Student> getSequential() {
         //get list of students in database to be shown
 
-        ArrayList<Student> result = new ArrayList<>();;
+        ArrayList<Student> result = new ArrayList<>();
         String query = "Select * FROM " + STUDENT_TABLE;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query,null);
@@ -71,23 +71,24 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
         return Collections.unmodifiableList(result);
     }
 
-    public Student fetch(String studentname){
+    @Override
+    public Student fetch(Student student){
         //find student by name
 
         String query = "Select * From " + STUDENT_TABLE + " WHERE " + COLUMN_NAME + " = " + " ' " +
-                studentname + " ' ";
+                student.getStudentName() + " ' ";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query,null);
-        Student student = new Student();
+        Student newStudent = new Student();
         if(cursor.moveToFirst()){
             cursor.moveToFirst();
-            student.setStudentID(Integer.parseInt(cursor.getString(0)));
-            student.setStudentName(cursor.getString(1));
+            newStudent.setStudentID(Integer.parseInt(cursor.getString(0)));
+            newStudent.setStudentName(cursor.getString(1));
             cursor.close();
         }else{
-            student = null;
+            newStudent = null;
         }
-        return  student;
+        return  newStudent;
     }
 
     @Override

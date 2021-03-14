@@ -35,5 +35,19 @@ public class AccessStudent {
         return Collections.unmodifiableList(students);
     }
 
+    public void insertStudent(Student student){
+        studentPersistence.insert(student);
+    }
 
+    public void deleteStudent(Student student){
+        studentPersistence.delete(student);
+    }
+
+    public void fetchStudent(Student student) {
+        studentPersistence.fetch(student);
+    }
+
+    public void updateStudent (Student student){
+        studentPersistence.update(student);
+    }
 }
