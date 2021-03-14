@@ -1,6 +1,7 @@
 package com.example.coursescheduler.business;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.coursescheduler.application.Services;
 import com.example.coursescheduler.objects.Student;

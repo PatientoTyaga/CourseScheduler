@@ -5,10 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.IDatabase;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<Student>{
@@ -52,7 +55,7 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     public List<Student> getSequential() {
         //get list of students in database to be shown
 
-        List<Student> result = null;
+        ArrayList<Student> result = new ArrayList<>();;
         String query = "Select * FROM " + STUDENT_TABLE;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query,null);
@@ -61,11 +64,12 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
             String studentName = cursor.getString(1);
             Student student = new Student(studentId, studentName);
             result.add(student);
-            System.getProperty("line.separator");
+            Log.i("myTag", "hiii");
+//            System.getProperty("line.separator");
         }
         cursor.close();
         db.close();
-        return result;
+        return Collections.unmodifiableList(result);
     }
 
     public Student fetch(String studentname){
