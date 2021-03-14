@@ -64,7 +64,6 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
             String studentName = cursor.getString(1);
             Student student = new Student(studentId, studentName);
             result.add(student);
-            Log.i("myTag", "hiii");
 //            System.getProperty("line.separator");
         }
         cursor.close();

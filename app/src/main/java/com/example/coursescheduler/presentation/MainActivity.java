@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         try {
             studentList = new ArrayList<>();
             studentList.addAll(accessStudent.getStudentSequential());
-            Log.i("myTag", studentList.get(0).getStudentName());
             studentArrayAdapter = new ArrayAdapter<Student>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, studentList) {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
