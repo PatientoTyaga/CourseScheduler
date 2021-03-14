@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Database.initData(); //initialize the database and initializes up the ArrayList list in Database
-        accessStudent = new AccessStudent();
+        accessStudent = new AccessStudent(this);
 
         try {
             studentList = new ArrayList<>();

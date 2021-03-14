@@ -12,6 +12,6 @@ public interface IDatabase<T>{
     void insert(T addObject); //used to add e.g add student, course, schedule
     boolean delete(T deleteObject); //used to delete by id (we can update this later)
     boolean update(T updateObject); //used to update by id(we can delete this if it isn't needed)
-    public List<T> getSequential(); //used to get list of what is in database. like list elements in student table
-    public T fetch(String find); //used to find e.g find student by student name
+    List<T> getSequential(); //used to get list of what is in database. like list elements in student table
+    T fetch(String find); //used to find e.g find student by student name
 }

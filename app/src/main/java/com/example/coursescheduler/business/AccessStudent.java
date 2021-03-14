@@ -1,5 +1,7 @@
 package com.example.coursescheduler.business;
 
+import android.content.Context;
+
 import com.example.coursescheduler.application.Services;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.IDatabase;
@@ -15,17 +17,17 @@ public class AccessStudent {
     private Student student;
     private int currentStudent;
 
-    public AccessStudent(){
-        studentPersistence = Services.getStudentPersistence();
+    public AccessStudent(Context context){
+        studentPersistence = Services.getStudentPersistence(context);
         students = null;
         student = null;
         currentStudent = 0;
     }
 
-    public AccessStudent(final IDatabase studentPersistence){
-        this();
-        this.studentPersistence = studentPersistence;
-    }
+//    public AccessStudent(final IDatabase studentPersistence){
+//        this();
+//        this.studentPersistence = studentPersistence;
+//    }
 
     public List<Student> getStudentSequential() {
         students = studentPersistence.getSequential();
