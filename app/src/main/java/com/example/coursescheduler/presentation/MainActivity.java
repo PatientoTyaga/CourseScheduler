@@ -1,57 +1,93 @@
 package com.example.coursescheduler.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.*;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import android.provider.ContactsContract;
-import android.view.View;
 import android.widget.*;
 
-import com.example.coursescheduler.objects.Student;
-import com.example.coursescheduler.persistence.Database;
+import com.example.coursescheduler.database.DatabaseHelper;
 import com.example.coursescheduler.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<String> studentName = new ArrayList<String>();
+    DatabaseHelper myDb;
+    EditText editName;
+    Button btnAddData;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+
+    }
+/*
+
+    private AccessStudent accessStudent;
+    private List<Student> studentList;
+    private ArrayAdapter<Student> studentArrayAdapter;
+
+    private int selectedStudentPos = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Database.initData(); //initialize the database and initializes up the ArrayList list in Database
+        //Database.initData(); //initialize the database and initializes up the ArrayList list in Database
+        accessStudent = new AccessStudent();
 
-        for(int i=0; i<Database.studentList.size(); i++){
-            studentName.add(Database.studentList.get(i).getStudentName()); //populates the studentName list with the elements in ArrayList from database
-        }
+        try {
+            studentList = new ArrayList<>();
+            studentList.addAll(accessStudent.getStudentSequential());
+            studentArrayAdapter = new ArrayAdapter<Student>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, studentList) {
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    View view = super.getView(position, convertView, parent);
+                    TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                    text1.setText(studentList.get(position).getStudentName());
+                    return view;
+                }
+            };
 
-        Spinner dropdown = findViewById(R.id.spinnerStudentName); //dropdown menu for students
-        Button submit = (Button)findViewById(R.id.buttonSchedules); //button to open schedule once student is selected
+            final ListView listView = (ListView) findViewById(R.id.listViewStudent);
+            listView.setAdapter(studentArrayAdapter);
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, studentName);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        dropdown.setAdapter(dataAdapter);
-
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //this will change the page to scheduleActivity.java
-                String spinText = dropdown.getSelectedItem().toString();
-                Intent scheduleIntent = new Intent(MainActivity.this, ScheduleActivity.class); //Goes to ScheduleActivity Page
-                for(int i=0; i<Database.studentList.size(); i++){
-                    if (Database.studentList.get(i).getStudentName().matches(spinText)){ //if dropdown value matches the student's name inside the list of student object in Database
-                        scheduleIntent.putExtra("Name", Database.studentList.get(i).getStudentName()); //send the Student's name from the student object
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    if (position == selectedStudentPos) {
+                        listView.setItemChecked(position, false);
+                        selectedStudentPos = -1;
+                    } else {
+                        listView.setItemChecked(position, true);
+                        selectedStudentPos = position;
+                        selectStudentAtPosition(position); //calls the method to set the current student in database
+                        Intent scheduleIntent = new Intent(MainActivity.this, ScheduleActivity.class); //Goes to ScheduleActivity Page
+                        startActivity(scheduleIntent);
                     }
                 }
-                Database.scheduleCourseList.get(0).clear(); //clears the arraylist for fall term courses for the previous student
-                Database.scheduleCourseList.get(1).clear(); //clears the arraylist for the winter term courses for the previous student
-
-                startActivity(scheduleIntent); //sends the student name as a parameter to the scheduleActivity Page
-            }
-        });
+            });
+        } catch (final Exception e) {
+            System.out.println(e);
+        }
     }
+
+    public void selectStudentAtPosition(int position) {
+        Student selected = studentArrayAdapter.getItem(position);
+        accessStudent.setCurrentStudent(selected);
+
+        TextView studentID = (TextView)findViewById(R.id.textStudentID);
+        TextView studentName = (TextView)findViewById(R.id.textStudentName);
+
+        studentID.setText("Student ID: "+ selected.getStudentName());
+        studentName.setText("Student Name: "+ selected.getStudentID());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+     */
 }

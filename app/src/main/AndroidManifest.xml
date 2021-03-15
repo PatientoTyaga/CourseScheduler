@@ -10,14 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseScheduler">
         <activity android:name=".presentation.ScheduleActivity"></activity>
-        <activity android:name=".presentation.CourseActivity" />
-        <activity android:name=".presentation.MainActivity">
+        <activity android:name=".presentation.CourseActivity"></activity>
+        <activity android:name=".presentation.MainActivity"></activity>
+        <activity android:name=".presentation.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
