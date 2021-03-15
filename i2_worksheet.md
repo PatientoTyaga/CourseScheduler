@@ -1,4 +1,4 @@
-Iteration 1 Worksheet
+Iteration 2 Worksheet
 =====================
 Adding Feature
 -----------------
@@ -61,3 +61,6 @@ Pushed Feature to iteration 2 - Save schedule
 Link for save schedule: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/1
 
 We changed the description for the Add course user story and the Add course Feature
+
+RETROSPECTIVE
+-------------
