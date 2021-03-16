@@ -1,11 +1,9 @@
 package com.example.coursescheduler.business;
 
-import com.example.coursescheduler.Service.Service;
+import com.example.coursescheduler.application.Services;
 import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Schedule;
-import com.example.coursescheduler.persistence.ICoursePersistence;
 import com.example.coursescheduler.persistence.Database;
-import com.example.coursescheduler.persistence.IStudentPersistence;
 
 import java.util.Collections;
 import java.util.List;

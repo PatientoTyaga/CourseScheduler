@@ -25,11 +25,6 @@ public class AccessStudent {
         currentStudent = 0;
     }
 
-//    public AccessStudent(final IDatabase studentPersistence){
-//        this();
-//        this.studentPersistence = studentPersistence;
-//    }
-
     public List<Student> getStudentSequential() {
         students = studentPersistence.getSequential();
         return Collections.unmodifiableList(students);
