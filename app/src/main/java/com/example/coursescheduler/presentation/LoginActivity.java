@@ -138,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
 
      */
 
-    public void loadStudents(View view){
+   /* public void loadStudents(View view){
         StudentPersistence studentPersistence = new StudentPersistence(this);
         text_view.setText(studentPersistence.loadHandler());
         studentName.setText("");
@@ -195,3 +195,4 @@ public class LoginActivity extends AppCompatActivity {
             studentID.setText("No Match Found");
     }
 }
+*/
