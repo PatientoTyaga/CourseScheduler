@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.coursescheduler.R;
-import com.example.coursescheduler.database.DatabaseHelper;
 
 public class LoginActivityT extends AppCompatActivity {
     private EditText studentName;
@@ -60,11 +59,18 @@ public class LoginActivityT extends AppCompatActivity {
         });
     }
 
+
     private boolean validate(String name, String id){
+
         // add loop to check the input name match the database name ???
+        /*
         if(name.equals() && id.equals()){
             return true;
         }
+
+         */
         return false;
     }
+
+
 }

@@ -6,12 +6,10 @@ import android.os.Bundle;
 
 import android.widget.*;
 
-import com.example.coursescheduler.database.DatabaseHelper;
 import com.example.coursescheduler.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    DatabaseHelper myDb;
     EditText editName;
     Button btnAddData;
 
