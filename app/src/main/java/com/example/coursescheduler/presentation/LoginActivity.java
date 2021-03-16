@@ -21,11 +21,10 @@ import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.IDatabase;
 import com.example.coursescheduler.persistence.IStudentPersistence;
 import com.example.coursescheduler.persistence.hsqldb.StudentPersistence;
-import com.example.coursescheduler.persistence.hsqldb.StudentPersistenceHSQLDB;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
 public class LoginActivity extends AppCompatActivity {
 
 
@@ -45,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     private ArrayAdapter<Student> studentArrayAdapter;
 
      */
+    /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
          */
 
 
-    }
+//    }
 
     /*
     public void showData(){
@@ -128,7 +128,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
      */
-
+/*
     public void loadStudents(View view){
         StudentPersistence studentPersistence = new StudentPersistence(this);
         text_view.setText(studentPersistence.loadHandler());
@@ -186,3 +186,5 @@ public class LoginActivity extends AppCompatActivity {
             studentID.setText("No Match Found");
     }
 }
+
+*/

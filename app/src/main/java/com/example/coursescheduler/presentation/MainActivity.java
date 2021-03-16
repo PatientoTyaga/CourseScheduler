@@ -2,26 +2,22 @@ package com.example.coursescheduler.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 
-import com.example.coursescheduler.database.DatabaseHelper;
+import com.example.coursescheduler.business.AccessStudent;
 import com.example.coursescheduler.R;
+import com.example.coursescheduler.objects.Student;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    DatabaseHelper myDb;
-    EditText editName;
-    Button btnAddData;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-    }
-/*
 
     private AccessStudent accessStudent;
     private List<Student> studentList;
@@ -34,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Database.initData(); //initialize the database and initializes up the ArrayList list in Database
-        accessStudent = new AccessStudent();
+        accessStudent = new AccessStudent(this);
 
         try {
             studentList = new ArrayList<>();
@@ -63,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
                         listView.setItemChecked(position, true);
                         selectedStudentPos = position;
                         selectStudentAtPosition(position); //calls the method to set the current student in database
-                        Intent scheduleIntent = new Intent(MainActivity.this, ScheduleActivity.class); //Goes to ScheduleActivity Page
-                        startActivity(scheduleIntent);
+//                        Intent scheduleIntent = new Intent(MainActivity.this, ScheduleActivity.class); //Goes to ScheduleActivity Page
+//                        startActivity(scheduleIntent);
                     }
                 }
             });
@@ -75,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void selectStudentAtPosition(int position) {
         Student selected = studentArrayAdapter.getItem(position);
-        accessStudent.setCurrentStudent(selected);
 
         TextView studentID = (TextView)findViewById(R.id.textStudentID);
         TextView studentName = (TextView)findViewById(R.id.textStudentName);
@@ -89,5 +83,4 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
     }
 
-     */
 }

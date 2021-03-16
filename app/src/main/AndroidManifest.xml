@@ -11,13 +11,15 @@
         android:theme="@style/Theme.CourseScheduler">
         <activity android:name=".presentation.ScheduleActivity"></activity>
         <activity android:name=".presentation.CourseActivity"></activity>
-        <activity android:name=".presentation.MainActivity"></activity>
-        <activity android:name=".presentation.LoginActivity">
+        <activity android:name=".presentation.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".presentation.LoginActivity">
+
         </activity>
 
     </application>
