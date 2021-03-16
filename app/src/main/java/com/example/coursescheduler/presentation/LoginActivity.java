@@ -15,11 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.coursescheduler.R;
 import com.example.coursescheduler.business.AccessStudent;
-import com.example.coursescheduler.database.DatabaseHelper;
 import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.IDatabase;
-import com.example.coursescheduler.persistence.IStudentPersistence;
 import com.example.coursescheduler.persistence.hsqldb.StudentPersistence;
 
 import java.util.ArrayList;
