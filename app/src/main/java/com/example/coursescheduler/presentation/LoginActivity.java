@@ -17,13 +17,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.coursescheduler.R;
 import com.example.coursescheduler.application.Main;
 import com.example.coursescheduler.business.AccessStudent;
-import com.example.coursescheduler.database.DatabaseHelper;
 import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.IDatabase;
-import com.example.coursescheduler.persistence.IStudentPersistence;
 import com.example.coursescheduler.persistence.hsqldb.StudentPersistence;
-import com.example.coursescheduler.persistence.hsqldb.StudentPersistenceHSQLDB;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -138,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
 
      */
 
-    public void loadStudents(View view){
+   /* public void loadStudents(View view){
         StudentPersistence studentPersistence = new StudentPersistence(this);
         text_view.setText(studentPersistence.loadHandler());
         studentName.setText("");
@@ -194,4 +191,6 @@ public class LoginActivity extends AppCompatActivity {
         } else
             studentID.setText("No Match Found");
     }
+
+    */
 }

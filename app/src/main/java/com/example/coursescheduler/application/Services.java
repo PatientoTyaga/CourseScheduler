@@ -1,29 +1,23 @@
 package com.example.coursescheduler.application;
 
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Context;
 
-import com.example.coursescheduler.database.DatabaseHelper;
-import com.example.coursescheduler.persistence.IStudentPersistence;
-import com.example.coursescheduler.persistence.hsqldb.StudentPersistenceHSQLDB;
+import com.example.coursescheduler.persistence.IDatabase;
+import com.example.coursescheduler.persistence.hsqldb.StudentPersistence;
 
 public class Services {
-    /*
 
-    private static IStudentPersistence studentPersistence = null;
+    private static IDatabase studentPersistence = null;
 
-
-    public static synchronized IStudentPersistence getStudentPersistence()
+    public static synchronized IDatabase getStudentPersistence(Context context)
     {
         if (studentPersistence == null)
         {
-            //studentPersistence = new StudentPersistenceStub();
-            studentPersistence = new StudentPersistenceHSQLDB(Main.getDBPathName());
+            studentPersistence = new StudentPersistence(context.getApplicationContext());
         }
 
         return studentPersistence;
     }
-
-     */
 
 
 
