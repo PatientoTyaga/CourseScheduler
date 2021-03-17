@@ -12,12 +12,30 @@ public class MainActivity extends AppCompatActivity {
 
     EditText editName;
     Button btnAddData;
-
+    Button remove;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        remove=(Button) findViewById(R.id.delete);
+        btnAddData=(Button) findViewById(R.id.buttonSchedules);
+        btnAddData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(MainActivity.this, ScheduleActivity.class);
+                startActivity(intent);
+            }
+        });
+        remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(MainActivity.this, LoginActivity.class);
+                Toast.makeText(MainActivity.this,"Delete successful",Toast.LENGTH_LONG).show();
+                //if click this button then delete student
+                //removeStudent(accessStudent);
+                startActivity(intent);
+            }
+        });
     }
 /*
 
