@@ -13,11 +13,13 @@ public class MainActivity extends AppCompatActivity {
     EditText editName;
     Button btnAddData;
     Button remove;
+    Button update;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         remove=(Button) findViewById(R.id.delete);
+        update=(Button) findViewById(R.id.Update);
         btnAddData=(Button) findViewById(R.id.buttonSchedules);
         btnAddData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
                 //if click this button then delete student
                 //removeStudent(accessStudent);
                 startActivity(intent);
+            }
+        });
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //if click this button then update student information
+                //updateStudent(accessStudent);
             }
         });
     }
