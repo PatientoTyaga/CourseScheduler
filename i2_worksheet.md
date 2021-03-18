@@ -68,7 +68,7 @@ Overall, the group as a whole working really well together to accomplish shared 
 our development process even smoother. Therefore, the team communicates well with one another and have good organization of iterations and task. 
 One problem that we fixed from iteration 1, for example having different branches assigned with specific issues along with the designated task. So 
 that we can all show our distribution in the project and keep a record of it. For instances, one of the group members opened an issue for refactoring the codes, https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/41
-Me, myself oneped an issue for retrospective. 
+An issue for retrospective was open. https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/42 
 All of them are labelled as 'High Priority' and 'To Do' since we all need to work on this right now. The branches and issues help other members to see where 
 you at and do help if required.
 
