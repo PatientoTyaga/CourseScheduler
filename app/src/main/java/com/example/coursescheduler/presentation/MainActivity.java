@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //if click this button then update student information
                 //updateStudent(accessStudent);
+                Toast.makeText(MainActivity.this,"Update successful",Toast.LENGTH_LONG).show();
             }
         });
     }
