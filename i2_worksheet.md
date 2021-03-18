@@ -67,32 +67,19 @@ RETROSPECTIVE
 Overall, the group as a whole working really well together to accomplish shared goals. However there are plenty of areas that we can improve to make 
 our development process even smoother. Therefore, the team communicates well with one another and have good organization of iterations and task. 
 One problem that we fixed from iteration 1, for example having different branches assigned with specific issues along with the designated task. So 
-that we can all show our distribution in the project and keep a record of it. 
-
-For instances, one of the group members opened an issue for refactoring the codes, Links:
-Me, myself oneped an issue for () Links:
-
+that we can all show our distribution in the project and keep a record of it. For instances, one of the group members opened an issue for refactoring the codes, Links:
+Me, myself oneped an issue for retrospective. Links: ""
 All of them are labelled as 'High Priority' and 'To Do' since we all need to work on this right now. The branches and issues help other members to see where 
 you at and do help if required.
 
-We have # features for Iteration 2:
-1) Save Course to Schedule
-2) Delete Course to Schedule
-3) Resolve Course Conflict
+We have 3 features for Iteration2. Created several issues for the features and assigned them. Links:"" Fortunately, we are able to get the Database working and able to display 
+the Database entries on the UI. Links:"" Working on the updated Architecture as discussed with the professor.Links: Updating the UI in UI branch, add a new button in LoginActivityL page. 
+Once we click it, we can go to Login Activity to load Student Information in Database. Links:""  
 
-Created several issues for the feastures and assigned them
-Links: 
-
-Fortunately, we are able to get the Database working and able to display the Database entries on the UI.
-Links: 
-
-Working on the updated Architecture as discussed with the professor.
-Links:
-
-Updating the UI in UI branch, add a new button in LoginActivityL page. Once we click it, we can go to 
-Login Activity to load Student Information in Database. 
-
-Our main concern is to get the app to work first then do the functionality.
+An additional issue from Iteration1 was Time Managemnet. Since all group members had lots of other commitments for different courses. Later on, a rough draft was laid out for group 
+members assigned with various task in order to ensure smoother development, which ended up being much more fortunate. Another sector that can be improved on is having more careful code 
+review for new features later on. An important measure of success would be continuing to keep all new merge request small to ensure that they be reviewd properly and less dead code. In conclusion, our 
+main concern is to get the app to work first then do the functionality.
 
 
 
