@@ -73,7 +73,7 @@ All of them are labelled as 'High Priority' and 'To Do' since we all need to wor
 you at and do help if required.
 
 We have 3 features for Iteration2. Created several issues for the features and assigned them. Links:"" Fortunately, we are able to get the Database working and able to display 
-the Database entries on the UI. Links:"" Working on the updated Architecture as discussed with the professor.Links:https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/ARCHITECTURE/ARCHITECTURE.pdf. Updating the UI in UI branch, add a new button in LoginActivityL page. 
+the Database entries on the UI. Links:"" Working on the updated Architecture as discussed with the professor.Links. https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/ARCHITECTURE/ARCHITECTURE.pdf. Updating the UI in UI branch, add a new button in LoginActivityL page. 
 Once we click it, we can go to Login Activity to load Student Information in Database. Links:""  
 
 An additional issue from Iteration1 was Time Managemnet. Since all group members had lots of other commitments for different courses. Later on, a rough draft was laid out for group 
