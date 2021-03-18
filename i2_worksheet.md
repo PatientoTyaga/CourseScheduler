@@ -78,7 +78,7 @@ Once we click it, we can go to Login Activity to load Student Information in Dat
 
 An additional issue from Iteration1 was Time Managemnet. Since all group members had lots of other commitments for different courses. Later on, a rough draft was laid out for group 
 members assigned with various task in order to ensure smoother development, which ended up being much more fortunate. Another sector that can be improved on is having more careful code 
-review for new features later on. An important measure of success would be continuing to keep all new merge request small to ensure that they be reviewd properly and less dead code. In conclusion, our 
+review for new features later on. An important measure of success would be continuing to keep all new merge request small to ensure that they be reviewed properly and less dead code. In conclusion, our 
 main concern is to get the app to work first then do the functionality.
 
 
