@@ -1,96 +1,64 @@
 Iteration 2 Worksheet
 =====================
-Adding Feature
+Paying off technical debt
 -----------------
+1. 
+At Iteration 1 we use fake database to test project. Now we have to use SQL to deal with data. Because Fake database is easier to use and work quick if test. But SQL need more step to test. Such that we still need SQL to serve data, so Fake database is a quick, but messy way
 
-Tell the story of how one of your features was added to the project:
+[SQLdatabase](https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/commit/b8b94620a26853584486fc8d1b3c97e512bb02e3#329611760aa3173adbd3b9b5e193926debd33f81_6_6)
 
-We had originally planned to implement save schedule feature but due to the constraints we had due to the fake database
-we decided to instead implement the add course feature since this feature only requires us to save the courses at the point 
-in time when it is being used.
+2. 
 
-Provide links to the feature, user stories, and merge requests (if used), associated tests, and merge commit
-that was used complete the feature:
-
-Link to the Add schedule Feature: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/25
-
-Link to user story Add schedule: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/26
-
-Link to merge requests: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/merge_requests/6
-
-
-
-Exceptional code
-----------------
-
-N/A
-
-Branching
-----------
-
-The branching is described inside the readme file and link is provided below
-
-Provide a link to where you describe your branching strategy.
-https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/master/README.md
-
-
-Link: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/network/master
-
-
-Screenshot of feature inside branching strategy:
-
-![Graph](https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/master/Graph.png)
-
-
-SOLID
+SOLID for A01 group 9
 -----
+1. 
+[Iink to the issue](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-9/-/issues/43)
 
-Link: https://code.cs.umanitoba.ca/3350-winter-2021-a03/winter-2021-a03-group-10/-/issues/40
+[Just lead into commit link](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-9/-/commit/8cd2c753f7f78f3a49ce551163b3e12bb8156dc8#6ec7ae92ccda9a16082b3f9bab8f100191c76d52_133_159)
 
-Agile Planning
---------------
-We initially had the plan to start with and create the "save schedule" feature but had to change the plan and instead implemented the add schedule feature. Since we didn't have
-proper sql database. We had to make a fake database and utilize its information to store the courses that the student selected.We stored that information inside an arraylist that would be 
-cleared out upon refreshing or selecting a new student every single time. This way we don't need to worry about retrieving informaiton from the database for a particular student
-atleast at this stage of our project. 
 
-Added new feature - Add course.
-Link for Add course feature: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/25
-
-Pushed Feature to iteration 2 - Save schedule
-Link for save schedule: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/1
-
-We changed the description for the Add course user story and the Add course Feature
 
 RETROSPECTIVE
 -------------
-Overall, the group as a whole working really well together to accomplish shared goals. However there are plenty of areas that we can improve to make 
-our development process even smoother. Therefore, the team communicates well with one another and have good organization of iterations and task. 
-One problem that we fixed from iteration 1, for example having different branches assigned with specific issues along with the designated task. So 
+Overall, the group as a whole has been working really well together to accomplish shared goals. However there are plenty of areas that we can improve
+our development process. Therefore, the team communicates well with one another and have good organization of iterations and task. 
+One problem that we fixed from iteration 1 is branching, for example having different branches assigned with specific issues along with the designated task. So 
 that we can all show our distribution in the project and keep a record of it. For instances, one of the group members opened an issue for refactoring the codes, https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/41
 An issue for retrospective was open. https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/42 
-All of them are labelled as 'High Priority' and 'To Do' since we all need to work on this right now. The branches and issues help other members to see where 
-you at and do help if required.
+All of them are labelled as 'High Priority' and 'To Do' since we all need to work on this right now. The branches and issues help other members to see the progress of the task and provide any help if needed.
 
-We have 3 features for Iteration2. Created several issues for the features and assigned them.
-https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/48
-https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/49
-https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/50
+We have 3 features implemented for Iteration2.
+Feature 1 link: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/48
+Feature 2 link: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/49
+Feature 3 link: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/50
 
 Fortunately, we are able to get the Database working and able to display 
 the Database entries on the UI. https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/44. 
 
-Working on the updated Architecture as discussed with the professor.
-https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/39
+We updated the Architecture after feedback from the professor.
+Link to Architecture issue: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/39
 
-Updating the UI in UI branch, add a new button in LoginActivityL page. 
-Once we click it, we can go to Login Activity to load Student Information in Database.
-https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/45
+Updated the UI in UI branch. The UI was redesigned to have a login Page at start and include a registeration page to create student accounts.
+Atfer logging in with a created user account, the user goes to the Main page to see their information and other functionalities such as Update info or delete user account or create new schedule.
+Link: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/45
 
 An additional issue from Iteration1 was Time Managemnet. Since all group members had lots of other commitments for different courses. Later on, a rough draft was laid out for group 
-members assigned with various task in order to ensure smoother development, which ended up being much more fortunate. Another sector that can be improved on is having more careful code 
-review for new features later on. An important measure of success would be continuing to keep all new merge request small to ensure that they be reviewed properly and less dead code. In conclusion, our 
-main concern is to get the app to work first then do the functionality.
+members assigned with various task in order to ensure smoother development. 
+Another sector that can be improved is having more careful code review for new features later on. 
+An important measure of success would be continuing to keep all new merge request small to ensure that they be reviewed properly and less dead code. 
+In conclusion, our main concern is to get the app to work first then do the functionality.
+
+Design patterns
+--------------------------
+Singleton pattern ensures that a class has only one instance and provides a global point of access to that instance. Just like the object class.
+
+[create objects use Singleton](https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/tree/Iteration2/app/src/main/java/com/example/coursescheduler/objects
+)
+
+Builder pattern construct complex objects step by. In object Schedule, we use Builder to complex students and 
+
+[Builder pattern link](https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/Iteration2/app/src/main/java/com/example/coursescheduler/objects/Schedule.java)
+
 
 Iteration 1 Feedback fixes
 --------------------------
@@ -98,11 +66,13 @@ Our main issue was that the code was structured wrong (presentation was talking 
 https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/29 (Code Smells)
 https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/28(DB DIP violation)
 
-And here where we started to fix it
-
-https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/commit/d17e99fbf9af0a55090b10bbe1495398e207ba54 (But it’s impossible to provide a link to specific commit since we have been improving the structure of the code all the time)
-
+Links to Issues that fixed up the code:
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/commit/d17e99fbf9af0a55090b10bbe1495398e207ba54 
 https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/commit/fcab418c800e24029bbb76491f1cc8f252457a3f
+
+
+ 
+   
 
 
  
