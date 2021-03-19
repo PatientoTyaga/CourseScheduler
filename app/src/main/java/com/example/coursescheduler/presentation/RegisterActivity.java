@@ -106,27 +106,3 @@ public class RegisterActivity extends AppCompatActivity {
         Log.i("myTag", "account created");
     }
 }
-
-//        Login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String inputName = studentName.getText().toString();
-//                String inputID = studentID.getText().toString();
-//                if(inputName.isEmpty() || inputID.isEmpty()){
-//                    Toast.makeText(RegisterActivity.this,"Please enter all detail",Toast.LENGTH_LONG).show();
-//                }
-//                else{
-//                    if(!validate(inputName,inputID)){
-//                        Toast.makeText(RegisterActivity.this,"Please registor first",Toast.LENGTH_LONG).show();
-//                    }
-//                    else{
-//                        Toast.makeText(RegisterActivity.this,"Login successful",Toast.LENGTH_LONG).show();
-//                        //to main activity
-//                        Intent intent= new Intent(RegisterActivity.this, MainActivity.class);
-//                        startActivity(intent);
-//                    }
-//                }
-//            }
-//        });
-//    }
-//}
