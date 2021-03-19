@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">CourseScheduler</string>
     <string name="newSchedule">New Schedule</string>
+    <string name="addSchedule">Add Schedule</string>
     <string name="updateStudent">Update Student</string>
     <string name="registerStudent">Register Student</string>
     <string name="backToLogin">Back To Login</string>

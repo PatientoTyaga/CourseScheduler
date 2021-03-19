@@ -33,13 +33,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Bundle b = getIntent().getExtras();
-        Log.i("myTag", "bundle: "+ b);
         if(b != null) {
             studentID = b.getString("studentID");
             studentName = b.getString("studentName");
         }
-        Log.i("myTag", "id: "+ studentID);
-        Log.i("myTag", "name: "+ studentName);
 
         accessStudent = new AccessStudent(this);
         currentStudent = new Student(Integer.parseInt(studentID), studentName);
@@ -65,10 +62,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent scheduleIntent = new Intent(MainActivity.this, ScheduleActivity.class);
-                    Bundle b = new Bundle();
-                    b.putInt("studentID", Integer.parseInt(studentID));
-                    b.putString("studentName", studentName);
-                    scheduleIntent.putExtras(b);
+                    scheduleIntent.putExtra("studentID", studentID);
+                    scheduleIntent.putExtra("studentName", studentName);
                     startActivity(scheduleIntent);
                 }
             });
@@ -93,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     } catch (NumberFormatException e) {
                         Toast.makeText(MainActivity.this, "Make sure both values are filled out and the ID only contains numbers", Toast.LENGTH_LONG).show();
                         e.printStackTrace();
+                        Log.e("myTag", "Error: " + e);
                         throw e;
                     }
 
@@ -121,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
         } catch (Exception e){
             e.printStackTrace();
+            Log.e("myTag", "Error: " + e);
             throw e;
         }
     }

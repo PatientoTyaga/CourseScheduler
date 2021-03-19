@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.IDatabase;
@@ -20,6 +19,7 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     public static final String STUDENT_TABLE = "student_table";
     public static final String COLUMN_ID = "ID";
     public static final String COLUMN_NAME = "NAME";
+
 
     public StudentPersistence(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -41,7 +41,6 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     @Override
     public void insert(Student student) {
         //add a new student to student database
-
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID,student.getStudentID());
         values.put(COLUMN_NAME,student.getStudentName());
@@ -54,7 +53,6 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     @Override
     public List<Student> getSequential() {
         //get list of students in database to be shown
-
         ArrayList<Student> result = new ArrayList<>();
         String query = "Select * FROM " + STUDENT_TABLE;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -93,7 +91,6 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     @Override
     public boolean delete(Student student) {
         //delete student by id
-
         boolean result = false;
         String query = "Select * From " + STUDENT_TABLE + " WHERE " + COLUMN_ID + " = ' " + student.getStudentID() + " ' ";
         SQLiteDatabase db = this.getWritableDatabase();
@@ -108,7 +105,6 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
             cursor.close();
             result = true;
         }
-
         db.close();
         return result;
     }
@@ -116,7 +112,6 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     @Override
     public boolean update(Student student) {
         //update student
-
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues args = new ContentValues();
         args.put(COLUMN_ID,student.getStudentID());
