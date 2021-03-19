@@ -19,4 +19,4 @@ It not only can transfer the database into instance and shoing in UI if it need.
 *Data Layers (Persistence)*:	IDatabase: Able to display object list on MainActivity from the HSQLdatabase.
 Database: the implement of IDatabase method which access HSQLdatabase data
 This layer prove method about how to access Database.  It use a interface to  isolation the Database 's  private  part and avoid call by mistake .
-In SQl Database we have "Course" "Schedule" "Student"  tables. To help storing data.
+In SQl Database we have "Course" "Schedule" "Student"  tables. To help storing data. Use tablenamePersistence to work on them.
