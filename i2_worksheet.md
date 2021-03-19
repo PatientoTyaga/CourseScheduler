@@ -13,6 +13,7 @@ SOLID for A01 group 9
 -----
 1. 
 [Iink to the issue](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-9/-/issues/43)
+
 [Just lead into commit link](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-9/-/commit/8cd2c753f7f78f3a49ce551163b3e12bb8156dc8#6ec7ae92ccda9a16082b3f9bab8f100191c76d52_133_159)
 
 2. 
