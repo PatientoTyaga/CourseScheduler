@@ -81,6 +81,17 @@ members assigned with various task in order to ensure smoother development, whic
 review for new features later on. An important measure of success would be continuing to keep all new merge request small to ensure that they be reviewed properly and less dead code. In conclusion, our 
 main concern is to get the app to work first then do the functionality.
 
+Iteration 1 Feedback fixes
+--------------------------
+Our main issue was that the code was structured wrong (presentation was talking to persistence layer, interface for the database was implemented incorrectly). We created new interface files and refactored how the code is communicating.
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/29 (Code Smells)
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/28(DB DIP violation)
+
+And here where we started to fix it
+
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/commit/d17e99fbf9af0a55090b10bbe1495398e207ba54 (But it’s impossible to provide a link to specific commit since we have been improving the structure of the code all the time)
+
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/commit/fcab418c800e24029bbb76491f1cc8f252457a3f
 
 
  
