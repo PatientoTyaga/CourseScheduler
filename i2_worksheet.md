@@ -7,7 +7,9 @@ At Iteration 1 we use fake database to test project. Now we have to use SQL to d
 
 [SQLdatabase](https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/commit/b8b94620a26853584486fc8d1b3c97e512bb02e3#329611760aa3173adbd3b9b5e193926debd33f81_6_6)
 
-2. 
+2. use a androidx.appcompat.app.AppCompatActivity, if it change or update in future, this UI will need rebuild. It is a quick, but messy way
+
+[second example](https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/Iteration2/app/src/main/java/com/example/coursescheduler/presentation/CourseActivity.java)
 
 SOLID for A01 group 9
 -----
