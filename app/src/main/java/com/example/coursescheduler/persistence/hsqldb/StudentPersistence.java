@@ -28,7 +28,7 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     @Override
     public void onCreate(SQLiteDatabase db) {
         //create tables
-        String student_table = "CREATE TABLE " + STUDENT_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT )";
+        String student_table = "CREATE TABLE IF NOT EXISTS " + STUDENT_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT )";
         db.execSQL(student_table);
     }
 
@@ -74,9 +74,8 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     @Override
     public Student fetch(Student student){
         //find student by name
+        String query = "Select * From " + STUDENT_TABLE + " WHERE " + COLUMN_ID + " = '" + student.getStudentID() + " ' ";
 
-        String query = "Select * From " + STUDENT_TABLE + " WHERE " + COLUMN_NAME + " = " + " ' " +
-                student.getStudentName() + " ' ";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query,null);
         Student newStudent = new Student();

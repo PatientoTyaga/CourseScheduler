@@ -38,8 +38,9 @@ public class AccessStudent {
         studentPersistence.delete(student);
     }
 
-    public void fetchStudent(Student student) {
-        studentPersistence.fetch(student);
+    public Student fetchStudent(Student student) {
+        Log.i("myTag", "reached fetch in AccessStudent with Name: " + student.getStudentName() + ", ID: " + student.getStudentID() );
+        return (Student) studentPersistence.fetch(student);
     }
 
     public void updateStudent (Student student){

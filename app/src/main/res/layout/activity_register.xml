@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/studentName"
+        android:id="@+id/studentName_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -21,12 +21,12 @@
         app:layout_constraintVertical_bias="0.311" />
 
     <EditText
-        android:id="@+id/studentID"
+        android:id="@+id/studentID_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Enter ID:"
-        android:inputType="textPassword"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
         app:layout_constraintVertical_bias="0.472" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/studentLogo"
         android:layout_width="141dp"
         android:layout_height="128dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,40 +44,52 @@
         app:layout_constraintVertical_bias="0.061"
         app:srcCompat="@drawable/images" />
 
-    <Button
-        android:id="@+id/Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.598"
-        tools:text="Login" />
+<!--    <Button-->
+<!--        android:id="@+id/loginBtn_register"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Login"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.598"-->
+<!--        tools:text="Login" />-->
 
     <Button
-        android:id="@+id/Load"
-        android:layout_width="88dp"
-        android:layout_height="49dp"
-        android:text="Register"
+        android:id="@+id/registerBtn_register"
+        android:layout_width="196dp"
+        android:layout_height="48dp"
+        android:text="@string/registerStudent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.702" />
+        app:layout_constraintVertical_bias="0.647" />
 
-    <TextView
-        android:id="@+id/instruction"
-        android:layout_width="179dp"
-        android:layout_height="29dp"
-        android:text="no account click here"
+    <Button
+        android:id="@+id/loginBtn_register"
+        android:layout_width="196dp"
+        android:layout_height="48dp"
+        android:text="@string/backToLogin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698" />
+        app:layout_constraintVertical_bias="0.879" />
+
+    <!--    <TextView-->
+<!--        android:id="@+id/instruction"-->
+<!--        android:layout_width="139dp"-->
+<!--        android:layout_height="26dp"-->
+<!--        android:text="no account click here"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.025"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.696" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

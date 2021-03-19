@@ -7,10 +7,10 @@
     tools:context=".presentation.ScheduleActivity">
 
     <TextView
-        android:id="@+id/textScheduleStudentName"
+        android:id="@+id/studentName_schedule"
         android:layout_width="149dp"
         android:layout_height="27dp"
-        android:text="name"
+        android:text="@string/student_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.935"
@@ -19,41 +19,40 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <ListView
-        android:id="@+id/listViewSchedule"
-        android:layout_width="199dp"
-        android:layout_height="468dp"
+        android:id="@+id/scheduleList_schedule"
+        android:layout_width="396dp"
+        android:layout_height="161dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.132"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311"
-        tools:ignore="MissingConstraints" >
-    </ListView>
+        app:layout_constraintVertical_bias="0.157"
+        tools:ignore="MissingConstraints" />
 
     <ListView
-        android:id="@+id/listViewScheduleCourse"
-        android:layout_width="125dp"
-        android:layout_height="202dp"
+        android:id="@+id/courseList_schedule"
+        android:layout_width="270dp"
+        android:layout_height="280dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.155"
+        app:layout_constraintVertical_bias="0.669"
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/addCourseToSchedule"
+        android:id="@+id/addCourseBtn_schedule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Course"
+        android:text="@string/addCourse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.871"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.913" />
+        app:layout_constraintVertical_bias="0.922" />
 
     <!--    <TextView-->
 <!--        android:id="@+id/fall"-->
