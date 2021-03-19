@@ -48,6 +48,18 @@ Another sector that can be improved is having more careful code review for new f
 An important measure of success would be continuing to keep all new merge request small to ensure that they be reviewed properly and less dead code. 
 In conclusion, our main concern is to get the app to work first then do the functionality.
 
+Design patterns
+--------------------------
+Singleton pattern ensures that a class has only one instance and provides a global point of access to that instance. Just like the object class.
+
+[create objects use Singleton](https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/tree/Iteration2/app/src/main/java/com/example/coursescheduler/objects
+)
+
+Builder pattern construct complex objects step by. In object Schedule, we use Builder to complex students and 
+
+[Builder pattern link](https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/Iteration2/app/src/main/java/com/example/coursescheduler/objects/Schedule.java)
+
+
 Iteration 1 Feedback fixes
 --------------------------
 Our main issue was that the code was structured wrong (presentation was talking to persistence layer, interface for the database was implemented incorrectly). We created new interface files and refactored how the code is communicating.
