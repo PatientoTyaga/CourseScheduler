@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
     protected boolean validate(){
         for(Student s: studentList){
             Log.i("myTag", s.getStudentName() + ", " + s.getStudentID());
-            if(s.getStudentID() == Integer.parseInt(studentID.getText().toString())){
+            if(s.getStudentID() == Integer.parseInt(studentID.getText().toString()) && s.getStudentName().matches(studentName.getText().toString())){
                 Log.i("myTag", s.getStudentName() + " reached");
                 return true;
             }

@@ -17,10 +17,15 @@ public class MainActivity extends AppCompatActivity {
     private Button delete;
     private Button update;
     private Button logout;
+    private Button edit;
     private AccessStudent accessStudent;
     private Student currentStudent;
     private String studentID;
     private String studentName;
+    private EditText editName;
+    private TextView studentIdText;
+    private TextView studentNameText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         currentStudent = new Student(Integer.parseInt(studentID), studentName);
 
         try{
-            TextView studentIdText = (TextView) findViewById(R.id.studentID_main);
-            TextView studentNameText = (TextView) findViewById(R.id.studentName_main);
+            studentIdText = (TextView) findViewById(R.id.studentID_main);
+            studentNameText = (TextView) findViewById(R.id.studentName_main);
             studentNameText.setText(studentName);
             studentIdText.setText(studentID);
 
@@ -49,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
             update = findViewById(R.id.updateBtn_main);
             schedule = findViewById(R.id.scheduleBtn_main);
             logout = findViewById(R.id.logoutBtn_main);
+            edit = findViewById(R.id.editBtn_main);
+            editName = findViewById(R.id.studentName_editText_main);
+
+            delete.setVisibility(View.INVISIBLE);
+            update.setVisibility(View.INVISIBLE);
+            editName.setVisibility(View.INVISIBLE);
 
             schedule.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -61,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(scheduleIntent);
                 }
             });
+
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -73,7 +85,17 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Log.i("myTag", "Updating Student");
-                    updateStudent();
+                    try {
+                        if(editName.getText().toString() != null){
+                            Log.i("myTag", "name: "+editName.getText().toString());
+                            updateStudent(editName.getText().toString());
+                        }
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(MainActivity.this, "Make sure both values are filled out and the ID only contains numbers", Toast.LENGTH_LONG).show();
+                        e.printStackTrace();
+                        throw e;
+                    }
+
                     Toast.makeText(MainActivity.this, "Update successful", Toast.LENGTH_LONG).show();
                     Log.i("myTag", "Student Updated");
                 }
@@ -89,8 +111,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("myTag", "Deleting Student");
+                    editStudent();
+                }
+            });
+
         } catch (Exception e){
             e.printStackTrace();
+            throw e;
         }
     }
 
@@ -103,6 +134,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    protected void editStudent(){
+        delete.setVisibility(View.VISIBLE);
+        update.setVisibility(View.VISIBLE);
+        editName.setVisibility(View.VISIBLE);
+        studentIdText.setVisibility(View.INVISIBLE);
+        studentNameText.setVisibility(View.INVISIBLE);
+        logout.setVisibility(View.INVISIBLE);
+        schedule.setVisibility(View.INVISIBLE);
+
+    }
+
     protected void logoutStudent(){
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         Toast.makeText(MainActivity.this, "Logout successful", Toast.LENGTH_LONG).show();
@@ -111,12 +153,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    protected void updateStudent() {
-        Intent intent = new Intent(MainActivity.this, MainActivity.class);
-        Log.i("myTag", "Starting Delete function");
-        accessStudent.updateStudent(currentStudent);
+    protected void updateStudent(String name) {
+        Toast.makeText(MainActivity.this, "Update Successful. Please login with new credentials", Toast.LENGTH_LONG).show();
+        Log.i("myTag", "Starting Update function");
+        Student newStudent = new Student(currentStudent.getStudentID(), name);
+        accessStudent.updateStudent(newStudent);
         Log.i("myTag", "Update successful");
-        startActivity(intent);
+        logoutStudent();
     }
 }
 
