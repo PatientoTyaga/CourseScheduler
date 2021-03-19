@@ -9,17 +9,6 @@ At Iteration 1 we use fake database to test project. Now we have to use SQL to d
 
 2. 
 
-
-Exceptional code
-----------------
-
-N/A
-
-SOLID
-----------
-Iteration 2 Worksheet
-=====================
-
 SOLID for A01 group 9
 -----
 1. 
