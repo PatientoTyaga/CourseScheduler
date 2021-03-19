@@ -1,45 +1,8 @@
 Iteration 2 Worksheet
 =====================
-Adding Feature
------------------
+Paying off Technical Debt
+-------------------------
 
-Tell the story of how one of your features was added to the project:
-
-We had originally planned to implement save schedule feature but due to the constraints we had due to the fake database
-we decided to instead implement the add course feature since this feature only requires us to save the courses at the point 
-in time when it is being used.
-
-Provide links to the feature, user stories, and merge requests (if used), associated tests, and merge commit
-that was used complete the feature:
-
-Link to the Add schedule Feature: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/25
-
-Link to user story Add schedule: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/26
-
-Link to merge requests: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/merge_requests/6
-
-
-
-Exceptional code
-----------------
-
-N/A
-
-Branching
-----------
-
-The branching is described inside the readme file and link is provided below
-
-Provide a link to where you describe your branching strategy.
-https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/master/README.md
-
-
-Link: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/network/master
-
-
-Screenshot of feature inside branching strategy:
-
-![Graph](https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/master/Graph.png)
 
 
 SOLID
