@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.persistence.IDatabase;
@@ -18,18 +19,18 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
     public static final String DATABASE_NAME = "schedulerDatabase.db";
     public static final String COURSE_TABLE = "course_table";
     public static final String COLUMN_ID = "ID";
-    public static final String COLUMN_CID = "COURSE_ID";
+//    public static final String COLUMN_CID = "COURSE_ID";
     public static final String COLUMN_NAME = "NAME";
     public static final String COLUMN_TIME = "TIME";
     public static final String COLUMN_DAY = "DAY";
 
     public CoursePersistence(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 2);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String student_table = "CREATE TABLE IF NOT EXISTS " + COURSE_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_CID + " TEXT, " + COLUMN_NAME + " TEXT, "  + COLUMN_TIME + " INTEGER, " + COLUMN_DAY + " INTEGER)";
+        String student_table = "CREATE TABLE IF NOT EXISTS " + COURSE_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT, "  + COLUMN_TIME + " TEXT, " + COLUMN_DAY + " TEXT)";
         db.execSQL(student_table);
     }
 
@@ -43,8 +44,9 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
     @Override
     public void insert(Course course) {
         //add a new course to course database
+        Log.i("myTag", "id: "+course.getCourseId()+", name: "+course.getCourseName()+", time: "+course.getCourseTime()+", day: "+course.getCourseDay());
         ContentValues values = new ContentValues();
-        values.put(COLUMN_CID,course.getCourseId());
+        values.put(COLUMN_ID,course.getCourseId());
         values.put(COLUMN_NAME,course.getCourseName());
         values.put(COLUMN_TIME,course.getCourseTime());
         values.put(COLUMN_DAY,course.getCourseDay());
@@ -57,18 +59,22 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
     public boolean delete(Course course) {
         //delete course by id
         boolean result = false;
+        Log.i("myTag", "course to be deleted : " + course.getCourseId());
         String query = "Select * From " + COURSE_TABLE + " WHERE " + COLUMN_ID + " = ' " + course.getCourseId() + " ' ";
+        Log.i("myTag", "query: "+ query);
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         Course newCourse = new Course();
         if(cursor.moveToFirst()){
-            newCourse.setCourseId(cursor.getString(0));
+            newCourse.setCourseId(cursor.getInt(0));
+            Log.i("myTag", "course : " + cursor.getString(0));
             db.delete(COURSE_TABLE, COLUMN_ID + "=?",
                     new String[]{
                             String.valueOf(newCourse.getCourseId())
                     });
             cursor.close();
             result = true;
+            Log.i("myTag", "course deleted");
         }
         db.close();
         return result;
@@ -93,11 +99,11 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query,null);
         while (cursor.moveToNext()){
-            String courseId = cursor.getString(0);
-            String courseName = cursor.getString(1);
-            String courseTime = cursor.getString(2);
-            String courseDay = cursor.getString(3);
-            Course course = new Course(courseId, courseName, courseDay, courseTime);
+            int courseId = cursor.getInt(0);
+            String courseName = cursor.getString(2);
+            String courseTime = cursor.getString(3);
+            String courseDay = cursor.getString(4);
+            Course course = new Course(courseId, courseName, courseTime, courseDay);
             result.add(course);
         }
         cursor.close();
@@ -115,10 +121,10 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
         Course newCourse = new Course();
         if(cursor.moveToFirst()){
             cursor.moveToFirst();
-            newCourse.setCourseId(cursor.getString(0));
-            newCourse.setCourseName(cursor.getString(1));
-            newCourse.setCourseTime(cursor.getString(2));
-            newCourse.setCourseDay(cursor.getString(3));
+            newCourse.setCourseId(cursor.getInt(0));
+            newCourse.setCourseName(cursor.getString(2));
+            newCourse.setCourseTime(cursor.getString(3));
+            newCourse.setCourseDay(cursor.getString(4));
             cursor.close();
         }else{
             newCourse = null;

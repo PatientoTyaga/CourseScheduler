@@ -6,6 +6,7 @@
     <string name="registerStudent">Register Student</string>
     <string name="backToLogin">Back To Login</string>
     <string name="logout">Logout</string>
+    <string name="back">Back</string>
     <string name="edit">Edit</string>
     <string name="addCourse">Add Course</string>
     <string name="register">Register</string>

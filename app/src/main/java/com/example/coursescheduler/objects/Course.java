@@ -5,13 +5,13 @@ import java.util.Objects;
 public class Course {
 
     private String courseName;
-    private String courseId;
+    private int courseId;
     private String courseTime;
     private String courseDay;
 
     public Course(){}
 
-    public Course(final String courseId, final String courseName, final String courseTime,
+    public Course(final int courseId, final String courseName, final String courseTime,
                   final String courseDay){
         this.courseName = courseName;
         this.courseId = courseId;
@@ -26,10 +26,10 @@ public class Course {
         this.courseName = courseName;
     }
 
-    public String getCourseId() {
+    public int getCourseId() {
         return courseId;
     }
-    public void setCourseId(String courseId){
+    public void setCourseId(int courseId){
         this.courseId = courseId;
     }
 

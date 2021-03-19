@@ -22,7 +22,7 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
 
 
     public StudentPersistence(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 2);
     }
 
     @Override

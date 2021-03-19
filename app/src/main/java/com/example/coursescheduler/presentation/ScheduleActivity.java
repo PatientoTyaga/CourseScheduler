@@ -38,6 +38,7 @@ public class ScheduleActivity extends AppCompatActivity {
     private String courseTime;
     private String courseDay;
     private Button addSchedule;
+    private Button loginPageBtn;
     private TextView studentNameText;
 
     @Override
@@ -67,6 +68,7 @@ public class ScheduleActivity extends AppCompatActivity {
             scheduleList.addAll(accessSchedule.getScheduleSequential(currentStudent)); //adds the schedules that the currentStudent has to a list
             Log.i("myTag", "I am here!");
             addSchedule = findViewById(R.id.addScheduleBtn_schedule);
+            loginPageBtn = findViewById(R.id.backToLogin_schedule);
 
             Log.i("myTag", "I am here!");
             scheduleArrayAdapter = new ArrayAdapter<Schedule>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, scheduleList) {
@@ -126,6 +128,16 @@ public class ScheduleActivity extends AppCompatActivity {
                         scheduleIntent.putExtra("studentName", studentName);
                         startActivity(scheduleIntent);
                     }
+                }
+            });
+
+            loginPageBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent scheduleIntent = new Intent(ScheduleActivity.this, MainActivity.class); //Goes to Course Page
+                    scheduleIntent.putExtra("studentID", studentID);
+                    scheduleIntent.putExtra("studentName", studentName);
+                    startActivity(scheduleIntent);
                 }
             });
 

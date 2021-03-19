@@ -27,7 +27,7 @@
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.157"
+        app:layout_constraintVertical_bias="0.11"
         tools:ignore="MissingConstraints" />
 
     <ListView
@@ -39,7 +39,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.669"
+        app:layout_constraintVertical_bias="0.596"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -52,7 +52,7 @@
         app:layout_constraintHorizontal_bias="0.865"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.922" />
+        app:layout_constraintVertical_bias="0.852" />
 
     <Button
         android:id="@+id/addScheduleBtn_schedule"
@@ -61,113 +61,21 @@
         android:text="@string/addSchedule"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.922" />
+        app:layout_constraintVertical_bias="0.852" />
 
-    <!--    <TextView-->
-<!--        android:id="@+id/fall"-->
-<!--        android:layout_width="41dp"-->
-<!--        android:layout_height="21dp"-->
-<!--        android:layout_marginStart="44dp"-->
-<!--        android:layout_marginLeft="44dp"-->
-<!--        android:layout_marginEnd="309dp"-->
-<!--        android:layout_marginRight="309dp"-->
-<!--        android:text="Fall"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.108" />-->
+    <Button
+        android:id="@+id/backToLogin_schedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.954" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/winter"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="44dp"-->
-<!--        android:layout_marginLeft="44dp"-->
-<!--        android:layout_marginTop="375dp"-->
-<!--        android:layout_marginEnd="328dp"-->
-<!--        android:layout_marginRight="328dp"-->
-<!--        android:layout_marginBottom="437dp"-->
-<!--        android:text="Winter"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.69" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/adding"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="301dp"-->
-<!--        android:layout_marginLeft="301dp"-->
-<!--        android:layout_marginTop="448dp"-->
-<!--        android:layout_marginEnd="17dp"-->
-<!--        android:layout_marginRight="17dp"-->
-<!--        android:layout_marginBottom="235dp"-->
-<!--        android:text="Add Courses"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.968"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/Back"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="29dp"-->
-<!--        android:layout_marginLeft="29dp"-->
-<!--        android:layout_marginTop="448dp"-->
-<!--        android:layout_marginEnd="153dp"-->
-<!--        android:layout_marginRight="153dp"-->
-<!--        android:layout_marginBottom="235dp"-->
-<!--        android:text="Back"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/adding"-->
-<!--        app:layout_constraintHorizontal_bias="1.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--&lt;!&ndash;    <ListView&ndash;&gt;-->
-<!--&lt;!&ndash;        android:id="@+id/displayFallCourse"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_width="235dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_height="135dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        tools:layout_editor_absoluteX="24dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        tools:layout_editor_absoluteY="43dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        app:layout_constraintHorizontal_bias="0.636"&ndash;&gt;-->
-<!--&lt;!&ndash;        app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        app:layout_constraintVertical_bias="0.129"/>&ndash;&gt;-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/displayFallCourse"-->
-<!--        android:layout_width="235dp"-->
-<!--        android:layout_height="135dp"-->
-<!--        android:text=""-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.636"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.129" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/displayWinterCourse"-->
-<!--        android:layout_width="235dp"-->
-<!--        android:layout_height="135dp"-->
-<!--        android:text=""-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.636"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.461" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
