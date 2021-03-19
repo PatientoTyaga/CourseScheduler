@@ -88,6 +88,7 @@ https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-g
 https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/28(DB DIP violation)
 
 And here where we started to fix it
+
 https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/commit/d17e99fbf9af0a55090b10bbe1495398e207ba54 (But it’s impossible to provide a link to specific commit since we have been improving the structure of the code all the time)
 
 https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/commit/fcab418c800e24029bbb76491f1cc8f252457a3f
