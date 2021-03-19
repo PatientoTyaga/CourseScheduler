@@ -6,20 +6,20 @@ public class Schedule {
 
     private String scheduleName;
     private int studentID;
-    private String courseName;
+    private int courseID;
 
-    public Schedule(String scheduleName, int studentID, String courseName){
+    public Schedule(String scheduleName, int studentID, int courseID){
         this.scheduleName = scheduleName;
         this.studentID = studentID;
-        this.courseName = courseName;
+        this.courseID = courseID;
     }
 
     public String getScheduleName(){
         return scheduleName;
     }
 
-    public String getCourseName(){
-        return courseName;
+    public int getCourseID(){
+        return courseID;
     }
 
     public int getStudentID(){
@@ -34,8 +34,8 @@ public class Schedule {
         this.scheduleName = scheduleName;
     }
 
-    public void setCourseName(String courseName){
-        this.courseName = courseName;
+    public void setCourseID(int courseID){
+        this.courseID = courseID;
     }
 
     public void setStudent(int studentID){
@@ -45,11 +45,11 @@ public class Schedule {
     public boolean equals(final Schedule o) {
         return Objects.equals(scheduleName, o.scheduleName) &&
                 Objects.equals(studentID, o.studentID) &&
-                Objects.equals(courseName, o.courseName);
+                Objects.equals(courseID, o.courseID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(scheduleName, studentID, courseName);
+        return Objects.hash(scheduleName, studentID, courseID);
     }
 }

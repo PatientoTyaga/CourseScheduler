@@ -80,7 +80,7 @@ public class CourseActivity extends AppCompatActivity {
                             public void onClick(View v) {
                                 // Do something in response to button click
                                 Intent courseIntent = new Intent(CourseActivity.this, ScheduleActivity.class); //Goes to ScheduleActivity Page
-                                courseIntent.putExtra("courseID", selectedCourse.getCourseId());
+                                courseIntent.putExtra("courseID", String.valueOf(selectedCourse.getCourseId()));
                                 courseIntent.putExtra("courseName", selectedCourse.getCourseName());
                                 courseIntent.putExtra("courseTime", selectedCourse.getCourseTime());
                                 courseIntent.putExtra("courseDay", selectedCourse.getCourseDay());

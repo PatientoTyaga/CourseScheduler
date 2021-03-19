@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.coursescheduler.objects.Schedule;
 import com.example.coursescheduler.objects.Student;
@@ -34,7 +35,7 @@ public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
         String schedule_table = "CREATE TABLE IF NOT EXISTS " + SCHEDULE_TABLE + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMN_SID + " INTEGER, "
-                + COLUMN_CID + " TEXT )";
+                + COLUMN_CID + " INTEGER )";
         db.execSQL(schedule_table);
     }
 
@@ -52,9 +53,9 @@ public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
             SQLiteDatabase db = this.getWritableDatabase();
             Cursor cursor = db.rawQuery(query, null);
             while (cursor.moveToNext()) {
-                String scheduleName = cursor.getString(1);
-                int studentId = cursor.getInt(2);
-                String courseId = cursor.getString(3);
+                String scheduleName = cursor.getString(0);
+                int studentId = cursor.getInt(1);
+                int courseId = cursor.getInt(2);
                 Schedule schedule = new Schedule(scheduleName, studentId, courseId);
                 result.add(schedule);
             }
@@ -69,9 +70,11 @@ public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
 
     @Override
     public void insert(Schedule schedule) {
+        Log.i("myTag", "got to insert schedule");
+        Log.i("myTag", "studentID in schedule: "+schedule.getStudentID() + ", courseID: "+schedule.getCourseID());
         ContentValues values = new ContentValues();
         values.put(COLUMN_SID,schedule.getStudentID());
-        values.put(COLUMN_CID,schedule.getCourseName());
+        values.put(COLUMN_CID,schedule.getCourseID());
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(SCHEDULE_TABLE,null,values);
         db.close();

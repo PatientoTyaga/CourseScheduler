@@ -55,13 +55,25 @@ public class ScheduleActivity extends AppCompatActivity {
             courseName = b.getString("courseName");
             courseTime = b.getString("courseTime");
             courseDay = b.getString("courseDay");
+            Log.i("myTag", "schedule studentID: "+studentID+", courseID: "+courseID);
         }
+
         Log.i("myTag", "Name: "+studentName+", ID: "+studentID);
         studentNameText = (TextView) findViewById(R.id.studentName_schedule);
         studentNameText.setText(studentName);
 
         try {
             accessSchedule = new AccessSchedule(this);
+
+            if(studentID != null && courseID != null){
+                Log.i("myTag", "schedule studentID: "+studentID+", courseID: "+courseID);
+                int sId = Integer.parseInt(studentID);
+                int cId = Integer.parseInt(courseID);
+                Log.i("myTag", "schedule value: "+(sId+cId));
+                Schedule schedule = new Schedule("Schedule", sId, cId);
+                accessSchedule.insertSchedule(schedule);
+            }
+
             scheduleList = new ArrayList<>();
             Log.i("myTag", "I am here!");
             currentStudent = new Student(Integer.parseInt(studentID), studentName);
@@ -113,7 +125,7 @@ public class ScheduleActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Log.i("myTag", "Updating Student");
                     if(courseID != null) {
-                        Schedule newSchedule = new Schedule("Schedule", Integer.parseInt(studentID), courseID);
+                        Schedule newSchedule = new Schedule("Schedule", Integer.parseInt(studentID), Integer.parseInt(courseID));
                         accessSchedule.insertSchedule(newSchedule);
                         Intent intent = new Intent(ScheduleActivity.this, ScheduleActivity.class); //Goes to Course Page
                         intent.putExtra("studentID", Integer.parseInt(studentID));
@@ -149,12 +161,12 @@ public class ScheduleActivity extends AppCompatActivity {
 
     public void selectScheduleAtPosition(int position) {
         Schedule selected = scheduleArrayAdapter.getItem(position);
-        Log.i("myTag", String.valueOf(selected.getCourseName()));
+        Log.i("myTag", String.valueOf(selected.getCourseID()));
 
         try {
             List<String> courseList = new ArrayList<>();
 
-            courseList.add(selected.getCourseName()); //adds the schedules that the currentStudent has to a list
+            courseList.add(String.valueOf(selected.getCourseID())); //adds the schedules that the currentStudent has to a list
             ArrayAdapter<String> courseListAdaptor = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text2, courseList) {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
