@@ -8,10 +8,10 @@
     tools:context=".presentation.CourseActivity">
 
     <Button
-        android:id="@+id/addCourse"
+        android:id="@+id/addCourseBtn_course"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add"
+        android:text="@string/addCourse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.851"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.941" />
 
     <ListView
-        android:id="@+id/listView1"
+        android:id="@+id/courseList_course"
         android:layout_width="199dp"
         android:layout_height="468dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +32,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textCourseID"
+        android:id="@+id/courseID_course"
         android:layout_width="146dp"
         android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,7 +44,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textCourseName"
+        android:id="@+id/courseName_course"
         android:layout_width="144dp"
         android:layout_height="54dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -56,7 +56,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textCourseTime"
+        android:id="@+id/courseTime_course"
         android:layout_width="144dp"
         android:layout_height="47dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -68,7 +68,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textCourseDay"
+        android:id="@+id/courseDay_course"
         android:layout_width="150dp"
         android:layout_height="48dp"
         app:layout_constraintBottom_toBottomOf="parent"

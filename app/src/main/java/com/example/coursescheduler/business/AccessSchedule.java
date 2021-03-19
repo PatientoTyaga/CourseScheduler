@@ -1,60 +1,53 @@
 package com.example.coursescheduler.business;
 
-import com.example.coursescheduler.Service.Service;
+import android.content.Context;
+import android.util.Log;
+
+import com.example.coursescheduler.application.Services;
 import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Schedule;
 import com.example.coursescheduler.objects.Student;
-import com.example.coursescheduler.persistence.ISchedulePersistence;
+import com.example.coursescheduler.persistence.IDatabase;
+import com.example.coursescheduler.persistence.ISchedule;
 
 import java.util.*;
 
 public class AccessSchedule{
+    private ISchedule schedulePersistence;
+    private List<Schedule> scheduleList;
+    private Schedule schedule;
+    private Student student;
+    private Course course;
 
-    /*
-    private ISchedulePersistence schedulePersistence;
-    private List<Schedule> currentStudentScheduleList;
-    private Schedule currentSchedule;
-    private Student currentStudent;
-    private Course currentCourse;
-    private List<Course> courseList;
-
-    public AccessSchedule(){
-        this.schedulePersistence = Service.getSchedulePersistence();
-        currentStudentScheduleList = null;
-        currentSchedule = null;
-        currentStudent = null;
-        currentCourse = null;
-        courseList = null;
-    }
-    public AccessSchedule(final ISchedulePersistence schedulePersistence) {
-        this();
-        this.schedulePersistence = schedulePersistence;
+    public AccessSchedule(Context context){
+        this.schedulePersistence = Services.getSchedulePersistence(context);
+        scheduleList = null;
+        schedule = null;
+        schedule = null;
+        student = null;
+        course = null;
     }
 
     public List<Schedule> getScheduleSequential(final Student student) {
-        currentStudentScheduleList = schedulePersistence.getScheduleSequential(student);
-        return Collections.unmodifiableList(currentStudentScheduleList);
+        Log.i("myTag", "I am here at AccessSchedule");
+        scheduleList = schedulePersistence.getSequential(student);
+        return Collections.unmodifiableList(scheduleList);
     }
 
-    public void setCurrentSchedule(Schedule schedule) {
-        schedulePersistence.setCurrentSchedule(schedule);
+    public void insertSchedule(Schedule schedule){
+        schedulePersistence.insert(schedule);
     }
 
-    public Schedule getCurrentSchedule() {
-        currentSchedule = schedulePersistence.getCurrentSchedule();
-        return currentSchedule;
+    public void deleteSchedule(Schedule schedule){
+        schedulePersistence.delete(schedule);
     }
 
-    public Student getCurrentStudent() {
-        currentStudent = schedulePersistence.getCurrentStudent();
-        return currentStudent;
+    public Schedule fetchStudent(Schedule student) {
+        return (Schedule) schedulePersistence.fetch(schedule);
     }
 
-    public Course getCurrentCourse(){
-        currentCourse = schedulePersistence.getCurrentCourse();
-        return currentCourse;
+    public void updateStudent (Schedule schedule){
+        schedulePersistence.update(schedule);
     }
 
-
-     */
 }

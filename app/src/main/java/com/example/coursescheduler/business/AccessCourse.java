@@ -1,39 +1,45 @@
 package com.example.coursescheduler.business;
 
-import com.example.coursescheduler.Service.Service;
+import android.content.Context;
+import android.util.Log;
+
+import com.example.coursescheduler.application.Services;
 import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Schedule;
-import com.example.coursescheduler.persistence.ICoursePersistence;
+import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.Database;
-import com.example.coursescheduler.persistence.IStudentPersistence;
+import com.example.coursescheduler.persistence.IDatabase;
 
 import java.util.Collections;
 import java.util.List;
 
 public class AccessCourse{
-
-    /*
-    private ICoursePersistence coursePersistence;
+    private IDatabase coursePersistence;
     private List<Course> courses;
+    private Course course;
 
-    public AccessCourse(){
-        this.coursePersistence = Service.getCoursePersistence();
+    public AccessCourse(Context context){
+        this.coursePersistence = Services.getCoursePersistence(context);
         courses = null;
-    }
-    public AccessCourse(final ICoursePersistence coursePersistence){
-        this();
-        this.coursePersistence = coursePersistence;
+        course = null;
     }
 
     public List<Course> getCourseSequential(){
-        courses = coursePersistence.getCourseSequential();
+        courses = coursePersistence.getSequential();
         return Collections.unmodifiableList(courses);
     }
 
-    public void setCurrentCourse(Course course) {
-        coursePersistence.setCurrentCourse(course);
+    public Course fetchStudent(Course course) {
+        this.course = (Course) coursePersistence.fetch(course);
+        return this.course;
     }
 
+    public void insertCourse(Course course){
+        coursePersistence.insert(course);
+    }
 
-     */
+    public void deleteStudent(Course course){
+        Log.i("myTag", "deleting course");
+        coursePersistence.delete(course);
+    }
 }
