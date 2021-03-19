@@ -72,9 +72,20 @@ An issue for retrospective was open. https://code.cs.umanitoba.ca/3350-winter-20
 All of them are labelled as 'High Priority' and 'To Do' since we all need to work on this right now. The branches and issues help other members to see where 
 you at and do help if required.
 
-We have 3 features for Iteration2. Created several issues for the features and assigned them. Links:"" Fortunately, we are able to get the Database working and able to display 
-the Database entries on the UI. Links:"" Working on the updated Architecture as discussed with the professor.Links. https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/ARCHITECTURE/ARCHITECTURE.pdf. Updating the UI in UI branch, add a new button in LoginActivityL page. 
-Once we click it, we can go to Login Activity to load Student Information in Database. Links:""  
+We have 3 features for Iteration2. Created several issues for the features and assigned them.
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/48
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/49
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/50
+
+Fortunately, we are able to get the Database working and able to display 
+the Database entries on the UI. https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/44. 
+
+Working on the updated Architecture as discussed with the professor.
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/39
+
+Updating the UI in UI branch, add a new button in LoginActivityL page. 
+Once we click it, we can go to Login Activity to load Student Information in Database.
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/45
 
 An additional issue from Iteration1 was Time Managemnet. Since all group members had lots of other commitments for different courses. Later on, a rough draft was laid out for group 
 members assigned with various task in order to ensure smoother development, which ended up being much more fortunate. Another sector that can be improved on is having more careful code 
