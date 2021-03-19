@@ -3,7 +3,7 @@ Iteration 2 Worksheet
 Paying off technical debt
 -----------------
 1. 
-At Iteration 1 we use fake database to test project. Now we have to use SQL to deal with data. This is The quick, but messy way
+At Iteration 1 we use fake database to test project. Now we have to use SQL to deal with data. Because Fake database is easier to use and work quick if test. But SQL need more step to test. Such that we still need SQL to serve data, so Fake database is a quick, but messy way
 
 [SQLdatabase](https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/commit/b8b94620a26853584486fc8d1b3c97e512bb02e3#329611760aa3173adbd3b9b5e193926debd33f81_6_6)
 
