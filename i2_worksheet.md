@@ -16,22 +16,6 @@ SOLID for A01 group 9
 
 [Just lead into commit link](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-9/-/commit/8cd2c753f7f78f3a49ce551163b3e12bb8156dc8#6ec7ae92ccda9a16082b3f9bab8f100191c76d52_133_159)
 
-2. 
-
-Agile Planning
---------------
-We initially had the plan to start with and create the "save schedule" feature but had to change the plan and instead implemented the add schedule feature. Since we didn't have
-proper sql database. We had to make a fake database and utilize its information to store the courses that the student selected.We stored that information inside an arraylist that would be 
-cleared out upon refreshing or selecting a new student every single time. This way we don't need to worry about retrieving informaiton from the database for a particular student
-atleast at this stage of our project. 
-
-Added new feature - Add course.
-Link for Add course feature: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/25
-
-Pushed Feature to iteration 2 - Save schedule
-Link for save schedule: https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/1
-
-We changed the description for the Add course user story and the Add course Feature
 
 RETROSPECTIVE
 -------------
