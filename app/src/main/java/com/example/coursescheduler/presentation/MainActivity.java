@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private Button update;
     private Button logout;
     private Button edit;
+    private Button back;
     private AccessStudent accessStudent;
     private Student currentStudent;
     private String studentID;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
             delete = findViewById(R.id.deleteBtn_main);
             update = findViewById(R.id.updateBtn_main);
+            back = findViewById(R.id.backBtn_main);
             schedule = findViewById(R.id.scheduleBtn_main);
             logout = findViewById(R.id.logoutBtn_main);
             edit = findViewById(R.id.editBtn_main);
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             delete.setVisibility(View.INVISIBLE);
             update.setVisibility(View.INVISIBLE);
             editName.setVisibility(View.INVISIBLE);
+            back.setVisibility(View.INVISIBLE);
 
             schedule.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -115,6 +118,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+            back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("myTag", "Back to Main Page with no changes to Student");
+                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                    intent.putExtra("studentID", studentID);
+                    intent.putExtra("studentName", studentName);
+                    Toast.makeText(MainActivity.this, "No edit made", Toast.LENGTH_LONG).show();
+                    startActivity(intent);
+                }
+            });
+
         } catch (Exception e){
             e.printStackTrace();
             Log.e("myTag", "Error: " + e);
@@ -134,6 +149,8 @@ public class MainActivity extends AppCompatActivity {
     protected void editStudent(){
         delete.setVisibility(View.VISIBLE);
         update.setVisibility(View.VISIBLE);
+        back.setVisibility(View.VISIBLE);
+        edit.setVisibility(View.INVISIBLE);
         editName.setVisibility(View.VISIBLE);
         studentIdText.setVisibility(View.INVISIBLE);
         studentNameText.setVisibility(View.INVISIBLE);

@@ -1,6 +1,7 @@
 package com.example.coursescheduler.business;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.coursescheduler.application.Services;
 import com.example.coursescheduler.objects.Course;
@@ -37,5 +38,8 @@ public class AccessCourse{
         coursePersistence.insert(course);
     }
 
-
+    public void deleteStudent(Course course){
+        Log.i("myTag", "deleting course");
+        coursePersistence.delete(course);
+    }
 }

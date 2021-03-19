@@ -24,7 +24,6 @@ public class LoginActivity extends AppCompatActivity {
     private Button registerStudentBtn;
     private Button loginStudentBtn;
     private String msg;
-    private boolean match;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         try {
             studentList = new ArrayList<>();
             studentList.addAll(accessStudents.getStudentSequential());
+            Log.i("myTag", "studentList: "+studentList);
             studentID = findViewById(R.id.studentID_login);
             studentName = findViewById(R.id.studentName_login);
             registerStudentBtn = findViewById(R.id.registerBtn_login);
@@ -50,6 +50,9 @@ public class LoginActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if(studentID.getText().toString() != null && studentName.toString() != null){
                         loginStudent();
+                    }
+                    else{
+                        Log.i("myTag", "id: "+studentID.getText().toString()+", name: " + studentName.toString());
                     }
                 }
             });
