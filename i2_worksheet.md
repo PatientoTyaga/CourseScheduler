@@ -1,14 +1,32 @@
 Iteration 2 Worksheet
 =====================
-Paying off Technical Debt
--------------------------
+Paying off technical debt
+-----------------
+1. 
+At Iteration 1 we use fake database to test project. Now we have to use SQL to deal with data. This is The quick, but messy way
+
+[SQLdatabase](https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/commit/b8b94620a26853584486fc8d1b3c97e512bb02e3#329611760aa3173adbd3b9b5e193926debd33f81_6_6)
+
+2. 
 
 
+Exceptional code
+----------------
+
+N/A
 
 SOLID
------
+----------
+Iteration 2 Worksheet
+=====================
 
-Link: https://code.cs.umanitoba.ca/3350-winter-2021-a03/winter-2021-a03-group-10/-/issues/40
+SOLID for A01 group 9
+-----
+1. 
+[Iink to the issue](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-9/-/issues/43)
+[Just lead into commit link](https://code.cs.umanitoba.ca/3350-winter-2021-a01/group-9/-/commit/8cd2c753f7f78f3a49ce551163b3e12bb8156dc8#6ec7ae92ccda9a16082b3f9bab8f100191c76d52_133_159)
+
+2. 
 
 Agile Planning
 --------------
