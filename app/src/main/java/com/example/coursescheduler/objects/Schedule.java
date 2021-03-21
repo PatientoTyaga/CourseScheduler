@@ -26,10 +26,6 @@ public class Schedule {
         return studentID;
     }
 
-//    public void setScheduleID(int scheduleID){
-//        this.scheduleID = scheduleID;
-//    }
-
     public void setScheduleName(String scheduleName){
         this.scheduleName = scheduleName;
     }

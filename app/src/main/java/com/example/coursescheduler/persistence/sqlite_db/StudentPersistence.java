@@ -1,4 +1,4 @@
-package com.example.coursescheduler.persistence.hsqldb;
+package com.example.coursescheduler.persistence.sqlite_db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -20,21 +20,40 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     public static final String COLUMN_ID = "ID";
     public static final String COLUMN_NAME = "NAME";
 
+    public static final String SCHEDULE_TABLE = "schedule_table";
+    public static final String COLUMN_SID = "STUDENT_ID";
+    public static final String COLUMN_CID = "COURSE_ID";
+
+    public static final String COURSE_TABLE = "course_table";
+    public static final String COLUMN_TIME = "TIME";
+    public static final String COLUMN_DAY = "DAY";
+
 
     public StudentPersistence(Context context) {
-        super(context, DATABASE_NAME, null, 2);
+        super(context, DATABASE_NAME, null, 3);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         //create tables
         String student_table = "CREATE TABLE IF NOT EXISTS " + STUDENT_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT )";
+        String schedule_table = "CREATE TABLE IF NOT EXISTS " + SCHEDULE_TABLE + "("
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COLUMN_SID + " INTEGER, "
+                + COLUMN_CID + " INTEGER )";
+
+        String course_table = "CREATE TABLE IF NOT EXISTS " + COURSE_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT, "  + COLUMN_TIME + " TEXT, " + COLUMN_DAY + " TEXT)";
+
         db.execSQL(student_table);
+        db.execSQL(schedule_table);
+        db.execSQL(course_table);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + STUDENT_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + SCHEDULE_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + COURSE_TABLE);
         onCreate(db);
     }
 
