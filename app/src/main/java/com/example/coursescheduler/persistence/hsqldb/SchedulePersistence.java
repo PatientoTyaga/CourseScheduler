@@ -25,7 +25,7 @@ public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
     public static final String COLUMN_CID = "COURSE_ID";
 
     public SchedulePersistence(Context context) {
-        super(context, DATABASE_NAME, null, 2);
+        super(context, DATABASE_NAME, null, 3);
     }
 
 

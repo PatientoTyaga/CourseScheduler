@@ -25,13 +25,13 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
     public static final String COLUMN_DAY = "DAY";
 
     public CoursePersistence(Context context) {
-        super(context, DATABASE_NAME, null, 2);
+        super(context, DATABASE_NAME, null, 3);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String student_table = "CREATE TABLE IF NOT EXISTS " + COURSE_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT, "  + COLUMN_TIME + " TEXT, " + COLUMN_DAY + " TEXT)";
-        db.execSQL(student_table);
+        String course_table = "CREATE TABLE IF NOT EXISTS " + COURSE_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT, "  + COLUMN_TIME + " TEXT, " + COLUMN_DAY + " TEXT)";
+        db.execSQL(course_table);
     }
 
 
@@ -100,9 +100,9 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
         Cursor cursor = db.rawQuery(query,null);
         while (cursor.moveToNext()){
             int courseId = cursor.getInt(0);
-            String courseName = cursor.getString(2);
-            String courseTime = cursor.getString(3);
-            String courseDay = cursor.getString(4);
+            String courseName = cursor.getString(1);
+            String courseTime = cursor.getString(2);
+            String courseDay = cursor.getString(3);
             Course course = new Course(courseId, courseName, courseTime, courseDay);
             result.add(course);
         }
