@@ -4,9 +4,9 @@ import android.content.Context;
 
 import com.example.coursescheduler.persistence.IDatabase;
 import com.example.coursescheduler.persistence.ISchedule;
-import com.example.coursescheduler.persistence.hsqldb.CoursePersistence;
-import com.example.coursescheduler.persistence.hsqldb.SchedulePersistence;
-import com.example.coursescheduler.persistence.hsqldb.StudentPersistence;
+import com.example.coursescheduler.persistence.sqlite_db.CoursePersistence;
+import com.example.coursescheduler.persistence.sqlite_db.SchedulePersistence;
+import com.example.coursescheduler.persistence.sqlite_db.StudentPersistence;
 
 public class Services {
 

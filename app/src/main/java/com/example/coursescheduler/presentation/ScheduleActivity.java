@@ -69,25 +69,22 @@ public class ScheduleActivity extends AppCompatActivity {
                 Log.i("myTag", "schedule studentID: "+studentID+", courseID: "+courseID);
                 int sId = Integer.parseInt(studentID);
                 int cId = Integer.parseInt(courseID);
-                Log.i("myTag", "schedule value: "+(sId+cId));
                 Schedule schedule = new Schedule("Schedule", sId, cId);
                 accessSchedule.insertSchedule(schedule);
             }
 
             scheduleList = new ArrayList<>();
-            Log.i("myTag", "I am here!");
             currentStudent = new Student(Integer.parseInt(studentID), studentName);
+
             scheduleList.addAll(accessSchedule.getScheduleSequential(currentStudent)); //adds the schedules that the currentStudent has to a list
-            Log.i("myTag", "I am here!");
             addSchedule = findViewById(R.id.addScheduleBtn_schedule);
             loginPageBtn = findViewById(R.id.backToLogin_schedule);
 
-            Log.i("myTag", "I am here!");
             scheduleArrayAdapter = new ArrayAdapter<Schedule>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, scheduleList) {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
                     View view = super.getView(position, convertView, parent);
-                    TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                    TextView text1 = view.findViewById(android.R.id.text1);
                     text1.setText(scheduleList.get(position).getScheduleName());
                     return view;
                 }

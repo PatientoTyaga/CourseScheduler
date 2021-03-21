@@ -1,6 +1,4 @@
-package com.example.coursescheduler.persistence.hsqldb;
-
-import android.database.sqlite.SQLiteDatabase;
+package com.example.coursescheduler.persistence.sqlite_db;
 
 public class PersistenceException extends RuntimeException {
 

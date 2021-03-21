@@ -1,4 +1,4 @@
-package com.example.coursescheduler.persistence.hsqldb;
+package com.example.coursescheduler.persistence.sqlite_db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -19,7 +19,6 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
     public static final String DATABASE_NAME = "schedulerDatabase.db";
     public static final String COURSE_TABLE = "course_table";
     public static final String COLUMN_ID = "ID";
-//    public static final String COLUMN_CID = "COURSE_ID";
     public static final String COLUMN_NAME = "NAME";
     public static final String COLUMN_TIME = "TIME";
     public static final String COLUMN_DAY = "DAY";
@@ -33,7 +32,6 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
         String course_table = "CREATE TABLE IF NOT EXISTS " + COURSE_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT, "  + COLUMN_TIME + " TEXT, " + COLUMN_DAY + " TEXT)";
         db.execSQL(course_table);
     }
-
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -122,9 +120,9 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
         if(cursor.moveToFirst()){
             cursor.moveToFirst();
             newCourse.setCourseId(cursor.getInt(0));
-            newCourse.setCourseName(cursor.getString(2));
-            newCourse.setCourseTime(cursor.getString(3));
-            newCourse.setCourseDay(cursor.getString(4));
+            newCourse.setCourseName(cursor.getString(1));
+            newCourse.setCourseTime(cursor.getString(2));
+            newCourse.setCourseDay(cursor.getString(3));
             cursor.close();
         }else{
             newCourse = null;

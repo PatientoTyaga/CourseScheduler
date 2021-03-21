@@ -1,4 +1,4 @@
-package com.example.coursescheduler.persistence.hsqldb;
+package com.example.coursescheduler.persistence.sqlite_db;
 
 
 import android.content.ContentValues;
@@ -28,10 +28,8 @@ public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
         super(context, DATABASE_NAME, null, 3);
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         String schedule_table = "CREATE TABLE IF NOT EXISTS " + SCHEDULE_TABLE + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMN_SID + " INTEGER, "

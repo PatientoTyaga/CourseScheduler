@@ -1,4 +1,4 @@
-package com.example.coursescheduler.persistence.hsqldb;
+package com.example.coursescheduler.persistence.sqlite_db;
 
 import android.content.ContentValues;
 import android.content.Context;
