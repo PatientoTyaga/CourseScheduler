@@ -26,7 +26,7 @@
         android:id="@+id/scheduleBtn_main"
         android:layout_width="232dp"
         android:layout_height="57dp"
-        android:text="@string/newSchedule"
+        android:text="@string/openSchedule"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

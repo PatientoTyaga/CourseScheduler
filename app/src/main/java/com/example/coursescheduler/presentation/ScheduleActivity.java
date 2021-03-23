@@ -38,7 +38,10 @@ public class ScheduleActivity extends AppCompatActivity {
     private String courseTime;
     private String courseDay;
     private Button addSchedule;
+    private Button deleteSchedule;
     private Button loginPageBtn;
+    private Button deleteCourse;
+    private Button addCourse;
     private TextView studentNameText;
 
     @Override
@@ -75,11 +78,22 @@ public class ScheduleActivity extends AppCompatActivity {
 
             scheduleList = new ArrayList<>();
             currentStudent = new Student(Integer.parseInt(studentID), studentName);
-
-            scheduleList.addAll(accessSchedule.getScheduleSequential(currentStudent)); //adds the schedules that the currentStudent has to a list
             addSchedule = findViewById(R.id.addScheduleBtn_schedule);
             loginPageBtn = findViewById(R.id.backToLogin_schedule);
+            deleteCourse = findViewById(R.id.deleteCourseBtn_schedule);
+            deleteSchedule = findViewById(R.id.deleteScheduleBtn_schedule);
+            addCourse = findViewById(R.id.addCourseBtn_schedule);
 
+            if(!accessSchedule.getScheduleSequential(currentStudent).isEmpty()){
+                addSchedule.setVisibility(View.INVISIBLE);
+                deleteSchedule.setVisibility(View.VISIBLE);
+            }
+            else{
+                addSchedule.setVisibility(View.VISIBLE);
+                deleteSchedule.setVisibility(View.INVISIBLE);
+            }
+
+            scheduleList.addAll(accessSchedule.getScheduleSequential(currentStudent)); //adds the schedules that the currentStudent has to a list
             scheduleArrayAdapter = new ArrayAdapter<Schedule>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, scheduleList) {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
@@ -92,11 +106,10 @@ public class ScheduleActivity extends AppCompatActivity {
 
             final ListView listView = (ListView) findViewById(R.id.scheduleList_schedule);
             listView.setAdapter(scheduleArrayAdapter);
-
+            //lists the schedule objects from the database
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Button addCourseToSchedule = (Button) findViewById(R.id.addCourseBtn_schedule);
                     if (position == selectedSchedulePos) {
                         listView.setItemChecked(position, false);
                         selectedSchedulePos = -1;
@@ -104,16 +117,17 @@ public class ScheduleActivity extends AppCompatActivity {
                         listView.setItemChecked(position, true);
                         selectedSchedulePos = position;
                         selectScheduleAtPosition(position); //calls the method to set the current student in database
-                        addCourseToSchedule.setOnClickListener(new View.OnClickListener() {
-                            public void onClick(View v) {
-                                // Do something in response to button click
-                                Intent scheduleIntent = new Intent(ScheduleActivity.this, CourseActivity.class); //Goes to Course Page
-                                scheduleIntent.putExtra("studentID", studentID);
-                                scheduleIntent.putExtra("studentName", studentName);
-                                startActivity(scheduleIntent);
-                            }
-                        });
                     }
+                }
+            });
+
+            addCourse.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // Do something in response to button click
+                    Intent scheduleIntent = new Intent(ScheduleActivity.this, CourseActivity.class); //Goes to Course Page
+                    scheduleIntent.putExtra("studentID", studentID);
+                    scheduleIntent.putExtra("studentName", studentName);
+                    startActivity(scheduleIntent);
                 }
             });
 
@@ -176,6 +190,20 @@ public class ScheduleActivity extends AppCompatActivity {
 
             final ListView listView = (ListView) findViewById(R.id.courseList_schedule);
             listView.setAdapter(courseListAdaptor);
+
+            deleteCourse.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    //call the delete method from accessSchedule
+                    accessSchedule.deleteSchedule(selected);
+                    Log.i("myTag", "delete schedule entry");
+
+                    // Do something in response to button click
+                    Intent scheduleIntent = new Intent(ScheduleActivity.this, ScheduleActivity.class); //Goes to Course Page
+                    scheduleIntent.putExtra("studentID", studentID);
+                    scheduleIntent.putExtra("studentName", studentName);
+                    startActivity(scheduleIntent);
+                }
+            });
         } catch (final Exception e) {
             System.out.println(e);
         }

@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">CourseScheduler</string>
-    <string name="newSchedule">New Schedule</string>
+    <string name="openSchedule">Open Schedule Page</string>
     <string name="addSchedule">Add Schedule</string>
+    <string name="deleteSchedule">Delete Schedule</string>
     <string name="updateStudent">Update Student</string>
     <string name="registerStudent">Register Student</string>
     <string name="backToLogin">Back To Login</string>
@@ -9,6 +10,7 @@
     <string name="back">Back</string>
     <string name="edit">Edit</string>
     <string name="addCourse">Add Course</string>
+    <string name="deleteCourse">Delete Course</string>
     <string name="register">Register</string>
     <string name="deleteStudent">Delete Student</string>
     <string name="previous">Previous</string>
