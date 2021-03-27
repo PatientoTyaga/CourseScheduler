@@ -40,7 +40,7 @@ public class AccessStudentsTest {
 
         assertNotNull("First sequential student shouldn't be null",student);
         //check same
-        assertTrue(7777777 == student.getStudentID());
+        assertEquals(7777777, student.getStudentID());
 
         System.out.println("\nFinished test AccessStudent");
     }

@@ -24,6 +24,10 @@ public class AccessCourse{
         course = null;
     }
 
+    public AccessCourse(final IDatabase coursePersistence) {
+        this.coursePersistence = coursePersistence;
+    }
+
     public List<Course> getCourseSequential(){
         courses = coursePersistence.getSequential();
         return Collections.unmodifiableList(courses);

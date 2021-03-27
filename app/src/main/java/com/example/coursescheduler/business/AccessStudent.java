@@ -5,6 +5,8 @@ import android.util.Log;
 import com.example.coursescheduler.application.Services;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.IDatabase;
+import com.example.coursescheduler.persistence.sqlite_db.StudentPersistence;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -17,6 +19,10 @@ public class AccessStudent {
         studentPersistence = Services.getStudentPersistence(context);
         students = null;
         student = null;
+    }
+
+    public AccessStudent(final IDatabase studentPersistence) {
+        this.studentPersistence = studentPersistence;
     }
 
     public List<Student> getStudentSequential() {
