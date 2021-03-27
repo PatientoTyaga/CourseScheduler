@@ -72,7 +72,7 @@ public class ScheduleActivity extends AppCompatActivity {
                 Log.i("myTag", "schedule studentID: "+studentID+", courseID: "+courseID);
                 int sId = Integer.parseInt(studentID);
                 int cId = Integer.parseInt(courseID);
-                Schedule schedule = new Schedule("Schedule", sId, cId);
+                Schedule schedule = new Schedule( sId, cId);
                 accessSchedule.insertSchedule(schedule);
             }
 
@@ -136,7 +136,7 @@ public class ScheduleActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Log.i("myTag", "Updating Student");
                     if(courseID != null) {
-                        Schedule newSchedule = new Schedule("Schedule", Integer.parseInt(studentID), Integer.parseInt(courseID));
+                        Schedule newSchedule = new Schedule(Integer.parseInt(studentID), Integer.parseInt(courseID));
                         accessSchedule.insertSchedule(newSchedule);
                         Intent intent = new Intent(ScheduleActivity.this, ScheduleActivity.class); //Goes to Course Page
                         intent.putExtra("studentID", Integer.parseInt(studentID));

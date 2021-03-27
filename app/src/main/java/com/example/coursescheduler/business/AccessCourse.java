@@ -5,9 +5,6 @@ import android.util.Log;
 
 import com.example.coursescheduler.application.Services;
 import com.example.coursescheduler.objects.Course;
-import com.example.coursescheduler.objects.Schedule;
-import com.example.coursescheduler.objects.Student;
-import com.example.coursescheduler.persistence.Database;
 import com.example.coursescheduler.persistence.IDatabase;
 
 import java.util.Collections;
@@ -38,7 +35,7 @@ public class AccessCourse{
         coursePersistence.insert(course);
     }
 
-    public void deleteStudent(Course course){
+    public void deleteCourse(Course course){
         Log.i("myTag", "deleting course");
         coursePersistence.delete(course);
     }

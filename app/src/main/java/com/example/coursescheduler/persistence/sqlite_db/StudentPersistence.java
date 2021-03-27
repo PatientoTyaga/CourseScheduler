@@ -25,6 +25,8 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     public static final String COLUMN_CID = "COURSE_ID";
 
     public static final String COURSE_TABLE = "course_table";
+    public static final String COLUMN_COURSEID = "ID";
+    public static final String COLUMN_COURSENAME = "NAME";
     public static final String COLUMN_TIME = "TIME";
     public static final String COLUMN_DAY = "DAY";
 
@@ -35,18 +37,26 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+        db.execSQL("PRAGMA foreign_keys = ON;");
+
         //create tables
         String student_table = "CREATE TABLE IF NOT EXISTS " + STUDENT_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT )";
-        String schedule_table = "CREATE TABLE IF NOT EXISTS " + SCHEDULE_TABLE + "("
-                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + COLUMN_SID + " INTEGER, "
-                + COLUMN_CID + " INTEGER )";
+        String course_table = "CREATE TABLE IF NOT EXISTS " + COURSE_TABLE + "(" + COLUMN_COURSEID + " INTEGER PRIMARY KEY, " + COLUMN_COURSENAME + " TEXT, "  + COLUMN_TIME + " TEXT, " + COLUMN_DAY + " TEXT)";
 
-        String course_table = "CREATE TABLE IF NOT EXISTS " + COURSE_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT, "  + COLUMN_TIME + " TEXT, " + COLUMN_DAY + " TEXT)";
+        String schedule_table = "CREATE TABLE IF NOT EXISTS " + SCHEDULE_TABLE + "("
+                + COLUMN_SID + " INTEGER NOT NULL, "
+                + COLUMN_CID + " INTEGER NOT NULL, PRIMARY KEY( "
+                + COLUMN_SID + ","
+                + COLUMN_CID + "), FOREIGN KEY("+COLUMN_CID +") REFERENCES " + COURSE_TABLE +
+                "("+COLUMN_COURSEID+"), FOREIGN KEY("+COLUMN_SID+") REFERENCES " +
+                STUDENT_TABLE+"("+COLUMN_ID+") )";
+
+
 
         db.execSQL(student_table);
-        db.execSQL(schedule_table);
         db.execSQL(course_table);
+        db.execSQL(schedule_table);
     }
 
     @Override

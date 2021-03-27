@@ -42,6 +42,7 @@ public class AccessSchedule{
         schedulePersistence.delete(schedule);
     }
 
+
     public Schedule fetchStudent(Schedule student) {
         return (Schedule) schedulePersistence.fetch(schedule);
     }
