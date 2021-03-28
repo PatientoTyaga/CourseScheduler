@@ -64,6 +64,11 @@ public class StudentPersistenceStub implements IDatabase<Student> {
     @Override
     public Student fetch(Student currentStudent) {
         //check if the parameter is in the list of student and then return the student object
+                for(int i=0; i<students.size();i++) {
+            if (currentStudent.equals(students.get(i))) {
+                return currentStudent;
+            }
+        }
         return null;
     }
 }
