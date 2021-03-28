@@ -4,10 +4,8 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.coursescheduler.application.Services;
-import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Schedule;
 import com.example.coursescheduler.objects.Student;
-import com.example.coursescheduler.persistence.IDatabase;
 import com.example.coursescheduler.persistence.ISchedule;
 
 import java.util.*;
@@ -16,16 +14,12 @@ public class AccessSchedule{
     private ISchedule schedulePersistence;
     private List<Schedule> scheduleList;
     private Schedule schedule;
-    private Student student;
-    private Course course;
 
     public AccessSchedule(Context context){
         this.schedulePersistence = Services.getSchedulePersistence(context);
         scheduleList = null;
         schedule = null;
         schedule = null;
-        student = null;
-        course = null;
     }
 
     public List<Schedule> getScheduleSequential(final Student student) {
@@ -38,8 +32,12 @@ public class AccessSchedule{
         schedulePersistence.insert(schedule);
     }
 
-    public void deleteSchedule(Schedule schedule){
-        schedulePersistence.delete(schedule);
+    public void deleteSchedule(Student student){
+        schedulePersistence.deleteSchedule(student);
+    }
+
+    public void deleteCourse(Schedule schedule){
+        schedulePersistence.deleteCourse(schedule);
     }
 
 
