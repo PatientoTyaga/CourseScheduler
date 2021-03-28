@@ -23,6 +23,10 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
     public static final String COLUMN_TIME = "TIME";
     public static final String COLUMN_DAY = "DAY";
 
+    public static final String SCHEDULE_TABLE = "schedule_table";
+    public static final String COLUMN_SID = "STUDENT_ID";
+    public static final String COLUMN_CID = "COURSE_ID";
+
     public CoursePersistence(Context context) {
         super(context, DATABASE_NAME, null, 3);
     }
@@ -58,7 +62,7 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
         //delete course by id
         boolean result = false;
         Log.i("myTag", "course to be deleted : " + course.getCourseId());
-        String query = "Select * From " + COURSE_TABLE + " WHERE " + COLUMN_ID + " = ' " + course.getCourseId() + " ' ";
+        String query = "Select * From " + SCHEDULE_TABLE + " WHERE " + COLUMN_CID + " = ' " + course.getCourseId() + " ' ";
         Log.i("myTag", "query: "+ query);
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
@@ -66,13 +70,13 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
         if(cursor.moveToFirst()){
             newCourse.setCourseId(cursor.getInt(0));
             Log.i("myTag", "course : " + cursor.getString(0));
-            db.delete(COURSE_TABLE, COLUMN_ID + "=?",
+            db.delete(SCHEDULE_TABLE, COLUMN_ID + "=?",
                     new String[]{
                             String.valueOf(newCourse.getCourseId())
                     });
             cursor.close();
             result = true;
-            Log.i("myTag", "course deleted");
+            Log.i("myTag", "course deleted from schedule");
         }
         db.close();
         return result;

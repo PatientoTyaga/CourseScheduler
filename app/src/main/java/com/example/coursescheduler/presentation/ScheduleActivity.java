@@ -72,7 +72,7 @@ public class ScheduleActivity extends AppCompatActivity {
                 Log.i("myTag", "schedule studentID: "+studentID+", courseID: "+courseID);
                 int sId = Integer.parseInt(studentID);
                 int cId = Integer.parseInt(courseID);
-                Schedule schedule = new Schedule("Schedule", sId, cId);
+                Schedule schedule = new Schedule( sId, cId);
                 accessSchedule.insertSchedule(schedule);
             }
 
@@ -85,10 +85,14 @@ public class ScheduleActivity extends AppCompatActivity {
             addCourse = findViewById(R.id.addCourseBtn_schedule);
 
             if(!accessSchedule.getScheduleSequential(currentStudent).isEmpty()){
+                addCourse.setVisibility(View.VISIBLE);
+                deleteCourse.setVisibility(View.VISIBLE);
                 addSchedule.setVisibility(View.INVISIBLE);
                 deleteSchedule.setVisibility(View.VISIBLE);
             }
             else{
+                addCourse.setVisibility(View.INVISIBLE);
+                deleteCourse.setVisibility(View.INVISIBLE);
                 addSchedule.setVisibility(View.VISIBLE);
                 deleteSchedule.setVisibility(View.INVISIBLE);
             }
@@ -99,7 +103,7 @@ public class ScheduleActivity extends AppCompatActivity {
                 public View getView(int position, View convertView, ViewGroup parent) {
                     View view = super.getView(position, convertView, parent);
                     TextView text1 = view.findViewById(android.R.id.text1);
-                    text1.setText(scheduleList.get(position).getScheduleName());
+                    text1.setText("COMP " + scheduleList.get(position).getCourseID());
                     return view;
                 }
             };
@@ -131,12 +135,23 @@ public class ScheduleActivity extends AppCompatActivity {
                 }
             });
 
+            deleteSchedule.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    accessSchedule.deleteSchedule(currentStudent);
+                    // Do something in response to button click
+                    Intent scheduleIntent = new Intent(ScheduleActivity.this, ScheduleActivity.class); //Goes to Course Page
+                    scheduleIntent.putExtra("studentID", studentID);
+                    scheduleIntent.putExtra("studentName", studentName);
+                    startActivity(scheduleIntent);
+                }
+            });
+
             addSchedule.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Log.i("myTag", "Updating Student");
                     if(courseID != null) {
-                        Schedule newSchedule = new Schedule("Schedule", Integer.parseInt(studentID), Integer.parseInt(courseID));
+                        Schedule newSchedule = new Schedule(Integer.parseInt(studentID), Integer.parseInt(courseID));
                         accessSchedule.insertSchedule(newSchedule);
                         Intent intent = new Intent(ScheduleActivity.this, ScheduleActivity.class); //Goes to Course Page
                         intent.putExtra("studentID", Integer.parseInt(studentID));
@@ -194,7 +209,7 @@ public class ScheduleActivity extends AppCompatActivity {
             deleteCourse.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     //call the delete method from accessSchedule
-                    accessSchedule.deleteSchedule(selected);
+                    accessSchedule.deleteCourse(selected);
                     Log.i("myTag", "delete schedule entry");
 
                     // Do something in response to button click

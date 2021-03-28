@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Schedule;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.ISchedule;
@@ -20,9 +21,9 @@ public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
 
     public static final String DATABASE_NAME = "schedulerDatabase.db";
     public static final String SCHEDULE_TABLE = "schedule_table";
-    public static final String COLUMN_ID = "ID";
     public static final String COLUMN_SID = "STUDENT_ID";
     public static final String COLUMN_CID = "COURSE_ID";
+    public static final String COLUMN_ID = "SCHEDULE_ID";
 
     public SchedulePersistence(Context context) {
         super(context, DATABASE_NAME, null, 3);
@@ -31,7 +32,7 @@ public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
     @Override
     public void onCreate(SQLiteDatabase db) {
         String schedule_table = "CREATE TABLE IF NOT EXISTS " + SCHEDULE_TABLE + "("
-                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COLUMN_ID + "AUTOINCREMENT PRIMARY KEY, "
                 + COLUMN_SID + " INTEGER, "
                 + COLUMN_CID + " INTEGER )";
         db.execSQL(schedule_table);
@@ -51,10 +52,10 @@ public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
             SQLiteDatabase db = this.getWritableDatabase();
             Cursor cursor = db.rawQuery(query, null);
             while (cursor.moveToNext()) {
-                String scheduleName = cursor.getString(0);
-                int studentId = cursor.getInt(1);
-                int courseId = cursor.getInt(2);
-                Schedule schedule = new Schedule(scheduleName, studentId, courseId);
+               // String scheduleName = cursor.getString(0);
+                int studentId = cursor.getInt(0);
+                int courseId = cursor.getInt(1);
+                Schedule schedule = new Schedule(studentId, courseId);
                 result.add(schedule);
             }
             cursor.close();
@@ -79,8 +80,46 @@ public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
     }
 
     @Override
-    public boolean delete(Schedule deleteObject) {
-        return false;
+    public boolean deleteSchedule(Student student) {
+        boolean result = false;
+        String query = "Select * From " + SCHEDULE_TABLE + " WHERE " + COLUMN_SID + " = ' " + student.getStudentID() + " ' ";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        Schedule newSchedule = new Schedule();
+        if(cursor.moveToFirst()){
+            newSchedule.setStudent(Integer.parseInt(cursor.getString(0)));
+            db.delete(SCHEDULE_TABLE, COLUMN_SID + "=?",
+                    new String[]{
+                            String.valueOf(newSchedule.getStudentID())
+                    });
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
+
+    @Override
+    public boolean deleteCourse(Schedule schedule) {
+        boolean result = false;
+        Log.i("myTag", "course to be deleted : " + schedule.getCourseID());
+        String query = "Select * From " + SCHEDULE_TABLE + " WHERE " + COLUMN_SID + " = ' " + schedule.getStudentID() + " ' ";
+        Log.i("myTag", "query: "+ query);
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        Schedule newSchedule = new Schedule();
+        if(cursor.moveToFirst()){
+            Log.i("myTag", "course : " + cursor.getString(1));
+            db.delete(SCHEDULE_TABLE, COLUMN_CID + "=?",
+                    new String[]{
+                            String.valueOf(schedule.getCourseID())
+                    });
+            cursor.close();
+            result = true;
+            Log.i("myTag", "course deleted from schedule");
+        }
+        db.close();
+        return result;
     }
 
     @Override
