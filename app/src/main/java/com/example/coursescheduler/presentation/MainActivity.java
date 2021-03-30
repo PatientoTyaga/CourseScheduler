@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         accessStudent.deleteStudent(currentStudent);
         Log.i("myTag", "Delete successful");
         startActivity(intent);
+        finish();
     }
 
     protected void editStudent(){
@@ -160,11 +161,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void logoutStudent(){
+
+        //make sure upon logout, user cant access profile again unless they sign in again
+
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        Toast.makeText(MainActivity.this, "Logout successful", Toast.LENGTH_LONG).show();
-        Log.i("myTag", "Starting Logout function");
-        Log.i("myTag", "Logout successful");
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        finish();
+
     }
 
     protected void updateStudent(String name) {

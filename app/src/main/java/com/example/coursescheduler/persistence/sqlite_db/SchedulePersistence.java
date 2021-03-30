@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Schedule;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.ISchedule;

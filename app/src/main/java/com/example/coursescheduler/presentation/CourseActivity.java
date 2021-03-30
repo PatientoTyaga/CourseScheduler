@@ -29,6 +29,7 @@ public class CourseActivity extends AppCompatActivity {
     private String studentID;
     private String studentName;
     private static ArrayList<Course> courseArrayList = new ArrayList<>();
+    private Button addCourseButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class CourseActivity extends AppCompatActivity {
         accessCourse = new AccessCourse(this);
 
         try {
+            addCourseButton = (Button) findViewById(R.id.addCourseBtn_course);
             courseList = new ArrayList<>();
             if(accessCourse.getCourseSequential().isEmpty()){
                 getCourseList();
@@ -60,13 +62,15 @@ public class CourseActivity extends AppCompatActivity {
                 }
             };
 
+            addCourseButton.setEnabled(false);
+
             final ListView listView = (ListView) findViewById(R.id.courseList_course);
             listView.setAdapter(courseArrayAdapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Button addCourseButton = (Button) findViewById(R.id.addCourseBtn_course);
+
                     if (position == selectedCoursePos) {
                         listView.setItemChecked(position, false);
                         addCourseButton.setEnabled(false);
@@ -87,6 +91,7 @@ public class CourseActivity extends AppCompatActivity {
                                 courseIntent.putExtra("studentID", studentID);
                                 courseIntent.putExtra("studentName", studentName);
                                 startActivity(courseIntent);
+                                finish();
                             }
                         });
                     }

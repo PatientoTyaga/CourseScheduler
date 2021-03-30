@@ -34,15 +34,14 @@ public class ScheduleActivity extends AppCompatActivity {
     private String studentID;
     private String studentName;
     private String courseID;
-    private String courseName;
-    private String courseTime;
-    private String courseDay;
     private Button addSchedule;
     private Button deleteSchedule;
     private Button loginPageBtn;
     private Button deleteCourse;
     private Button addCourse;
     private TextView studentNameText;
+    private static ArrayList<Course> addedCourseList = new ArrayList<>();
+    private AccessCourse accessCourse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +54,6 @@ public class ScheduleActivity extends AppCompatActivity {
             studentName = b.getString("studentName");
 
             courseID = b.getString("courseID");
-            courseName = b.getString("courseName");
-            courseTime = b.getString("courseTime");
-            courseDay = b.getString("courseDay");
             Log.i("myTag", "schedule studentID: "+studentID+", courseID: "+courseID);
         }
 
@@ -83,6 +79,8 @@ public class ScheduleActivity extends AppCompatActivity {
             deleteCourse = findViewById(R.id.deleteCourseBtn_schedule);
             deleteSchedule = findViewById(R.id.deleteScheduleBtn_schedule);
             addCourse = findViewById(R.id.addCourseBtn_schedule);
+
+            deleteCourse.setEnabled(false);
 
             if(!accessSchedule.getScheduleSequential(currentStudent).isEmpty()){
                 addCourse.setVisibility(View.VISIBLE);
@@ -132,6 +130,7 @@ public class ScheduleActivity extends AppCompatActivity {
                     scheduleIntent.putExtra("studentID", studentID);
                     scheduleIntent.putExtra("studentName", studentName);
                     startActivity(scheduleIntent);
+                    finish();
                 }
             });
 
@@ -143,6 +142,7 @@ public class ScheduleActivity extends AppCompatActivity {
                     scheduleIntent.putExtra("studentID", studentID);
                     scheduleIntent.putExtra("studentName", studentName);
                     startActivity(scheduleIntent);
+                    finish();
                 }
             });
 
@@ -159,12 +159,14 @@ public class ScheduleActivity extends AppCompatActivity {
                         startActivity(intent);
                         Toast.makeText(ScheduleActivity.this, "Schedule added successful", Toast.LENGTH_LONG).show();
                         Log.i("myTag", "Schedule added");
+                        finish();
                     }
                     else {
                         Intent scheduleIntent = new Intent(ScheduleActivity.this, CourseActivity.class); //Goes to Course Page
                         scheduleIntent.putExtra("studentID", studentID);
                         scheduleIntent.putExtra("studentName", studentName);
                         startActivity(scheduleIntent);
+                        finish();
                     }
                 }
             });
@@ -176,6 +178,7 @@ public class ScheduleActivity extends AppCompatActivity {
                     scheduleIntent.putExtra("studentID", studentID);
                     scheduleIntent.putExtra("studentName", studentName);
                     startActivity(scheduleIntent);
+                    finish();
                 }
             });
 
@@ -186,25 +189,31 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     public void selectScheduleAtPosition(int position) {
+        deleteCourse.setEnabled(true);
         Schedule selected = scheduleArrayAdapter.getItem(position);
         Log.i("myTag", String.valueOf(selected.getCourseID()));
 
         try {
-            List<String> courseList = new ArrayList<>();
+            addedCourseList = new ArrayList<>();
+            accessCourse = new AccessCourse(this);
 
-            courseList.add(String.valueOf(selected.getCourseID())); //adds the schedules that the currentStudent has to a list
-            ArrayAdapter<String> courseListAdaptor = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text2, courseList) {
-                @Override
-                public View getView(int position, View convertView, ViewGroup parent) {
-                    View view = super.getView(position, convertView, parent);
-                    TextView text2 = (TextView) view.findViewById(android.R.id.text2);
-                    text2.setText(courseList.toString());
-                    return view;
+            for(Course c: accessCourse.getCourseSequential()){
+                if(c.getCourseId() == selected.getCourseID()){
+                    addedCourseList.add(c);
                 }
-            };
+            }
 
-            final ListView listView = (ListView) findViewById(R.id.courseList_schedule);
-            listView.setAdapter(courseListAdaptor);
+            TextView courseId_View = findViewById(R.id.courseID_schedule);
+            TextView courseName_View = (TextView)findViewById(R.id.courseName_schedule);
+            TextView courseTime_View = (TextView)findViewById(R.id.courseTime_schedule);
+            TextView courseDay_View = (TextView)findViewById(R.id.courseDay_schedule);
+
+            Log.i("myTag", "Course ID selected: " + addedCourseList.get(0).getCourseId());
+
+            courseId_View.setText(String.valueOf(addedCourseList.get(0).getCourseId()));
+            courseName_View.setText(addedCourseList.get(0).getCourseName());
+            courseTime_View.setText(addedCourseList.get(0).getCourseTime());
+            courseDay_View.setText(addedCourseList.get(0).getCourseDay());
 
             deleteCourse.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
@@ -217,6 +226,7 @@ public class ScheduleActivity extends AppCompatActivity {
                     scheduleIntent.putExtra("studentID", studentID);
                     scheduleIntent.putExtra("studentName", studentName);
                     startActivity(scheduleIntent);
+                    finish();
                 }
             });
         } catch (final Exception e) {

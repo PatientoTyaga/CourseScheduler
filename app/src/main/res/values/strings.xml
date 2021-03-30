@@ -24,4 +24,9 @@
     <string name="course_term">Course Term</string>
     <string name="Courses">Courses</string>
     <string name="add">add</string>
+    <string name="invalid_name">Please Enter Name Containing Characters a-z. Can Be Capital Or Small Letters</string>
+    <string name="invalid_id">Please Enter An ID Containing Positive Numbers Only. Please Note ID Has To Be Of Length 7</string>
+    <string name="invalid_name_login">Please Enter First Name Only. Name Has To Be Characters a-z only And Can Be Capital Or Small Letters</string>
+    <string name="invalid_id_login">Please Enter Positive Numbers Only. ID Has To Be Of Length 7.</string>
+    <string name="invalid_username_missing">Please Enter Your User Name</string>
 </resources>

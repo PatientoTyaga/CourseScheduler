@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.example.coursescheduler.R;
 import com.example.coursescheduler.business.AccessStudent;
 import com.example.coursescheduler.objects.Student;
@@ -25,6 +28,8 @@ public class RegisterActivity extends AppCompatActivity {
     private Button login;
     private List<Student> studentList;
     private AccessStudent accessStudents;
+
+    AwesomeValidation awesomeValidation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,20 +50,35 @@ public class RegisterActivity extends AppCompatActivity {
             String inputName = studentName.getText().toString();
             String inputID = studentID.getText().toString();
 
+            //initialize validation style
+            awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+
+            //adding validation for student name
+            awesomeValidation.addValidation(this,R.id.studentName_register,
+                    "^[a-zA-Z]*$",R.string.invalid_name);
+
+            //adding validation for student id
+            awesomeValidation.addValidation(this,R.id.studentID_register,
+                    "^[0-9]{7}",R.string.invalid_id);
+
             register.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (inputName == null || inputID == null) {
                         Toast.makeText(RegisterActivity.this, "Please enter both student name and ID", Toast.LENGTH_LONG).show();
                     } else {
-                        if (!accountExists()) {
-                            Log.i("myTag", "creating account");
-                            createAccount();
-                            Log.i("myTag", "account created");
-                            Toast.makeText(RegisterActivity.this, "Account created successfully", Toast.LENGTH_LONG).show();
-                            login();
-                        } else {
-                            Toast.makeText(RegisterActivity.this, "Account already exists", Toast.LENGTH_LONG).show();
+                        if(awesomeValidation.validate()) {
+
+                            if(!accountExists()) {
+                                Log.i("myTag", "creating account");
+                                createAccount();
+                                Log.i("myTag", "account created");
+                                Toast.makeText(RegisterActivity.this, "Account created successfully", Toast.LENGTH_LONG).show();
+                                login();
+                            }else {
+                                Toast.makeText(RegisterActivity.this, "Sorry, an account with the provided ID already exists. Please try loggin in with that ID or try using another ID", Toast.LENGTH_LONG).show();
+                            }
+
                         }
                     }
                 }
@@ -80,6 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
         //to Login activity
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private boolean accountExists() {
@@ -97,6 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
         return valid;
     }
+
 
     protected void createAccount(){
         Log.i("myTag", "inside method createAccount");
