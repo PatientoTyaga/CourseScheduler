@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
     protected void logoutStudent(){
 
         //make sure upon logout, user cant access profile again unless they sign in again
-        
+
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                 Intent.FLAG_ACTIVITY_CLEAR_TASK |
