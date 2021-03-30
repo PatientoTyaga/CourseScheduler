@@ -11,12 +11,12 @@ public class ScheduleTest {
     public void constructorTest(){
         Course newCourse = new Course(1010, "INTRO TO COMP SCI", "9:30-10:45", "TR");
         Student newStudent = new Student(7888888,"Greta Thunberg");
-        Schedule newSchedule = new Schedule("Schedule1",newStudent.getStudentID(),newCourse.getCourseId());
+        Schedule newSchedule = new Schedule(newStudent.getStudentID(),newCourse.getCourseId());
 
         assertNotNull(newSchedule);
         assertEquals(1010,(newSchedule.getCourseID()));
         assertEquals(7888888,(newSchedule.getStudentID()));
-        assertTrue("Schedule1".equals(newSchedule.getScheduleName()));
+//        assertTrue("Schedule1".equals(newSchedule.getScheduleName()));
 
     }
 
@@ -26,9 +26,9 @@ public class ScheduleTest {
         Student newStudent2 = new Student(2345,"Anti Greta");
         Course newCourse1 = new Course(1010, "COMP1010", "11:30-12:30", "MWF");
         Course newCourse2 = new Course(1020, "COMP1020", "11:30-12:30", "MWF");
-        Schedule newSchedule1 = new Schedule("Schedule1",newStudent1.getStudentID(),newCourse1.getCourseId());
-        Schedule newSchedule2 = new Schedule("Schedule1",newStudent1.getStudentID(),newCourse1.getCourseId());
-        Schedule newSchedule3 = new Schedule("Schedule3",newStudent2.getStudentID(),newCourse2.getCourseId());
+        Schedule newSchedule1 = new Schedule(newStudent1.getStudentID(),newCourse1.getCourseId());
+        Schedule newSchedule2 = new Schedule(newStudent1.getStudentID(),newCourse1.getCourseId());
+        Schedule newSchedule3 = new Schedule(newStudent2.getStudentID(),newCourse2.getCourseId());
 
         assertTrue(newSchedule1.equals(newSchedule1));
         assertTrue(newSchedule1.equals(newSchedule2));
@@ -42,9 +42,9 @@ public class ScheduleTest {
         Student newStudent2 = new Student(2345,"Anti Greta");
         Course newCourse1 = new Course(1010, "COMP1010", "11:30-12:30", "MWF");
         Course newCourse2 = new Course(1020, "COMP1020", "11:30-12:30", "MWF");
-        Schedule newSchedule1 = new Schedule("Schedule1",newStudent1.getStudentID(),newCourse1.getCourseId());
-        Schedule newSchedule2 = new Schedule("Schedule1",newStudent1.getStudentID(),newCourse1.getCourseId());
-        Schedule newSchedule3 = new Schedule("Schedule3",newStudent2.getStudentID(),newCourse2.getCourseId());
+        Schedule newSchedule1 = new Schedule(newStudent1.getStudentID(),newCourse1.getCourseId());
+        Schedule newSchedule2 = new Schedule(newStudent1.getStudentID(),newCourse1.getCourseId());
+        Schedule newSchedule3 = new Schedule(newStudent2.getStudentID(),newCourse2.getCourseId());
 
         assertEquals(newSchedule1.hashCode(), newSchedule1.hashCode());
         assertEquals(newSchedule1.hashCode(), newSchedule2.hashCode());

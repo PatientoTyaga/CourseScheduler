@@ -23,10 +23,10 @@ public class CoursePersistenceStub implements IDatabase<Course> {
         return Collections.unmodifiableList(courses);
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-    }
-
+//    @Override
+//    public void onCreate(SQLiteDatabase db) {
+//    }
+//
     @Override
     public void insert(Course currentCourse) {
         // don't bother checking for duplicates

@@ -20,9 +20,9 @@ public class StudentPersistenceStub implements IDatabase<Student> {
         students.add(new Student(7812345, "Mary Bailey"));
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-    }
+//    @Override
+//    public void onCreate(SQLiteDatabase db) {
+//    }
 
     @Override
     public void insert(Student currentStudent) {
