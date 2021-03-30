@@ -98,6 +98,14 @@ public class LoginActivity extends AppCompatActivity {
         return false;
     }
 
+    protected boolean nameIsFilled(){
+        //to check if username field is filled or left empty
+        if(studentName.getText().toString().trim().length() != 0) {
+            return true;
+        }
+        return false;
+    }
+
     public void loginStudent(){
         if(awesomeValidation.validate()){
             // checks for the student inside the list of students from database
@@ -116,9 +124,15 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(scheduleIntent);
                 finish();
             }
-            else if(!validate()){
+            else if(!validate() && !nameIsFilled()){
+
+                //give error if user only enters password with no user name
+                studentName.setError("Please Enter Your User Name. User Name Cannot Be Empty.");
+                studentID.setText("");
+                studentName.setText("");
+            }else{
                 msg = "User not found, please check credentials or register";
-                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
                 studentID.setText("");
                 studentName.setText("");
             }
