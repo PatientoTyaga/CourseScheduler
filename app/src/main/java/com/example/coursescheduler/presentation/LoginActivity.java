@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.example.coursescheduler.R;
 import com.example.coursescheduler.business.AccessStudent;
 import com.example.coursescheduler.objects.Student;
@@ -25,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginStudentBtn;
     private String msg;
 
+    AwesomeValidation awesomeValidation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +44,18 @@ public class LoginActivity extends AppCompatActivity {
             studentName = findViewById(R.id.studentName_login);
             registerStudentBtn = findViewById(R.id.registerBtn_login);
             loginStudentBtn = findViewById(R.id.loginBtn_login);
+
+            //initialize validation style
+            awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+
+            //adding validation for student name
+            awesomeValidation.addValidation(this,R.id.studentName_login,
+                    "^[a-zA-Z]*$",R.string.invalid_name_login);
+
+            //adding validation for student id
+            awesomeValidation.addValidation(this,R.id.studentID_login,
+                    "^[0-9]{7}",R.string.invalid_id_login);
+
 
             registerStudentBtn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
@@ -82,29 +99,30 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginStudent(){
-        // checks for the student inside the list of students from database
-        if(validate()){
-            Log.i("myTag", "login function reached");
-            Student student = new Student(Integer.parseInt(studentID.getText().toString()), studentName.getText().toString());
-            currentStudent = accessStudents.fetchStudent(student);
+        if(awesomeValidation.validate()){
+            // checks for the student inside the list of students from database
+            if(validate()){
+                Log.i("myTag", "login function reached");
+                Student student = new Student(Integer.parseInt(studentID.getText().toString()), studentName.getText().toString());
+                currentStudent = accessStudents.fetchStudent(student);
 
-            msg = "Redirecting to Main Page!";
-            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-            Intent scheduleIntent = new Intent(this, MainActivity.class); //Goes to ScheduleActivity Page
-            scheduleIntent.putExtra("studentID", studentID.getText().toString());
-            scheduleIntent.putExtra("studentName", studentName.getText().toString());
-            studentID.setText("");
-            studentName.setText("");
-            startActivity(scheduleIntent);
-            finish();
+                msg = "Redirecting to Main Page!";
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+                Intent scheduleIntent = new Intent(this, MainActivity.class); //Goes to ScheduleActivity Page
+                scheduleIntent.putExtra("studentID", studentID.getText().toString());
+                scheduleIntent.putExtra("studentName", studentName.getText().toString());
+                studentID.setText("");
+                studentName.setText("");
+                startActivity(scheduleIntent);
+                finish();
+            }
+            else if(!validate()){
+                msg = "User not found, please check credentials or register";
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+                studentID.setText("");
+                studentName.setText("");
+            }
         }
-        else if(!validate()){
-            msg = "User not found, please check credentials or register";
-            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-            studentID.setText("");
-            studentName.setText("");
-        }
-
     }
 
     @Override
