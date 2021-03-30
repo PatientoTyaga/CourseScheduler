@@ -6,13 +6,14 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 import com.example.coursescheduler.business.AccessStudentsTest;
+import com.example.coursescheduler.business.AccessCoursesTest;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 
-        AccessStudentsTest.class
-
+        AccessStudentsTest.class,
+        AccessCoursesTest.class
 })
 
-public class AllTest {
+public class AllUnitTest {
 
 }
