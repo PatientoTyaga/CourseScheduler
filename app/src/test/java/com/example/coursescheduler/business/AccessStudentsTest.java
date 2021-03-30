@@ -16,6 +16,11 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+//import static org.mockito.Mockito.mock;
+//import static org.mockito.Mockito.verify;
+//import static org.mockito.Mockito.when;
+
+
 import com.example.coursescheduler.persistence.StudentPersistenceStub;
 
 public class AccessStudentsTest {
@@ -33,15 +38,13 @@ public class AccessStudentsTest {
     public void test1(){
         final Student student;
         System.out.println("\nStarting test AccessStudent");
-
         final List<Student> students = accessStudents.getStudentSequential();
         //data load
-        student = accessStudents.getStudentSequential().get(0);
-
+        student = students.get(0);
         assertNotNull("First sequential student shouldn't be null",student);
         //check same
-        assertEquals(7777777, student.getStudentID());
-
+        assertEquals(7834177, student.getStudentID());
         System.out.println("\nFinished test AccessStudent");
     }
+
 }
