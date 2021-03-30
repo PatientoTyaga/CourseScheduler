@@ -82,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         // Goes to Student Register form on register button click
         Intent scheduleIntent = new Intent(LoginActivity.this, RegisterActivity.class); //Goes to ScheduleActivity Page
         startActivity(scheduleIntent);
+        finish();
     }
 
     protected boolean validate(){

@@ -100,6 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
         //to Login activity
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private boolean accountExists() {
