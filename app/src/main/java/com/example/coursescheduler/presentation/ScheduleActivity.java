@@ -132,6 +132,7 @@ public class ScheduleActivity extends AppCompatActivity {
                     scheduleIntent.putExtra("studentID", studentID);
                     scheduleIntent.putExtra("studentName", studentName);
                     startActivity(scheduleIntent);
+                    finish();
                 }
             });
 
@@ -143,6 +144,7 @@ public class ScheduleActivity extends AppCompatActivity {
                     scheduleIntent.putExtra("studentID", studentID);
                     scheduleIntent.putExtra("studentName", studentName);
                     startActivity(scheduleIntent);
+                    finish();
                 }
             });
 
@@ -159,12 +161,14 @@ public class ScheduleActivity extends AppCompatActivity {
                         startActivity(intent);
                         Toast.makeText(ScheduleActivity.this, "Schedule added successful", Toast.LENGTH_LONG).show();
                         Log.i("myTag", "Schedule added");
+                        finish();
                     }
                     else {
                         Intent scheduleIntent = new Intent(ScheduleActivity.this, CourseActivity.class); //Goes to Course Page
                         scheduleIntent.putExtra("studentID", studentID);
                         scheduleIntent.putExtra("studentName", studentName);
                         startActivity(scheduleIntent);
+                        finish();
                     }
                 }
             });
@@ -176,6 +180,7 @@ public class ScheduleActivity extends AppCompatActivity {
                     scheduleIntent.putExtra("studentID", studentID);
                     scheduleIntent.putExtra("studentName", studentName);
                     startActivity(scheduleIntent);
+                    finish();
                 }
             });
 
@@ -217,6 +222,7 @@ public class ScheduleActivity extends AppCompatActivity {
                     scheduleIntent.putExtra("studentID", studentID);
                     scheduleIntent.putExtra("studentName", studentName);
                     startActivity(scheduleIntent);
+                    finish();
                 }
             });
         } catch (final Exception e) {

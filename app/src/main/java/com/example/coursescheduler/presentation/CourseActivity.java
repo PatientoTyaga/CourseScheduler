@@ -87,6 +87,7 @@ public class CourseActivity extends AppCompatActivity {
                                 courseIntent.putExtra("studentID", studentID);
                                 courseIntent.putExtra("studentName", studentName);
                                 startActivity(courseIntent);
+                                finish();
                             }
                         });
                     }
