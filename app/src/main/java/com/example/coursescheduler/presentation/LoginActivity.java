@@ -96,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
             studentID.setText("");
             studentName.setText("");
             startActivity(scheduleIntent);
+            finish();
         }
         else if(!validate()){
             msg = "User not found, please check credentials or register";
