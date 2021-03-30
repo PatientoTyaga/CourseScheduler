@@ -22,6 +22,10 @@ public class AccessSchedule{
         schedule = null;
     }
 
+    public AccessSchedule(final ISchedule schedulePersistence) {
+        this.schedulePersistence = schedulePersistence;
+    }
+
     public List<Schedule> getScheduleSequential(final Student student) {
         Log.i("myTag", "I am here at AccessSchedule");
         scheduleList = schedulePersistence.getSequential(student);
