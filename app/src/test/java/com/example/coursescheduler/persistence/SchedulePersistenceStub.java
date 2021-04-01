@@ -21,7 +21,7 @@ public class SchedulePersistenceStub implements ISchedule {
     }
     @Override
     public List<Schedule> getSequential(Student currentstudent) {
-        List<Schedule> newSchedule = null;
+        List<Schedule> newSchedule = new ArrayList<Schedule>();
         for(int i = 0; i<schedule.size(); i++){
             if (schedule.get(i).getStudentID()==currentstudent.getStudentID())
                 newSchedule.add(schedule.get(i));

@@ -8,10 +8,7 @@ import org.junit.Assert;
 import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.objects.Schedule;
-import com.example.coursescheduler.persistence.CoursePersistenceStub;
-import com.example.coursescheduler.persistence.ISchedule;
 import com.example.coursescheduler.persistence.SchedulePersistenceStub;
-import com.example.coursescheduler.business.AccessSchedule;
 
 import java.util.List;
 
@@ -42,7 +39,7 @@ public class AccessScheduleTest {
         assertNotNull("First sequential Schedule shouldn't be null",schedule);
         //check same
 
-        //assertEquals(3010, schedule.getCourseID());
+        assertEquals(3010, schedule.getCourseID());
         assertEquals(7834177, schedule.getStudentID());
         System.out.println("\nFinished test AccessSchedule");
     }
