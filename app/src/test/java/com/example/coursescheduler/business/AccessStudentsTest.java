@@ -1,24 +1,13 @@
 package com.example.coursescheduler.business;
 
-import org.junit.After;
 import org.junit.Test;
 import org.junit.Before;
-import org.junit.Assert;
-import java.io.File;
 
-import com.example.coursescheduler.business.AccessStudent;
 import com.example.coursescheduler.objects.Student;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-//import static org.mockito.Mockito.mock;
-//import static org.mockito.Mockito.verify;
-//import static org.mockito.Mockito.when;
 
 
 import com.example.coursescheduler.persistence.StudentPersistenceStub;

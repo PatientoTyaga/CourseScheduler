@@ -1,14 +1,9 @@
 package com.example.coursescheduler.business;
-import org.junit.After;
 import org.junit.Test;
 import org.junit.Before;
-import org.junit.Assert;
-import java.io.File;
 import com.example.coursescheduler.objects.Course;
-import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.CoursePersistenceStub;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;

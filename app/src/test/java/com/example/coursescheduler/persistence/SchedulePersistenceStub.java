@@ -14,19 +14,19 @@ public class SchedulePersistenceStub implements IDatabase<Schedule> {
     public SchedulePersistenceStub() {
         this.schedule = new ArrayList<>();
 
-        schedule.add(new Schedule("3010",7834177,3010));
-        schedule.add(new Schedule("3020", 7834567,3020));
-        schedule.add(new Schedule("3350", 7845678,3350));
-        schedule.add(new Schedule("3380", 7812345,3380));
+        schedule.add(new Schedule(7834177,3010));
+        schedule.add(new Schedule(7834567,3020));
+        schedule.add(new Schedule(7845678,3350));
+        schedule.add(new Schedule(7812345,3380));
     }
     @Override
     public List<Schedule> getSequential() {
         return Collections.unmodifiableList(schedule);
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-    }
+//    @Override
+//    public void onCreate(SQLiteDatabase db) {
+//    }
 
     @Override
     public void insert(Schedule currentSchedule) {
