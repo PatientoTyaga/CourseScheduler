@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import com.example.coursescheduler.objects.Schedule;
+import com.example.coursescheduler.objects.Student;
 
 
-public class SchedulePersistenceStub implements IDatabase<Schedule> {
+public class SchedulePersistenceStub implements ISchedule{
     private List<Schedule> schedule;
 
     public SchedulePersistenceStub() {
@@ -19,19 +20,29 @@ public class SchedulePersistenceStub implements IDatabase<Schedule> {
         schedule.add(new Schedule(7845678,3350));
         schedule.add(new Schedule(7812345,3380));
     }
-    @Override
-    public List<Schedule> getSequential() {
-        return Collections.unmodifiableList(schedule);
-    }
-
-//    @Override
+///    @Override
 //    public void onCreate(SQLiteDatabase db) {
 //    }
+
+    @Override
+    public List<Schedule> getSequential(Student object) {
+        return null;
+    }
 
     @Override
     public void insert(Schedule currentSchedule) {
         // don't bother checking for duplicates
         schedule.add(currentSchedule);
+    }
+
+    @Override
+    public boolean deleteSchedule(Student deleteObject) {
+        return false;
+    }
+
+    @Override
+    public boolean deleteCourse(Schedule deleteObject) {
+        return false;
     }
 
     @Override
