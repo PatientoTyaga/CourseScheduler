@@ -9,7 +9,9 @@ import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.objects.Schedule;
 import com.example.coursescheduler.persistence.CoursePersistenceStub;
+import com.example.coursescheduler.persistence.ISchedule;
 import com.example.coursescheduler.persistence.SchedulePersistenceStub;
+import com.example.coursescheduler.business.AccessSchedule;
 
 import java.util.List;
 
@@ -29,16 +31,19 @@ public class AccessScheduleTest {
 
     @Test
     public void test1(){
+        Student student = new Student(7834177, "Gary Chalmers");
+        Course course = new Course(3010,"Distributed Computing","4","5");
+
         final Schedule schedule;
         System.out.println("\nStarting test AccessSchedule");
-        final List<Schedule> schedules = accessSchedule.getScheduleSequential();
+        final List<Schedule> schedules = accessSchedule.getScheduleSequential(student);
         //data load
         schedule = schedules.get(0);//?
         assertNotNull("First sequential Schedule shouldn't be null",schedule);
         //check same
 
-        assertEquals(3010, schedule.getCourseID());
-        assertEquals(46545, schedule.getStudentID());
+        //assertEquals(3010, schedule.getCourseID());
+        assertEquals(7834177, schedule.getStudentID());
         System.out.println("\nFinished test AccessSchedule");
     }
 }
