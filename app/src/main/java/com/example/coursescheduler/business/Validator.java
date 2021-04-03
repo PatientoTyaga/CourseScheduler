@@ -24,8 +24,24 @@ public class Validator {
     public boolean validateNameAndIdEntry(EditText studentName, EditText studentID){
 
         boolean toRet = false;
+        boolean nameFieldIsEmpty = entryFieldIsEmpty(studentName,"studentName");
+        boolean idFieldIsEmpty = entryFieldIsEmpty(studentID,"studentID");
         boolean nameEnteredCorrectly = false;
         boolean idEnteredCorrectly = false;
+
+        if(!nameFieldIsEmpty && !idFieldIsEmpty){
+            idEnteredCorrectly = correctEntry(studentID,"studentId"); //check if the id field has correct input
+            nameEnteredCorrectly = correctEntry(studentName, "studentName"); //check if name field has correct input
+
+            if(nameEnteredCorrectly && idEnteredCorrectly){
+                toRet = true;
+            }
+        }
+        /*
+        boolean nameEnteredCorrectly = false;
+        boolean idEnteredCorrectly = false;
+        EditText editText = null;
+
 
         try{
             if(studentID.getText().toString().trim().isEmpty() && studentName.getText().toString().trim().isEmpty()){
@@ -35,14 +51,16 @@ public class Validator {
             }else if(!studentID.getText().toString().trim().isEmpty() && studentName.getText().toString().trim().isEmpty()){
                 //studentID field is only one that is not empty
 
+                editText = studentName;
                 idEnteredCorrectly = correctEntry(studentID,"studentIdIF"); //check if the id field has correct input
-                throw new EmptyEntryException(studentName, "studentNameIF");
+                throw new EmptyEntryException("Student Name Cannot Be Empty. Please Enter A Valid Student Name.");
 
             }else if(studentID.getText().toString().trim().isEmpty() && !studentName.getText().toString().trim().isEmpty()){
                 //studentName field is the only one that is empty
 
+                editText = studentID;
                 nameEnteredCorrectly = correctEntry(studentName, "studentNameIF"); //check if name field has correct input
-                throw new EmptyEntryException(studentID,"studentIdIF");
+                throw new EmptyEntryException("StudentID Cannot Be Empty. Please Enter A Valid StudentID.");
 
             }else{
                 //none of the entries are empty
@@ -55,8 +73,32 @@ public class Validator {
             }
 
         } catch (EmptyEntryException e) {
+            editText.setError(e.getMessage());
         }
 
+         */
+
+        return toRet;
+    }
+
+    public boolean entryFieldIsEmpty(EditText editText, String identifier){
+        boolean toRet = false;
+
+        try{
+            if(identifier.equals("studentName")){
+                if(editText.getText().toString().isEmpty()){
+                    toRet = true;
+                    throw new EmptyEntryException("Student Name Cannot Be Empty. Please Enter A Valid Student Name.");
+                }
+            }else if(identifier.equals("studentID")){
+                if(editText.getText().toString().isEmpty()){
+                    toRet = true;
+                    throw new EmptyEntryException("StudentID Cannot Be Empty. Please Enter A Valid StudentID.");
+                }
+            }
+        }catch (EmptyEntryException e){
+            editText.setError(e.getMessage());
+        }
         return toRet;
     }
 
@@ -67,21 +109,23 @@ public class Validator {
         boolean toRet = false;
 
         try {
-            if(identifier.equals("studentIdIF")){
+            if(identifier.equals("studentId")){
                 if(!editText.getText().toString().matches("^[0-9]{7}")){
-                    throw new IncorrectEntryFormatException(editText,"studentIdIF");
+                    throw new IncorrectEntryFormatException("Please Enter A Student Number Containing Positive Numbers Only. The Student Number Should Be Of" +
+                            "Length 7");
                 }else{
                     toRet = true;
                 }
-            }else if(identifier.equals("studentNameIF")){
+            }else if(identifier.equals("studentName")){
                 if(!editText.getText().toString().matches("^[a-zA-Z]*$")){
-                    throw new IncorrectEntryFormatException(editText,"studentNameIF");
+                    throw new IncorrectEntryFormatException("Please Enter First Name Only. Name Should Be Letters a-z Only.(Can Be In Captital, Small Or Both");
                 }else{
                     toRet = true;
                 }
             }
 
         } catch (IncorrectEntryFormatException e) {
+            editText.setError(e.getMessage());
         }
 
         return toRet;
@@ -107,12 +151,13 @@ public class Validator {
         boolean toRet = false;
         try {
                 if(studentName.getText().toString().trim().isEmpty()) {
-                    throw new EmptyEntryException(studentName, "studentNameIF");
+                    throw new EmptyEntryException("StudentID Cannot Be Empty. Please Enter A Valid StudentID.");
                 }else if(!correctEntry(studentName,"studentNameIF")){
                 }else{
                     toRet = true;
                 }
             }catch(EmptyEntryException e){
+                studentName.setError(e.getMessage());
             }
         return toRet;
     }

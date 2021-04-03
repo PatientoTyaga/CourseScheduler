@@ -25,7 +25,6 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText studentName;
     private EditText studentID;
     private Button register;
-    private Student currentStudent;
     private Button login;
     private List<Student> studentList;
     private AccessStudent accessStudents;
