@@ -9,10 +9,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.basgeekball.awesomevalidation.AwesomeValidation;
-import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.example.coursescheduler.R;
 import com.example.coursescheduler.business.AccessStudent;
+import com.example.coursescheduler.business.Validator;
 import com.example.coursescheduler.objects.Student;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +19,7 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity {
 
     private AccessStudent accessStudents;
+    private Validator validator;
     private List<Student> studentList;
     private Student currentStudent;
     private EditText studentID;
@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginStudentBtn;
     private String msg;
 
-    AwesomeValidation awesomeValidation;
+   // AwesomeValidation awesomeValidation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         accessStudents = new AccessStudent(this);
+        validator = new Validator();
         try {
             studentList = new ArrayList<>();
             studentList.addAll(accessStudents.getStudentSequential());
@@ -44,17 +45,6 @@ public class LoginActivity extends AppCompatActivity {
             studentName = findViewById(R.id.studentName_login);
             registerStudentBtn = findViewById(R.id.registerBtn_login);
             loginStudentBtn = findViewById(R.id.loginBtn_login);
-
-            //initialize validation style
-            awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
-
-            //adding validation for student name
-            awesomeValidation.addValidation(this,R.id.studentName_login,
-                    "^[a-zA-Z]*$",R.string.invalid_name_login);
-
-            //adding validation for student id
-            awesomeValidation.addValidation(this,R.id.studentID_login,
-                    "^[0-9]{7}",R.string.invalid_id_login);
 
 
             registerStudentBtn.setOnClickListener(new View.OnClickListener() {
@@ -85,35 +75,16 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
-    protected boolean validate(){
-        for(Student s: studentList){
-            Log.i("myTag", s.getStudentName() + ", " + s.getStudentID());
-            if(s.getStudentID() == Integer.parseInt(studentID.getText().toString()) && s.getStudentName().matches(studentName.getText().toString())){
-                Log.i("myTag", s.getStudentName() + " reached");
-                return true;
-            }
-            else{
-                continue;
-            }
-        }
-        return false;
-    }
-
-    protected boolean nameIsFilled(){
-        //to check if username field is filled or left empty
-        if(studentName.getText().toString().trim().length() != 0) {
-            return true;
-        }
-        return false;
-    }
 
     public void loginStudent(){
-        if(awesomeValidation.validate()){
+        if(validator.validateNameAndIdEntry(studentName,studentID)){
             // checks for the student inside the list of students from database
-            if(validate()){
+
+            Student student = new Student(Integer.parseInt(studentID.getText().toString()), studentName.getText().toString());
+            currentStudent = accessStudents.fetchStudent(student);
+
+            if(validator.validateStudent(this, currentStudent, studentName)){
                 Log.i("myTag", "login function reached");
-                Student student = new Student(Integer.parseInt(studentID.getText().toString()), studentName.getText().toString());
-                currentStudent = accessStudents.fetchStudent(student);
 
                 msg = "Redirecting to Main Page!";
                 Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
@@ -124,18 +95,6 @@ public class LoginActivity extends AppCompatActivity {
                 studentName.setText("");
                 startActivity(scheduleIntent);
                 finish();
-            }
-            else if(!validate() && !nameIsFilled()){
-
-                //give error if user only enters password with no user name
-                studentName.setError("Please Enter Your User Name. User Name Cannot Be Empty.");
-                studentID.setText("");
-                studentName.setText("");
-            }else{
-                msg = "User not found, please check credentials or register";
-                Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
-                studentID.setText("");
-                studentName.setText("");
             }
         }
     }

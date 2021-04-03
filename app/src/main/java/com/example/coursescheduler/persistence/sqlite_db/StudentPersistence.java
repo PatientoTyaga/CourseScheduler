@@ -5,7 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
+import com.example.coursescheduler.business.exceptions.StudentNotFoundException;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.IDatabase;
 
@@ -70,11 +72,16 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     @Override
     public void insert(Student student) {
         //add a new student to student database
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_ID,student.getStudentID());
-        values.put(COLUMN_NAME,student.getStudentName());
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.insert(STUDENT_TABLE,null,values);
+        SQLiteDatabase db = null;
+        try {
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_ID,student.getStudentID());
+            values.put(COLUMN_NAME,student.getStudentName());
+            db = this.getWritableDatabase();
+            db.insert(STUDENT_TABLE,null,values);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         db.close();
     }
 
@@ -91,7 +98,6 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
             String studentName = cursor.getString(1);
             Student student = new Student(studentId, studentName);
             result.add(student);
-//            System.getProperty("line.separator");
         }
         cursor.close();
         db.close();
@@ -100,19 +106,22 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
 
     @Override
     public Student fetch(Student student){
-        //find student by name
-        String query = "Select * From " + STUDENT_TABLE + " WHERE " + COLUMN_ID + " = '" + student.getStudentID() + " ' ";
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query,null);
         Student newStudent = new Student();
-        if(cursor.moveToFirst()){
-            cursor.moveToFirst();
-            newStudent.setStudentID(Integer.parseInt(cursor.getString(0)));
-            newStudent.setStudentName(cursor.getString(1));
-            cursor.close();
-        }else{
-            newStudent = null;
+
+        try {
+            String query = "Select * From " + STUDENT_TABLE + " WHERE " + COLUMN_ID + " = '" + student.getStudentID() + " ' ";
+
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(query,null);
+            if(cursor.moveToFirst()){
+                cursor.moveToFirst();
+                newStudent.setStudentID(Integer.parseInt(cursor.getString(0)));
+                newStudent.setStudentName(cursor.getString(1));
+                cursor.close();
+            }else{
+                throw new StudentNotFoundException();
+            }
+        }catch(StudentNotFoundException e){
         }
         return  newStudent;
     }
@@ -120,19 +129,28 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     @Override
     public boolean delete(Student student) {
         //delete student by id
-        boolean result = false;
-        String query = "Select * From " + STUDENT_TABLE + " WHERE " + COLUMN_ID + " = ' " + student.getStudentID() + " ' ";
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
+
         Student newStudent = new Student();
-        if(cursor.moveToFirst()){
-            newStudent.setStudentID(Integer.parseInt(cursor.getString(0)));
-            db.delete(STUDENT_TABLE, COLUMN_ID + "=?",
-            new String[]{
-                    String.valueOf(newStudent.getStudentID())
-            });
-            cursor.close();
-            result = true;
+        boolean result = false;
+        SQLiteDatabase db = null;
+
+        try {
+            result = false;
+            String query = "Select * From " + STUDENT_TABLE + " WHERE " + COLUMN_ID + " = ' " + student.getStudentID() + " ' ";
+            db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(query, null);
+            if(cursor.moveToFirst()){
+                newStudent.setStudentID(Integer.parseInt(cursor.getString(0)));
+                db.delete(STUDENT_TABLE, COLUMN_ID + "=?",
+                new String[]{
+                        String.valueOf(newStudent.getStudentID())
+                });
+                cursor.close();
+                result = true;
+            }else{
+                throw new StudentNotFoundException("Sorry, Student Not Found. Unable To Delete");
+            }
+        } catch (StudentNotFoundException e) {
         }
         db.close();
         return result;

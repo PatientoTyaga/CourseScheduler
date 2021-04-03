@@ -1,9 +1,11 @@
 package com.example.coursescheduler.persistence;
 
+import android.content.Context;
 import android.database.Observable;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.coursescheduler.business.exceptions.StudentNotFoundException;
 import com.example.coursescheduler.objects.Schedule;
 import com.example.coursescheduler.objects.Student;
 
