@@ -37,47 +37,6 @@ public class Validator {
                 toRet = true;
             }
         }
-        /*
-        boolean nameEnteredCorrectly = false;
-        boolean idEnteredCorrectly = false;
-        EditText editText = null;
-
-
-        try{
-            if(studentID.getText().toString().trim().isEmpty() && studentName.getText().toString().trim().isEmpty()){
-                //both entries are empty
-                throw new EmptyEntryException(studentID, studentName);
-
-            }else if(!studentID.getText().toString().trim().isEmpty() && studentName.getText().toString().trim().isEmpty()){
-                //studentID field is only one that is not empty
-
-                editText = studentName;
-                idEnteredCorrectly = correctEntry(studentID,"studentIdIF"); //check if the id field has correct input
-                throw new EmptyEntryException("Student Name Cannot Be Empty. Please Enter A Valid Student Name.");
-
-            }else if(studentID.getText().toString().trim().isEmpty() && !studentName.getText().toString().trim().isEmpty()){
-                //studentName field is the only one that is empty
-
-                editText = studentID;
-                nameEnteredCorrectly = correctEntry(studentName, "studentNameIF"); //check if name field has correct input
-                throw new EmptyEntryException("StudentID Cannot Be Empty. Please Enter A Valid StudentID.");
-
-            }else{
-                //none of the entries are empty
-                idEnteredCorrectly = correctEntry(studentID,"studentIdIF"); //check if the id field has correct input
-                nameEnteredCorrectly = correctEntry(studentName, "studentNameIF"); //check if name field has correct input
-
-                if(nameEnteredCorrectly && idEnteredCorrectly){
-                    toRet = true;
-                }
-            }
-
-        } catch (EmptyEntryException e) {
-            editText.setError(e.getMessage());
-        }
-
-         */
-
         return toRet;
     }
 
@@ -149,16 +108,11 @@ public class Validator {
 
     public boolean validateStudentUpdate(EditText studentName){
         boolean toRet = false;
-        try {
-                if(studentName.getText().toString().trim().isEmpty()) {
-                    throw new EmptyEntryException("StudentID Cannot Be Empty. Please Enter A Valid StudentID.");
-                }else if(!correctEntry(studentName,"studentNameIF")){
-                }else{
-                    toRet = true;
-                }
-            }catch(EmptyEntryException e){
-                studentName.setError(e.getMessage());
-            }
+        boolean studentFieldIsEmpty = entryFieldIsEmpty(studentName,"studentName");
+        boolean correctEntry = correctEntry(studentName,"studentName");
+        if(!studentFieldIsEmpty && correctEntry){
+            toRet = true;
+        }
         return toRet;
     }
 
