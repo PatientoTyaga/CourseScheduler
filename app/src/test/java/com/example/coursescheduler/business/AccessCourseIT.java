@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.example.coursescheduler.application.Services;
 import com.example.coursescheduler.objects.Course;
+import com.example.coursescheduler.persistence.CoursePersistenceStub;
 import com.example.coursescheduler.persistence.IDatabase;
 import com.example.coursescheduler.business.AccessCourse;
 import com.example.coursescheduler.persistence.sqlite_db.CoursePersistence;
@@ -32,6 +33,8 @@ public class AccessCourseIT {
         //final CoursePersistence coursePersistence = new CoursePersistence(this.tempDB.getAbsolutePath().replace(".script", ""));
 
         //this.accessCourse = new AccessCourse(coursePersistence);
+        CoursePersistenceStub coursePersistenceStub = new CoursePersistenceStub();
+        this.accessCourse = new AccessCourse(coursePersistenceStub);
     }
     @Test
     public void testListCourses() {
@@ -40,7 +43,7 @@ public class AccessCourseIT {
         courses = accessCourse.getCourseSequential();
         course = courses.get(0);
         assertNotNull("first sequential course should not be null", course);
-        assertTrue("COMP3010".equals(course.getCourseId()));
+        assertEquals(3010,(course.getCourseId()));
         System.out.println("Finished test AccessCourses");
     }
 
