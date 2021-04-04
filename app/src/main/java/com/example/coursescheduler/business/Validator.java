@@ -128,7 +128,6 @@ public class Validator {
                 break;
             }
         }
-
         return valid;
     }
 

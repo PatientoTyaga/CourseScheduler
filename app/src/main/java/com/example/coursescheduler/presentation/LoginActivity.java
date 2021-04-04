@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.coursescheduler.R;
 import com.example.coursescheduler.business.AccessStudent;
 import com.example.coursescheduler.business.Validator;
+import com.example.coursescheduler.business.exceptions.StudentNotFoundException;
 import com.example.coursescheduler.objects.Student;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,22 +80,33 @@ public class LoginActivity extends AppCompatActivity {
     public void loginStudent(){
         if(validator.validateNameAndIdEntry(studentName,studentID)){
             // checks for the student inside the list of students from database
+            boolean accountExists = validator.accountExists(studentList,studentID);
 
-            Student student = new Student(Integer.parseInt(studentID.getText().toString()), studentName.getText().toString());
-            currentStudent = accessStudents.fetchStudent(student);
+            try{
+                if(accountExists){
+                    //check if account with given id exists
+                    Student student = new Student(Integer.parseInt(studentID.getText().toString()), studentName.getText().toString());
+                    Student currentStudent = accessStudents.fetchStudent(student);
+                    boolean studentExists = validator.validateStudent(this,currentStudent,studentName);
+                    if(studentExists){
+                        //check if name matches name connected to account with given id
+                        Log.i("myTag", "login function reached");
 
-            if(validator.validateStudent(this, currentStudent, studentName)){
-                Log.i("myTag", "login function reached");
-
-                msg = "Redirecting to Main Page!";
-                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-                Intent scheduleIntent = new Intent(this, MainActivity.class); //Goes to ScheduleActivity Page
-                scheduleIntent.putExtra("studentID", studentID.getText().toString());
-                scheduleIntent.putExtra("studentName", studentName.getText().toString());
-                studentID.setText("");
-                studentName.setText("");
-                startActivity(scheduleIntent);
-                finish();
+                        msg = "Redirecting to Main Page!";
+                        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+                        Intent scheduleIntent = new Intent(this, MainActivity.class); //Goes to ScheduleActivity Page
+                        scheduleIntent.putExtra("studentID", studentID.getText().toString());
+                        scheduleIntent.putExtra("studentName", studentName.getText().toString());
+                        studentID.setText("");
+                        studentName.setText("");
+                        startActivity(scheduleIntent);
+                        finish();
+                    }
+                }else{
+                    throw new StudentNotFoundException();
+                }
+            }catch (StudentNotFoundException e){
+                Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
             }
         }
     }
