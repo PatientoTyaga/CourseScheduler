@@ -1,17 +1,14 @@
 package com.example.coursescheduler.persistence;
 
-import android.database.sqlite.SQLiteDatabase;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import com.example.coursescheduler.objects.Course;
 
 public class CoursePersistenceStub implements IDatabase<Course> {
-    private List<Course> courses;
+    private final List<Course> courses = new ArrayList<>();
 
     public CoursePersistenceStub() {
-        this.courses = new ArrayList<>();
 
         courses.add(new Course(3010,"Distributed Computing","4","5"));
         courses.add(new Course(3020, "Human-Computer Interaction","2","5"));
@@ -23,10 +20,6 @@ public class CoursePersistenceStub implements IDatabase<Course> {
         return Collections.unmodifiableList(courses);
     }
 
-//    @Override
-//    public void onCreate(SQLiteDatabase db) {
-//    }
-//
     @Override
     public void insert(Course currentCourse) {
         // don't bother checking for duplicates
