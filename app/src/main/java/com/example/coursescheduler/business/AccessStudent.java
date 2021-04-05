@@ -2,18 +2,23 @@ package com.example.coursescheduler.business;
 
 import android.content.Context;
 import android.util.Log;
+
 import com.example.coursescheduler.application.Services;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.IDatabase;
 import com.example.coursescheduler.persistence.sqlite_db.StudentPersistence;
 
+
 import java.util.Collections;
 import java.util.List;
 
+
 public class AccessStudent {
+
     private IDatabase studentPersistence;
     private List<Student> students;
     private Student student;
+
 
     public AccessStudent(Context context){
         studentPersistence = Services.getStudentPersistence(context);
@@ -46,4 +51,5 @@ public class AccessStudent {
     public void updateStudent (Student student){
         studentPersistence.update(student);
     }
+
 }

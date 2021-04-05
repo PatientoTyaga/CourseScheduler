@@ -13,6 +13,4 @@ public interface ISchedule {
     boolean deleteCourse(Schedule deleteObject); //used to delete by id (we can update this later)
     boolean update(Schedule updateObject); //used to update by id(we can delete this if it isn't needed)
     Schedule fetch(Schedule fetchObject); //used to find e.g find student by student name
-
-
 }

@@ -116,11 +116,14 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
     @Override
     public Course fetch(Course course) {
         //find course by id
+        Course newCourse = new Course();
+/*
+to delete this method from this class as it is never used(to refactor)
+
         String query = "Select * From " + COURSE_TABLE + " WHERE " + COLUMN_ID + " = '" + course.getCourseId() + " ' ";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query,null);
-        Course newCourse = new Course();
         if(cursor.moveToFirst()){
             cursor.moveToFirst();
             newCourse.setCourseId(cursor.getInt(0));
@@ -131,6 +134,8 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
         }else{
             newCourse = null;
         }
+
+ */
         return  newCourse;
     }
 }
