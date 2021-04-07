@@ -1,53 +1,42 @@
 package com.example.coursescheduler.business;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import android.content.Context;
 import android.util.Log;
 
-import com.example.coursescheduler.application.Services;
 import com.example.coursescheduler.objects.Course;
-import com.example.coursescheduler.persistence.CoursePersistenceStub;
-import com.example.coursescheduler.persistence.IDatabase;
-import com.example.coursescheduler.business.AccessCourse;
-import com.example.coursescheduler.persistence.sqlite_db.CoursePersistence;
+import com.example.coursescheduler.presentation.CourseActivity;
 
-import java.util.Collections;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.Robolectric;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
-import static org.junit.Assert.assertEquals;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
-
+@RunWith(RobolectricTestRunner.class)
+@Config(manifest= "AndroidManifest.xml")
 public class AccessCourseIT {
     private AccessCourse accessCourse;
-    private File tempDB;
 
     @Before
     public void setUp() throws IOException {
-        //this.tempDB = ;
-        //final CoursePersistence coursePersistence = new CoursePersistence(this.tempDB.getAbsolutePath().replace(".script", ""));
-
-        //this.accessCourse = new AccessCourse(coursePersistence);
-        CoursePersistenceStub coursePersistenceStub = new CoursePersistenceStub();
-        this.accessCourse = new AccessCourse(coursePersistenceStub);
+        final CourseActivity courseActivity = Robolectric.buildActivity(CourseActivity.class).create().get();
+        this.accessCourse = new AccessCourse(courseActivity.getApplicationContext());
     }
     @Test
     public void testListCourses() {
-        final List<Course> courses;
+        final ArrayList<Course> courseArrayList = new ArrayList<>();
         final Course course;
-        courses = accessCourse.getCourseSequential();
-        course = courses.get(0);
+        courseArrayList.addAll(accessCourse.getCourseSequential());
+        Log.i("myTag", "course: " + courseArrayList.get(0));
+        course = courseArrayList.get(0);
         assertNotNull("first sequential course should not be null", course);
-        assertEquals(3010,(course.getCourseId()));
+        assertEquals(1010,(course.getCourseId()));
         System.out.println("Finished test AccessCourses");
     }
-
-
-
-
 }
