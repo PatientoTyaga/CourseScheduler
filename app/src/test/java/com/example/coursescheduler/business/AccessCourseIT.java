@@ -39,4 +39,30 @@ public class AccessCourseIT {
         assertEquals(1010,(course.getCourseId()));
         System.out.println("Finished test AccessCourses");
     }
+    @Test
+    public void testfetchStudent() {
+        final ArrayList<Course> courseArrayList = new ArrayList<>();
+        final Course course = new Course(1010, "INTRO TO COMP SCI", "9:30-10:45", "TR");
+        courseArrayList.addAll(accessCourse.getCourseSequential());
+        assertEquals(1010, accessCourse.fetchStudent(course).getCourseId());
+    }
+    @Test
+    public void testinsertCourse(){
+        final Course c = new Course(1012, "INTRO TO COMP SCI PY", "9:30-10:45", "TR");
+        accessCourse.insertCourse(c);
+        assertEquals(1012,accessCourse.fetchStudent(c).getCourseId());
+    }
+    @Test
+    public void testdeleteCourse(){
+        final ArrayList<Course> courseArrayList = new ArrayList<>();
+        final Course course;
+        courseArrayList.addAll(accessCourse.getCourseSequential());
+        course = courseArrayList.get(0);
+        assertEquals(1010,(course.getCourseId()));
+
+        accessCourse.deleteCourse(course);
+
+        //assertEquals(null,accessCourse.fetchStudent(course));
+    }
+
 }
