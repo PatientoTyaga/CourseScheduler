@@ -18,8 +18,6 @@ public class Validator {
     if any of the above conditions are violated, an exception will be thrown
      */
 
-    private AccessStudent accessStudents;
-
 
     public boolean validateNameAndIdEntry(EditText studentName, EditText studentID){
 

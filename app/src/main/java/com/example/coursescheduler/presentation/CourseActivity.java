@@ -15,7 +15,11 @@ import android.widget.TextView;
 
 import com.example.coursescheduler.business.AccessCourse;
 import com.example.coursescheduler.R;
+import com.example.coursescheduler.business.AccessSchedule;
+import com.example.coursescheduler.business.ValidatorCourse;
 import com.example.coursescheduler.objects.Course;
+import com.example.coursescheduler.objects.Schedule;
+import com.example.coursescheduler.objects.Student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +27,8 @@ import java.util.List;
 public class CourseActivity extends AppCompatActivity {
 
     private AccessCourse accessCourse;
+    private ValidatorCourse validatorCourse;
+    private AccessSchedule accessSchedule;
     private List<Course> courseList;
     private ArrayAdapter<Course> courseArrayAdapter;
     private int selectedCoursePos = -1;
@@ -30,6 +36,7 @@ public class CourseActivity extends AppCompatActivity {
     private String studentName;
     private static ArrayList<Course> courseArrayList = new ArrayList<>();
     private Button addCourseButton;
+    private Student currentStudent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +47,12 @@ public class CourseActivity extends AppCompatActivity {
         if(b != null) {
             studentID = b.getString("studentID");
             studentName = b.getString("studentName");
+            currentStudent = new Student(Integer.parseInt(studentID), studentName);
         }
 
         accessCourse = new AccessCourse(this);
+        validatorCourse = new ValidatorCourse();
+        accessSchedule = new AccessSchedule(this);
 
         try {
             addCourseButton = (Button) findViewById(R.id.addCourseBtn_course);
@@ -83,6 +93,7 @@ public class CourseActivity extends AppCompatActivity {
                         addCourseButton.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
                                 // Do something in response to button click
+
                                 Intent courseIntent = new Intent(CourseActivity.this, ScheduleActivity.class); //Goes to ScheduleActivity Page
                                 courseIntent.putExtra("courseID", String.valueOf(selectedCourse.getCourseId()));
                                 courseIntent.putExtra("courseName", selectedCourse.getCourseName());

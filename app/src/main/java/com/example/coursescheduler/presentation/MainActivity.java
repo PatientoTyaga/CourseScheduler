@@ -11,6 +11,7 @@ import android.widget.*;
 import com.example.coursescheduler.R;
 import com.example.coursescheduler.business.AccessStudent;
 import com.example.coursescheduler.business.Validator;
+import com.example.coursescheduler.business.exceptions.EmptyEntryException;
 import com.example.coursescheduler.objects.Student;
 
 public class MainActivity extends AppCompatActivity {
@@ -130,13 +131,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void deleteStudent(){
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        Toast.makeText(MainActivity.this, "Delete successful", Toast.LENGTH_LONG).show();
-        Log.i("myTag", "Starting Delete function");
-        accessStudent.deleteStudent(currentStudent);
-        Log.i("myTag", "Delete successful");
-        startActivity(intent);
-        finish();
+
+        try{
+            if(validator.validateStudentUpdate(editName)){
+                if(validator.validateStudent(this,currentStudent,editName)){
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    Toast.makeText(MainActivity.this, "Delete successful", Toast.LENGTH_LONG).show();
+                    Log.i("myTag", "Starting Delete function");
+                    accessStudent.deleteStudent(currentStudent);
+                    Log.i("myTag", "Delete successful");
+                    startActivity(intent);
+                    finish();
+                }else{
+                    editName.setError("Please Enter Your Username");
+                }
+            }else {
+                throw new EmptyEntryException("Please Enter Your Student Name");
+            }
+        }catch(EmptyEntryException e){
+            Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
+        }
+
     }
 
     protected void editStudent(){

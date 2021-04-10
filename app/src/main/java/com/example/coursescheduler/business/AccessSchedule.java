@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.coursescheduler.application.Services;
+import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Schedule;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.ISchedule;
@@ -25,6 +26,7 @@ public class AccessSchedule{
     public AccessSchedule(final ISchedule schedulePersistence) {
         this.schedulePersistence = schedulePersistence;
     }
+
 
     public List<Schedule> getScheduleSequential(final Student student) {
         //Log.i("myTag", "I am here at AccessSchedule");

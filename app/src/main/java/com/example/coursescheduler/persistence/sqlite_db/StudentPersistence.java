@@ -40,8 +40,6 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("PRAGMA foreign_keys = ON;");
-
         //create tables
         String student_table = "CREATE TABLE IF NOT EXISTS " + STUDENT_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT )";
         String course_table = "CREATE TABLE IF NOT EXISTS " + COURSE_TABLE + "(" + COLUMN_COURSEID + " INTEGER PRIMARY KEY, " + COLUMN_COURSENAME + " TEXT, "  + COLUMN_TIME + " TEXT, " + COLUMN_DAY + " TEXT)";
@@ -50,10 +48,7 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
                 + COLUMN_SID + " INTEGER NOT NULL, "
                 + COLUMN_CID + " INTEGER NOT NULL, PRIMARY KEY( "
                 + COLUMN_SID + ","
-                + COLUMN_CID + "), FOREIGN KEY("+COLUMN_CID +") REFERENCES " + COURSE_TABLE +
-                "("+COLUMN_COURSEID+"), FOREIGN KEY("+COLUMN_SID+") REFERENCES " +
-                STUDENT_TABLE+"("+COLUMN_ID+") )";
-
+                + COLUMN_CID + ") )";
 
 
         db.execSQL(student_table);
@@ -141,10 +136,17 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
             Cursor cursor = db.rawQuery(query, null);
             if(cursor.moveToFirst()){
                 newStudent.setStudentID(Integer.parseInt(cursor.getString(0)));
-                db.delete(STUDENT_TABLE, COLUMN_ID + "=?",
+
+                db.delete(SCHEDULE_TABLE, COLUMN_SID + "=?",
                 new String[]{
                         String.valueOf(newStudent.getStudentID())
                 });
+
+                db.delete(STUDENT_TABLE, COLUMN_ID + "=?",
+                        new String[]{
+                                String.valueOf(newStudent.getStudentID())
+                        });
+
                 cursor.close();
                 result = true;
             }else{
