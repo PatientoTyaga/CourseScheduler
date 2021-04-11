@@ -8,13 +8,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.coursescheduler.objects.Course;
+import com.example.coursescheduler.persistence.ICourse;
 import com.example.coursescheduler.persistence.IDatabase;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Course> {
+public class CoursePersistence extends SQLiteOpenHelper implements ICourse {
 
     public static final String DATABASE_NAME = "schedulerDatabase.db";
     public static final String COURSE_TABLE = "course_table";
@@ -60,6 +62,7 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
     @Override
     public boolean delete(Course course) {
         //delete course by id
+
         boolean result = false;
         Log.i("myTag", "course to be deleted : " + course.getCourseId());
         String query = "Select * From " + SCHEDULE_TABLE + " WHERE " + COLUMN_CID + " = ' " + course.getCourseId() + " ' ";
@@ -82,6 +85,7 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
         return result;
     }
 
+    /*
     @Override
     public boolean update(Course course) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -92,6 +96,8 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
         args.put(COLUMN_DAY,course.getCourseDay());
         return db.update(COURSE_TABLE,args, COLUMN_ID + "=" + course.getCourseId(), null) > 0;
     }
+
+     */
 
     @Override
     public List<Course> getSequential() {
@@ -113,26 +119,36 @@ public class CoursePersistence extends SQLiteOpenHelper implements IDatabase<Cou
         return Collections.unmodifiableList(result);
     }
 
-    @Override
-    public Course fetch(Course course) {
-        //find course by id
-        String query = "Select * From " + COURSE_TABLE + " WHERE " + COLUMN_ID + " = '" + course.getCourseId() + " ' ";
 
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query,null);
+    public ArrayList<Course> getCourses(ArrayList<Integer> courseIds) {
+        //find course by id
+        ArrayList<Course> courses = new ArrayList<>();
+
         Course newCourse = new Course();
-        if(cursor.moveToFirst()){
-            cursor.moveToFirst();
-            newCourse.setCourseId(cursor.getInt(0));
-            newCourse.setCourseName(cursor.getString(1));
-            newCourse.setCourseTime(cursor.getString(2));
-            newCourse.setCourseDay(cursor.getString(3));
-            cursor.close();
-        }else{
-            newCourse = null;
+        int count = 0;
+
+        while(courseIds.size() > count){
+            String query = "Select * From " + COURSE_TABLE + " WHERE " + COLUMN_ID + " = '" + courseIds.get(count) + " ' ";
+
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(query,null);
+            if(cursor.moveToFirst()){
+                cursor.moveToFirst();
+                newCourse.setCourseId(cursor.getInt(0));
+                newCourse.setCourseName(cursor.getString(1));
+                newCourse.setCourseTime(cursor.getString(2));
+                newCourse.setCourseDay(cursor.getString(3));
+                courses.add(newCourse);
+                cursor.close();
+            }else{
+                newCourse = null;
+            }
+            count++;
         }
-        return  newCourse;
+
+        return  courses;
     }
+
 }
 
 

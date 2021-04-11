@@ -2,6 +2,7 @@ package com.example.coursescheduler.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.widget.*;
 import com.example.coursescheduler.R;
 import com.example.coursescheduler.business.AccessStudent;
+import com.example.coursescheduler.business.Validator;
+import com.example.coursescheduler.business.exceptions.EmptyEntryException;
 import com.example.coursescheduler.objects.Student;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private Button edit;
     private Button back;
     private AccessStudent accessStudent;
+    private Validator validator;
     private Student currentStudent;
     private String studentID;
     private String studentName;
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         accessStudent = new AccessStudent(this);
+        validator = new Validator();
         currentStudent = new Student(Integer.parseInt(studentID), studentName);
 
         try{
@@ -83,20 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Log.i("myTag", "Updating Student");
-                    try {
-                        if(editName.getText().toString() != null){
-                            Log.i("myTag", "name: "+editName.getText().toString());
-                            updateStudent(editName.getText().toString());
-                        }
-                    } catch (NumberFormatException e) {
-                        Toast.makeText(MainActivity.this, "Make sure both values are filled out and the ID only contains numbers", Toast.LENGTH_LONG).show();
-                        e.printStackTrace();
-                        Log.e("myTag", "Error: " + e);
-                        throw e;
-                    }
-
-                    Toast.makeText(MainActivity.this, "Update successful", Toast.LENGTH_LONG).show();
-                    Log.i("myTag", "Student Updated");
+                    updateStudent(editName);
                 }
             });
 
@@ -114,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Log.i("myTag", "Deleting Student");
+                    Toast.makeText(MainActivity.this, "WARNING!! PLEASE KNOW ANY UPDATE IS FINAL. PLEASE SAVE YOUR NEW NAME SOMEWHERE BEFORE CONFIRMING UPDATE", Toast.LENGTH_LONG).show();
                     editStudent();
                 }
             });
@@ -138,13 +131,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void deleteStudent(){
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        Toast.makeText(MainActivity.this, "Delete successful", Toast.LENGTH_LONG).show();
-        Log.i("myTag", "Starting Delete function");
-        accessStudent.deleteStudent(currentStudent);
-        Log.i("myTag", "Delete successful");
-        startActivity(intent);
-        finish();
+
+        try{
+            if(validator.validateStudentUpdate(editName)){
+                if(validator.validateStudent(this,currentStudent,editName)){
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    Toast.makeText(MainActivity.this, "Delete successful", Toast.LENGTH_LONG).show();
+                    Log.i("myTag", "Starting Delete function");
+                    accessStudent.deleteStudent(currentStudent);
+                    Log.i("myTag", "Delete successful");
+                    startActivity(intent);
+                    finish();
+                }else{
+                    editName.setError("Please Enter Your Username");
+                }
+            }else {
+                throw new EmptyEntryException("Please Enter Your Student Name");
+            }
+        }catch(EmptyEntryException e){
+            Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
+        }
+
     }
 
     protected void editStudent(){
@@ -173,12 +180,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    protected void updateStudent(String name) {
-        Toast.makeText(MainActivity.this, "Update Successful. Please login with new credentials", Toast.LENGTH_LONG).show();
-        Log.i("myTag", "Starting Update function");
-        Student newStudent = new Student(currentStudent.getStudentID(), name);
-        accessStudent.updateStudent(newStudent);
-        Log.i("myTag", "Update successful");
-        logoutStudent();
+    protected void updateStudent(EditText studentName) {
+
+        if(validator.validateStudentUpdate(studentName)){
+            Toast.makeText(MainActivity.this, "Update Successful. Please login with new credentials", Toast.LENGTH_LONG).show();
+            Log.i("myTag", "Starting Update function");
+            Student newStudent = new Student(currentStudent.getStudentID(), studentName.getText().toString());
+            accessStudent.updateStudent(newStudent);
+            Log.i("myTag", "Update successful");
+            Toast.makeText(MainActivity.this, "Update successful", Toast.LENGTH_LONG).show();
+            logoutStudent();
+        }
     }
 }

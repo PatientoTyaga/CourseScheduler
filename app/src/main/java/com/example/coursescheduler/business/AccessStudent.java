@@ -2,18 +2,24 @@ package com.example.coursescheduler.business;
 
 import android.content.Context;
 import android.util.Log;
+
 import com.example.coursescheduler.application.Services;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.IDatabase;
+import com.example.coursescheduler.persistence.IStudent;
 import com.example.coursescheduler.persistence.sqlite_db.StudentPersistence;
+
 
 import java.util.Collections;
 import java.util.List;
 
+
 public class AccessStudent {
-    private IDatabase studentPersistence;
+
+    private IStudent studentPersistence;
     private List<Student> students;
     private Student student;
+
 
     public AccessStudent(Context context){
         studentPersistence = Services.getStudentPersistence(context);
@@ -21,14 +27,17 @@ public class AccessStudent {
         student = null;
     }
 
-    public AccessStudent(final IDatabase studentPersistence) {
+    public AccessStudent(final IStudent studentPersistence) {
         this.studentPersistence = studentPersistence;
     }
+
 
     public List<Student> getStudentSequential() {
         students = studentPersistence.getSequential();
         return Collections.unmodifiableList(students);
     }
+
+
 
     public void insertStudent(Student student){
         studentPersistence.insert(student);
@@ -46,4 +55,5 @@ public class AccessStudent {
     public void updateStudent (Student student){
         studentPersistence.update(student);
     }
+
 }

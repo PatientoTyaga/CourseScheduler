@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.coursescheduler.application.Services;
+import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Schedule;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.ISchedule;
@@ -26,6 +27,7 @@ public class AccessSchedule{
         this.schedulePersistence = schedulePersistence;
     }
 
+
     public List<Schedule> getScheduleSequential(final Student student) {
         //Log.i("myTag", "I am here at AccessSchedule");
         scheduleList = schedulePersistence.getSequential(student);
@@ -41,7 +43,7 @@ public class AccessSchedule{
     }
 
     public void deleteCourse(Schedule schedule){
-        schedulePersistence.deleteCourse(schedule);
+        schedulePersistence.delete(schedule);
     }
 
 
@@ -51,6 +53,10 @@ public class AccessSchedule{
 
     public void updateStudent (Schedule schedule){
         schedulePersistence.update(schedule);
+    }
+
+    public ArrayList<Integer> getCourseIDs(Student student){
+       return schedulePersistence.getCourseIDs(student);
     }
 
 }

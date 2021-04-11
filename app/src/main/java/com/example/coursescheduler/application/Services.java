@@ -2,19 +2,21 @@ package com.example.coursescheduler.application;
 
 import android.content.Context;
 
+import com.example.coursescheduler.persistence.ICourse;
 import com.example.coursescheduler.persistence.IDatabase;
 import com.example.coursescheduler.persistence.ISchedule;
+import com.example.coursescheduler.persistence.IStudent;
 import com.example.coursescheduler.persistence.sqlite_db.CoursePersistence;
 import com.example.coursescheduler.persistence.sqlite_db.SchedulePersistence;
 import com.example.coursescheduler.persistence.sqlite_db.StudentPersistence;
 
 public class Services {
 
-    private static IDatabase studentPersistence = null;
-    private static IDatabase coursePersistence = null;
+    private static IStudent studentPersistence = null;
+    private static ICourse coursePersistence = null;
     private static ISchedule schedulePersistence = null;
 
-    public static synchronized IDatabase getStudentPersistence(Context context)
+    public static synchronized IStudent getStudentPersistence(Context context)
     {
         if (studentPersistence == null){
             studentPersistence = new StudentPersistence(context.getApplicationContext());
@@ -22,7 +24,7 @@ public class Services {
         return studentPersistence;
     }
 
-    public static synchronized IDatabase getCoursePersistence(Context context)
+    public static synchronized ICourse getCoursePersistence(Context context)
     {
         if (coursePersistence == null){
             coursePersistence = new CoursePersistence(context.getApplicationContext());
