@@ -8,7 +8,6 @@ import java.util.Objects;
 
 public class Schedule {
 
-   // private String scheduleName;
     private int studentID;
     private int courseID;
 
@@ -28,7 +27,6 @@ public class Schedule {
     public int getStudentID(){
         return studentID;
     }
-
 
     public void setStudent(int studentID){
         this.studentID = studentID;

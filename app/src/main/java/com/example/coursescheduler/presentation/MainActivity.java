@@ -2,13 +2,15 @@ package com.example.coursescheduler.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
+
+import com.example.coursescheduler.Message;
 import com.example.coursescheduler.R;
+import com.example.coursescheduler.Variables;
 import com.example.coursescheduler.business.AccessStudent;
 import com.example.coursescheduler.business.Validator;
 import com.example.coursescheduler.business.exceptions.EmptyEntryException;
@@ -39,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         if(b != null) {
-            studentID = b.getString("studentID");
-            studentName = b.getString("studentName");
+            studentID = b.getString(Variables.student_ID);
+            studentName = b.getString(Variables.student_Name);
         }
 
         accessStudent = new AccessStudent(this);
@@ -70,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent scheduleIntent = new Intent(MainActivity.this, ScheduleActivity.class);
-                    scheduleIntent.putExtra("studentID", studentID);
-                    scheduleIntent.putExtra("studentName", studentName);
+                    scheduleIntent.putExtra(Variables.student_ID, studentID);
+                    scheduleIntent.putExtra(Variables.student_Name, studentName);
                     startActivity(scheduleIntent);
                 }
             });
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("myTag", "Deleting Student");
+                    Log.i(Variables.tag, Message.delete_Student);
                     deleteStudent();
                 }
             });
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("myTag", "Updating Student");
+                    Log.i(Variables.tag, Message.update_Student);
                     updateStudent(editName);
                 }
             });
@@ -95,18 +97,18 @@ public class MainActivity extends AppCompatActivity {
             logout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("myTag", "Logout Student");
+                    Log.i(Variables.tag, Message.logout_Student);
                     logoutStudent();
-                    Toast.makeText(MainActivity.this, "Logout successful", Toast.LENGTH_LONG).show();
-                    Log.i("myTag", "Student logged out");
+                    Toast.makeText(MainActivity.this, Message.logout_Success, Toast.LENGTH_LONG).show();
+                    Log.i(Variables.tag, Message.logout_Success);
                 }
             });
 
             edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("myTag", "Deleting Student");
-                    Toast.makeText(MainActivity.this, "WARNING!! PLEASE KNOW ANY UPDATE IS FINAL. PLEASE SAVE YOUR NEW NAME SOMEWHERE BEFORE CONFIRMING UPDATE", Toast.LENGTH_LONG).show();
+                    Log.i(Variables.tag, Message.delete_Student);
+                    Toast.makeText(MainActivity.this, Message.delete_Student_Warning, Toast.LENGTH_LONG).show();
                     editStudent();
                 }
             });
@@ -114,10 +116,10 @@ public class MainActivity extends AppCompatActivity {
             back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("myTag", "Back to Main Page with no changes to Student");
+                    Log.i(Variables.tag, "Back to Main Page with no changes to Student");
                     Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                    intent.putExtra("studentID", studentID);
-                    intent.putExtra("studentName", studentName);
+                    intent.putExtra(Variables.student_ID, studentID);
+                    intent.putExtra(Variables.student_Name, studentName);
                     Toast.makeText(MainActivity.this, "No edit made", Toast.LENGTH_LONG).show();
                     startActivity(intent);
                 }
@@ -125,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
         } catch (Exception e){
             e.printStackTrace();
-            Log.e("myTag", "Error: " + e);
+            Log.e(Variables.tag, "Error: " + e);
             throw e;
         }
     }
@@ -136,17 +138,17 @@ public class MainActivity extends AppCompatActivity {
             if(validator.validateStudentUpdate(editName)){
                 if(validator.validateStudent(this,currentStudent,editName)){
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                    Toast.makeText(MainActivity.this, "Delete successful", Toast.LENGTH_LONG).show();
-                    Log.i("myTag", "Starting Delete function");
+                    Toast.makeText(MainActivity.this, Message.delete_Success, Toast.LENGTH_LONG).show();
+                    Log.i(Variables.tag, Message.start_Delete);
                     accessStudent.deleteStudent(currentStudent);
-                    Log.i("myTag", "Delete successful");
+                    Log.i(Variables.tag, Message.delete_Success);
                     startActivity(intent);
                     finish();
                 }else{
-                    editName.setError("Please Enter Your Username");
+                    editName.setError(Message.student_Name_OnStart);
                 }
             }else {
-                throw new EmptyEntryException("Please Enter Your Student Name");
+                throw new EmptyEntryException(Message.student_Name_Empty);
             }
         }catch(EmptyEntryException e){
             Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
@@ -183,12 +185,12 @@ public class MainActivity extends AppCompatActivity {
     protected void updateStudent(EditText studentName) {
 
         if(validator.validateStudentUpdate(studentName)){
-            Toast.makeText(MainActivity.this, "Update Successful. Please login with new credentials", Toast.LENGTH_LONG).show();
-            Log.i("myTag", "Starting Update function");
+            Toast.makeText(MainActivity.this, Message.update_Student_Success, Toast.LENGTH_LONG).show();
+            Log.i(Variables.tag, Message.start_Update);
             Student newStudent = new Student(currentStudent.getStudentID(), studentName.getText().toString());
             accessStudent.updateStudent(newStudent);
-            Log.i("myTag", "Update successful");
-            Toast.makeText(MainActivity.this, "Update successful", Toast.LENGTH_LONG).show();
+            Log.i(Variables.tag, Message.update_Success);
+            Toast.makeText(MainActivity.this, Message.update_Success, Toast.LENGTH_LONG).show();
             logoutStudent();
         }
     }

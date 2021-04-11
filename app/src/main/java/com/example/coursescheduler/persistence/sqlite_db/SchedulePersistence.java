@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.coursescheduler.objects.Course;
+import com.example.coursescheduler.Variables;
 import com.example.coursescheduler.objects.Schedule;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.ISchedule;
@@ -19,35 +19,25 @@ import java.util.List;
 
 public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
 
-    public static final String DATABASE_NAME = "schedulerDatabase.db";
-
-    public static final String SCHEDULE_TABLE = "schedule_table";
-    public static final String COLUMN_SID = "STUDENT_ID";
-    public static final String COLUMN_CID = "COURSE_ID";
-
-
-
     public SchedulePersistence(Context context) {
-        super(context, DATABASE_NAME, null, 3);
+        super(context, Variables.DATABASE_NAME, null, 3);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String schedule_table = "CREATE TABLE IF NOT EXISTS " + SCHEDULE_TABLE + "("
-                + COLUMN_SID + " INTEGER NOT NULL, "
-                + COLUMN_CID + " INTEGER NOT NULL, PRIMARY KEY( "
-                + COLUMN_SID + ","
-                + COLUMN_CID + ") )";
-
-
+        String schedule_table = "CREATE TABLE IF NOT EXISTS " + Variables.SCHEDULE_TABLE + "("
+                + Variables.COLUMN_SID + " INTEGER NOT NULL, "
+                + Variables.COLUMN_CID + " INTEGER NOT NULL, PRIMARY KEY( "
+                + Variables.COLUMN_SID + ","
+                + Variables.COLUMN_CID + ") )";
 
         db.execSQL(schedule_table);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + SCHEDULE_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + Variables.SCHEDULE_TABLE);
         onCreate(db);
     }
 
@@ -55,11 +45,10 @@ public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
     public List<Schedule> getSequential(Student student) {
         ArrayList<Schedule> result = new ArrayList<>();
         try {
-            String query = "Select * FROM " + SCHEDULE_TABLE + " WHERE " + COLUMN_SID + " = '" + student.getStudentID() + " ' ";
+            String query = "Select * FROM " + Variables.SCHEDULE_TABLE + " WHERE " + Variables.COLUMN_SID + " = '" + student.getStudentID() + " ' ";
             SQLiteDatabase db = this.getWritableDatabase();
             Cursor cursor = db.rawQuery(query, null);
             while (cursor.moveToNext()) {
-               // String scheduleName = cursor.getString(0);
                 int studentId = cursor.getInt(0);
                 int courseId = cursor.getInt(1);
                 Schedule schedule = new Schedule(studentId, courseId);
@@ -77,11 +66,10 @@ public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
     public ArrayList<Integer> getCourseIDs(Student student) {
         ArrayList<Integer> result = new ArrayList<>();
         try {
-            String query = "Select * FROM " + SCHEDULE_TABLE + " WHERE " + COLUMN_SID + " = '" + student.getStudentID() + " ' ";
+            String query = "Select * FROM " + Variables.SCHEDULE_TABLE + " WHERE " + Variables.COLUMN_SID + " = '" + student.getStudentID() + " ' ";
             SQLiteDatabase db = this.getWritableDatabase();
             Cursor cursor = db.rawQuery(query, null);
             while (cursor.moveToNext()) {
-
                 int courseId = cursor.getInt(1);
                 result.add(courseId);
             }
@@ -96,13 +84,13 @@ public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
 
     @Override
     public void insert(Schedule schedule) {
-        Log.i("myTag", "got to insert schedule");
-        Log.i("myTag", "studentID in schedule: "+schedule.getStudentID() + ", courseID: "+schedule.getCourseID());
+        Log.i(Variables.tag, "got to insert schedule");
+        Log.i(Variables.tag, Variables.student_Name +schedule.getStudentID() + ", " + Variables.course_ID + ": " + schedule.getCourseID());
         ContentValues values = new ContentValues();
-        values.put(COLUMN_SID,schedule.getStudentID());
-        values.put(COLUMN_CID,schedule.getCourseID());
+        values.put(Variables.COLUMN_SID,schedule.getStudentID());
+        values.put(Variables.COLUMN_CID,schedule.getCourseID());
         SQLiteDatabase db = this.getWritableDatabase();
-        db.insert(SCHEDULE_TABLE,null,values);
+        db.insert(Variables.SCHEDULE_TABLE,null,values);
         db.close();
     }
 
@@ -111,13 +99,13 @@ public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
         //this method will deleteSchedule
 
         boolean result = false;
-        String query = "Select * From " + SCHEDULE_TABLE + " WHERE " + COLUMN_SID + " = ' " + student.getStudentID() + " ' ";
+        String query = "Select * From " + Variables.SCHEDULE_TABLE + " WHERE " + Variables.COLUMN_SID + " = ' " + student.getStudentID() + " ' ";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         Schedule newSchedule = new Schedule();
         if(cursor.moveToFirst()){
             newSchedule.setStudent(Integer.parseInt(cursor.getString(0)));
-            db.delete(SCHEDULE_TABLE, COLUMN_SID + "=?",
+            db.delete(Variables.SCHEDULE_TABLE, Variables.COLUMN_SID + "=?",
                     new String[]{
                             String.valueOf(newSchedule.getStudentID())
                     });
@@ -133,21 +121,21 @@ public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
         //this method will delete course from schedule
 
         boolean result = false;
-        Log.i("myTag", "course to be deleted : " + schedule.getCourseID());
-        String query = "Select * From " + SCHEDULE_TABLE + " WHERE " + COLUMN_SID + " = ' " + schedule.getStudentID() + " ' ";
-        Log.i("myTag", "query: "+ query);
+        Log.i(Variables.tag, "course to be deleted : " + schedule.getCourseID());
+        String query = "Select * From " + Variables.SCHEDULE_TABLE + " WHERE " + Variables.COLUMN_SID + " = ' " + schedule.getStudentID() + " ' ";
+        Log.i(Variables.tag, "query: "+ query);
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         Schedule newSchedule = new Schedule();
         if(cursor.moveToFirst()){
-            Log.i("myTag", "course : " + cursor.getString(1));
-            db.delete(SCHEDULE_TABLE, COLUMN_CID + "=?",
+            Log.i(Variables.tag, "course : " + cursor.getString(1));
+            db.delete(Variables.SCHEDULE_TABLE, Variables.COLUMN_CID + "=?",
                     new String[]{
                             String.valueOf(schedule.getCourseID())
                     });
             cursor.close();
             result = true;
-            Log.i("myTag", "course deleted from schedule");
+            Log.i(Variables.tag, "course deleted from schedule");
         }
         db.close();
         return result;

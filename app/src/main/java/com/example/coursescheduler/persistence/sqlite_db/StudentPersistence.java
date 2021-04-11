@@ -5,11 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
+import com.example.coursescheduler.Message;
+import com.example.coursescheduler.Variables;
 import com.example.coursescheduler.business.exceptions.StudentNotFoundException;
 import com.example.coursescheduler.objects.Student;
-import com.example.coursescheduler.persistence.IDatabase;
 import com.example.coursescheduler.persistence.IStudent;
 
 import java.util.ArrayList;
@@ -18,38 +18,22 @@ import java.util.List;
 
 public class StudentPersistence extends SQLiteOpenHelper implements IStudent {
 
-    public static final String DATABASE_NAME = "schedulerDatabase.db";
-    public static final String STUDENT_TABLE = "student_table";
-    public static final String COLUMN_ID = "ID";
-    public static final String COLUMN_NAME = "NAME";
-
-    public static final String SCHEDULE_TABLE = "schedule_table";
-    public static final String COLUMN_SID = "STUDENT_ID";
-    public static final String COLUMN_CID = "COURSE_ID";
-
-    public static final String COURSE_TABLE = "course_table";
-    public static final String COLUMN_COURSEID = "ID";
-    public static final String COLUMN_COURSENAME = "NAME";
-    public static final String COLUMN_TIME = "TIME";
-    public static final String COLUMN_DAY = "DAY";
-
-
     public StudentPersistence(Context context) {
-        super(context, DATABASE_NAME, null, 3);
+        super(context, Variables.DATABASE_NAME, null, 3);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
         //create tables
-        String student_table = "CREATE TABLE IF NOT EXISTS " + STUDENT_TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT )";
-        String course_table = "CREATE TABLE IF NOT EXISTS " + COURSE_TABLE + "(" + COLUMN_COURSEID + " INTEGER PRIMARY KEY, " + COLUMN_COURSENAME + " TEXT, "  + COLUMN_TIME + " TEXT, " + COLUMN_DAY + " TEXT)";
+        String student_table = "CREATE TABLE IF NOT EXISTS " + Variables.STUDENT_TABLE + "(" + Variables.COLUMN_ID + " INTEGER PRIMARY KEY, " + Variables.COLUMN_NAME + " TEXT )";
+        String course_table = "CREATE TABLE IF NOT EXISTS " + Variables.COURSE_TABLE + "(" + Variables.COLUMN_COURSEID + " INTEGER PRIMARY KEY, " + Variables.COLUMN_COURSENAME + " TEXT, "  + Variables.COLUMN_TIME + " TEXT, " + Variables.COLUMN_DAY + " TEXT)";
 
-        String schedule_table = "CREATE TABLE IF NOT EXISTS " + SCHEDULE_TABLE + "("
-                + COLUMN_SID + " INTEGER NOT NULL, "
-                + COLUMN_CID + " INTEGER NOT NULL, PRIMARY KEY( "
-                + COLUMN_SID + ","
-                + COLUMN_CID + ") )";
+        String schedule_table = "CREATE TABLE IF NOT EXISTS " + Variables.SCHEDULE_TABLE + "("
+                + Variables.COLUMN_SID + " INTEGER NOT NULL, "
+                + Variables.COLUMN_CID + " INTEGER NOT NULL, PRIMARY KEY( "
+                + Variables.COLUMN_SID + ","
+                + Variables.COLUMN_CID + ") )";
 
 
         db.execSQL(student_table);
@@ -59,9 +43,9 @@ public class StudentPersistence extends SQLiteOpenHelper implements IStudent {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + STUDENT_TABLE);
-        db.execSQL("DROP TABLE IF EXISTS " + SCHEDULE_TABLE);
-        db.execSQL("DROP TABLE IF EXISTS " + COURSE_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + Variables.STUDENT_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + Variables.SCHEDULE_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + Variables.COURSE_TABLE);
         onCreate(db);
     }
 
@@ -71,10 +55,10 @@ public class StudentPersistence extends SQLiteOpenHelper implements IStudent {
         SQLiteDatabase db = null;
         try {
             ContentValues values = new ContentValues();
-            values.put(COLUMN_ID,student.getStudentID());
-            values.put(COLUMN_NAME,student.getStudentName());
+            values.put(Variables.COLUMN_ID,student.getStudentID());
+            values.put(Variables.COLUMN_NAME,student.getStudentName());
             db = this.getWritableDatabase();
-            db.insert(STUDENT_TABLE,null,values);
+            db.insert(Variables.STUDENT_TABLE,null,values);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -87,7 +71,7 @@ public class StudentPersistence extends SQLiteOpenHelper implements IStudent {
     public List<Student> getSequential() {
         //get list of students in database to be shown
         ArrayList<Student> result = new ArrayList<>();
-        String query = "Select * FROM " + STUDENT_TABLE;
+        String query = "Select * FROM " + Variables.STUDENT_TABLE;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query,null);
         while (cursor.moveToNext()){
@@ -108,7 +92,7 @@ public class StudentPersistence extends SQLiteOpenHelper implements IStudent {
         Student newStudent = new Student();
 
         try {
-            String query = "Select * From " + STUDENT_TABLE + " WHERE " + COLUMN_ID + " = '" + student.getStudentID() + " ' ";
+            String query = "Select * From " + Variables.STUDENT_TABLE + " WHERE " + Variables.COLUMN_ID + " = '" + student.getStudentID() + " ' ";
 
             SQLiteDatabase db = this.getWritableDatabase();
             Cursor cursor = db.rawQuery(query,null);
@@ -135,18 +119,18 @@ public class StudentPersistence extends SQLiteOpenHelper implements IStudent {
 
         try {
             result = false;
-            String query = "Select * From " + STUDENT_TABLE + " WHERE " + COLUMN_ID + " = ' " + student.getStudentID() + " ' ";
+            String query = "Select * From " + Variables.STUDENT_TABLE + " WHERE " + Variables.COLUMN_ID + " = ' " + student.getStudentID() + " ' ";
             db = this.getWritableDatabase();
             Cursor cursor = db.rawQuery(query, null);
             if(cursor.moveToFirst()){
                 newStudent.setStudentID(Integer.parseInt(cursor.getString(0)));
 
-                db.delete(SCHEDULE_TABLE, COLUMN_SID + "=?",
+                db.delete(Variables.SCHEDULE_TABLE, Variables.COLUMN_SID + "=?",
                 new String[]{
                         String.valueOf(newStudent.getStudentID())
                 });
 
-                db.delete(STUDENT_TABLE, COLUMN_ID + "=?",
+                db.delete(Variables.STUDENT_TABLE, Variables.COLUMN_ID + "=?",
                         new String[]{
                                 String.valueOf(newStudent.getStudentID())
                         });
@@ -154,7 +138,7 @@ public class StudentPersistence extends SQLiteOpenHelper implements IStudent {
                 cursor.close();
                 result = true;
             }else{
-                throw new StudentNotFoundException("Sorry, Student Not Found. Unable To Delete");
+                throw new StudentNotFoundException(Message.student_Not_Found);
             }
         } catch (StudentNotFoundException e) {
         }
@@ -167,8 +151,8 @@ public class StudentPersistence extends SQLiteOpenHelper implements IStudent {
         //update student
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues args = new ContentValues();
-        args.put(COLUMN_ID,student.getStudentID());
-        args.put(COLUMN_NAME,student.getStudentName());
-        return db.update(STUDENT_TABLE,args, COLUMN_ID + "=" + student.getStudentID(), null) > 0;
+        args.put(Variables.COLUMN_ID,student.getStudentID());
+        args.put(Variables.COLUMN_NAME,student.getStudentName());
+        return db.update(Variables.STUDENT_TABLE,args, Variables.COLUMN_ID + "=" + student.getStudentID(), null) > 0;
     }
 }

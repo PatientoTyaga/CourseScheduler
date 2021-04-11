@@ -15,12 +15,10 @@ import java.util.List;
 public class AccessCourse{
     private ICourse coursePersistence;
     private List<Course> courses;
-    private Course course;
 
     public AccessCourse(Context context){
         this.coursePersistence = Services.getCoursePersistence(context);
         courses = null;
-        course = null;
     }
 
     public AccessCourse(final ICourse coursePersistence) {

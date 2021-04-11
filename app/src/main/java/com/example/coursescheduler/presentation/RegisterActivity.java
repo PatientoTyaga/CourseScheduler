@@ -10,7 +10,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.coursescheduler.Message;
 import com.example.coursescheduler.R;
+import com.example.coursescheduler.Variables;
 import com.example.coursescheduler.business.AccessStudent;
 import com.example.coursescheduler.business.Validator;
 import com.example.coursescheduler.business.exceptions.ExistingAccountException;
@@ -56,10 +58,10 @@ public class RegisterActivity extends AppCompatActivity {
 
                         try{
                             if(!accountExists(studentList, studentID)) {
-                                Log.i("myTag", "creating account");
+                                Log.i(Variables.tag, Message.create_Account);
                                 createAccount();
-                                Log.i("myTag", "account created");
-                                Toast.makeText(RegisterActivity.this, "Account created successfully", Toast.LENGTH_LONG).show();
+                                Log.i(Variables.tag, Message.account_Success);
+                                Toast.makeText(RegisterActivity.this, Message.account_Success, Toast.LENGTH_LONG).show();
                                 login();
                             }else {
                                 throw new ExistingAccountException();
@@ -98,10 +100,10 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     protected void createAccount(){
-        Log.i("myTag", "inside method createAccount");
+        Log.i(Variables.tag, "inside method createAccount");
         Student student = new Student(Integer.parseInt(studentID.getText().toString()), studentName.getText().toString());
-        Log.i("myTag", student.getStudentName() + ", " + student.getStudentID());
+        Log.i(Variables.tag, student.getStudentName() + ", " + student.getStudentID());
         accessStudents.insertStudent(student);
-        Log.i("myTag", "account created");
+        Log.i(Variables.tag, Message.account_Success);
     }
 }
