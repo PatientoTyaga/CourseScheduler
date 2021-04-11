@@ -46,15 +46,6 @@ public class AccessSchedule{
         schedulePersistence.delete(schedule);
     }
 
-
-    public Schedule fetchStudent(Schedule student) {
-        return (Schedule) schedulePersistence.fetch(schedule);
-    }
-
-    public void updateStudent (Schedule schedule){
-        schedulePersistence.update(schedule);
-    }
-
     public ArrayList<Integer> getCourseIDs(Student student){
        return schedulePersistence.getCourseIDs(student);
     }
