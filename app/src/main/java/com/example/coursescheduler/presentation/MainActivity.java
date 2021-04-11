@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editName;
     private TextView studentIdText;
     private TextView studentNameText;
-
+    private TextView userMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         try{
             studentIdText = (TextView) findViewById(R.id.studentID_main);
             studentNameText = (TextView) findViewById(R.id.studentName_main);
+            userMessage = (TextView) findViewById(R.id.userMsg_main);
             studentNameText.setText(studentName);
             studentIdText.setText(studentID);
 
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             update.setVisibility(View.INVISIBLE);
             editName.setVisibility(View.INVISIBLE);
             back.setVisibility(View.INVISIBLE);
+            userMessage.setVisibility(View.INVISIBLE);
 
             schedule.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -160,13 +162,14 @@ public class MainActivity extends AppCompatActivity {
         delete.setVisibility(View.VISIBLE);
         update.setVisibility(View.VISIBLE);
         back.setVisibility(View.VISIBLE);
-        edit.setVisibility(View.INVISIBLE);
         editName.setVisibility(View.VISIBLE);
+        userMessage.setVisibility(View.VISIBLE);
+
+        edit.setVisibility(View.INVISIBLE);
         studentIdText.setVisibility(View.INVISIBLE);
         studentNameText.setVisibility(View.INVISIBLE);
         logout.setVisibility(View.INVISIBLE);
         schedule.setVisibility(View.INVISIBLE);
-
     }
 
     protected void logoutStudent(){
