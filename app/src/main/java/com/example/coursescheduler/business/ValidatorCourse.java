@@ -8,9 +8,11 @@ import java.util.List;
 
 public class ValidatorCourse {
 
-    public boolean courseTimeOverlap(Course courseToAdd, List<Course> courseArrayList){
+    public boolean courseTimeOverlap(Course courseToAdd, ArrayList<Course> courseArrayList){
 
+        //method to ensure there is no course times overlapping
         //Takes first 4 chars from the changed courseTime that now lools like 1430-1545
+
         boolean toRet = false;
         int courseToAddStartTime=Integer.parseInt(courseToAdd.getCourseTime().replace(":","").substring(0,4));
         int courseToAddEndTime=Integer.parseInt(courseToAdd.getCourseTime().replace(":","").substring(5,9));
@@ -31,7 +33,22 @@ public class ValidatorCourse {
         return toRet;
     }
 
-    public boolean noCoursesPresentInSchedule(List<Schedule> schedule){
+    public boolean courseAlreadyAdded(Course courseToAdd, ArrayList<Integer> courseIds){
+        boolean toRet = false;
+        for(int i =0; i < courseIds.size(); i++){
+            if(courseIds.get(i) == courseToAdd.getCourseId()){
+                toRet = true;
+                break;
+            }
+        }
+
+        return toRet;
+    }
+
+
+    public boolean scheduleIsEmpty(List<Schedule> schedule){
+        //check if schedule is empty
+
         boolean toRet = false;
         if(schedule.isEmpty()){
             toRet = true;

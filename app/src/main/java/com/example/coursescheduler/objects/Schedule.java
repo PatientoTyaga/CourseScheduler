@@ -20,12 +20,6 @@ public class Schedule {
         this.courseID = courseID;
     }
 
-    /*
-    public String getScheduleName(){
-        return scheduleName;
-    }
-
-     */
 
     public int getCourseID(){
         return courseID;
@@ -35,12 +29,6 @@ public class Schedule {
         return studentID;
     }
 
-/*
-    public void setCourseID(int courseID){
-        this.courseID = courseID;
-    }
-
- */
 
     public void setStudent(int studentID){
         this.studentID = studentID;

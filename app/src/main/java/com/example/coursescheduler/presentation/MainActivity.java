@@ -191,6 +191,5 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Update successful", Toast.LENGTH_LONG).show();
             logoutStudent();
         }
-
     }
 }

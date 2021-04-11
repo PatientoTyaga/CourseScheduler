@@ -43,7 +43,7 @@ public class AccessSchedule{
     }
 
     public void deleteCourse(Schedule schedule){
-        schedulePersistence.deleteCourse(schedule);
+        schedulePersistence.delete(schedule);
     }
 
 
@@ -53,6 +53,10 @@ public class AccessSchedule{
 
     public void updateStudent (Schedule schedule){
         schedulePersistence.update(schedule);
+    }
+
+    public ArrayList<Integer> getCourseIDs(Student student){
+       return schedulePersistence.getCourseIDs(student);
     }
 
 }

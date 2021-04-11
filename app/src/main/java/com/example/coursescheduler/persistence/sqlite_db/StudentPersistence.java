@@ -10,12 +10,13 @@ import android.widget.Toast;
 import com.example.coursescheduler.business.exceptions.StudentNotFoundException;
 import com.example.coursescheduler.objects.Student;
 import com.example.coursescheduler.persistence.IDatabase;
+import com.example.coursescheduler.persistence.IStudent;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<Student>{
+public class StudentPersistence extends SQLiteOpenHelper implements IStudent {
 
     public static final String DATABASE_NAME = "schedulerDatabase.db";
     public static final String STUDENT_TABLE = "student_table";
@@ -81,6 +82,7 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
     }
 
 
+
     @Override
     public List<Student> getSequential() {
         //get list of students in database to be shown
@@ -98,6 +100,8 @@ public class StudentPersistence extends SQLiteOpenHelper implements IDatabase<St
         db.close();
         return Collections.unmodifiableList(result);
     }
+
+     
 
     @Override
     public Student fetch(Student student){
