@@ -141,14 +141,4 @@ public class SchedulePersistence extends SQLiteOpenHelper implements ISchedule{
         return result;
     }
 
-    @Override
-    public boolean update(Schedule updateObject) {
-        return false;
-    }
-
-    @Override
-    public Schedule fetch(Schedule fetchObject) {
-        return null;
-    }
-
 }
