@@ -1,6 +1,5 @@
 package com.example.coursescheduler.persistence;
 
-import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Student;
 
 import java.util.List;

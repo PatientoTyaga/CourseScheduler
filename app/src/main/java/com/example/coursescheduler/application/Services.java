@@ -3,7 +3,6 @@ package com.example.coursescheduler.application;
 import android.content.Context;
 
 import com.example.coursescheduler.persistence.ICourse;
-import com.example.coursescheduler.persistence.IDatabase;
 import com.example.coursescheduler.persistence.ISchedule;
 import com.example.coursescheduler.persistence.IStudent;
 import com.example.coursescheduler.persistence.sqlite_db.CoursePersistence;

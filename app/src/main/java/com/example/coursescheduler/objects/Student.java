@@ -22,8 +22,6 @@ public class Student {
     public void setStudentID(int id){
         this.studentID = id;
     }
-
-    //properties
     public int getStudentID() {
         return studentID;
     }
@@ -31,7 +29,6 @@ public class Student {
     public void setStudentName(String name){
         this.studentName = name;
     }
-
     public String getStudentName() {
         return studentName;
     }

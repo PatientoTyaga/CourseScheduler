@@ -12,7 +12,7 @@ import com.example.coursescheduler.persistence.ISchedule;
 import java.util.*;
 
 public class AccessSchedule{
-    private ISchedule schedulePersistence;
+    private final ISchedule schedulePersistence;
     private List<Schedule> scheduleList;
     private Schedule schedule;
 
@@ -29,7 +29,7 @@ public class AccessSchedule{
 
 
     public List<Schedule> getScheduleSequential(final Student student) {
-        //Log.i("myTag", "I am here at AccessSchedule");
+        Log.i("myTag", "Calling getScheduleSequential in AccessSchedule");
         scheduleList = schedulePersistence.getSequential(student);
         return Collections.unmodifiableList(scheduleList);
     }
@@ -44,15 +44,6 @@ public class AccessSchedule{
 
     public void deleteCourse(Schedule schedule){
         schedulePersistence.delete(schedule);
-    }
-
-
-    public Schedule fetchStudent(Schedule student) {
-        return (Schedule) schedulePersistence.fetch(schedule);
-    }
-
-    public void updateStudent (Schedule schedule){
-        schedulePersistence.update(schedule);
     }
 
     public ArrayList<Integer> getCourseIDs(Student student){
