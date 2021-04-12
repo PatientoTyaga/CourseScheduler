@@ -67,5 +67,6 @@ public class AccessStudentIT {
         final Student su = new Student(7834177, "Guannan dan");
         accessStudent.updateStudent(su);
         assertEquals(7834177,accessStudent.fetchStudent(su).getStudentId());
+        assertEquals("Guannan dan",accessStudent.fetchStudent(su).getStudentName());
     }
 }
