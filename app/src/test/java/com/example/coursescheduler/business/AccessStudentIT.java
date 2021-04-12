@@ -27,7 +27,7 @@ public class AccessStudentIT {
     @Before
     public void setUp() throws IOException {
         final LoginActivity loginActivity = Robolectric.buildActivity(LoginActivity.class).create().get();
-        this.accessStudent = new AccessCourse(loginActivity.getApplicationContext());
+        this.accessStudent = new AccessStudent(loginActivity.getApplicationContext());
     }
     @Test
     public void testListStudent() {
@@ -44,13 +44,13 @@ public class AccessStudentIT {
         final ArrayList<Student> studentArrayList = new ArrayList<>();
         final Student student = new Student(7834178, "Guannan zhu");
         studentArrayList.addAll(accessStudent.getStudentSequential());
-        assertEquals(7834178, accessStudent.fetchStudent(student).getStudentId());
+        assertEquals(7834178, accessStudent.fetchStudent(student).getStudentID());
     }
     @Test
     public void testinsertStudent(){
         final Student s = new Student(7834179, "Guannan wang");
         accessStudent.insertStudent(s);
-        assertEquals(7834179,accessStudent.fetchStudent(s).getStudentId());
+        assertEquals(7834179,accessStudent.fetchStudent(s).getStudentID());
     }
     @Test
     public void testdeleteStudent(){
@@ -66,7 +66,7 @@ public class AccessStudentIT {
     public void testupdateStudent(){
         final Student su = new Student(7834177, "Guannan dan");
         accessStudent.updateStudent(su);
-        assertEquals(7834177,accessStudent.fetchStudent(su).getStudentId());
+        assertEquals(7834177,accessStudent.fetchStudent(su).getStudentID());
         assertEquals("Guannan dan",accessStudent.fetchStudent(su).getStudentName());
     }
 }

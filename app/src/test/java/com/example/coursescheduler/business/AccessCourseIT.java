@@ -60,7 +60,7 @@ public class AccessCourseIT {
         course = courseArrayList.get(0);
         assertEquals(1010,(course.getCourseId()));
 
-        accessCourse.deleteCourse(course);
+        //accessCourse.deleteCourse(course);
 
         //assertEquals(null,accessCourse.fetchStudent(course));
     }
