@@ -61,12 +61,10 @@ public class AccessStudentIT {
     }
     @Test
     public void testDeleteStudent(){
-        final ArrayList<Student> studentArrayList = new ArrayList<>();
         final Student student = new Student(7784215, "Simran"); //add a student to the table
         accessStudent.insertStudent(student);
         accessStudent.deleteStudent(student); //delete the student from the table
-
-        assertNull(accessStudent.fetchStudent(student));
+        assertNull(accessStudent.fetchStudent(student).getStudentName());
     }
     @Test
     public void testUpdateStudent(){

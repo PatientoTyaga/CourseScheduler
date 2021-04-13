@@ -1,14 +1,12 @@
 package com.example.coursescheduler.persistence;
 
-import android.database.sqlite.SQLiteDatabase;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import com.example.coursescheduler.objects.Student;
 
-public class StudentPersistenceStub implements IDatabase<Student> {
+public class StudentPersistenceStub implements IStudent {
     private final List<Student> students = new ArrayList<>();
 
     public StudentPersistenceStub() {
@@ -18,10 +16,6 @@ public class StudentPersistenceStub implements IDatabase<Student> {
         students.add(new Student(7845678, "Arnie Pye"));
         students.add(new Student(7812345, "Mary Bailey"));
     }
-
-//    @Override
-//    public void onCreate(SQLiteDatabase db) {
-//    }
 
     @Override
     public void insert(Student currentStudent) {

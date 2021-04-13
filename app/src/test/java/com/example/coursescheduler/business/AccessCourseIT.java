@@ -42,16 +42,10 @@ public class AccessCourseIT {
         assertEquals(1010,(course.getCourseId()));
         System.out.println("Finished test AccessCourses");
     }
-    @Test
-    public void testFetchStudent() {
-        final Course course = new Course(1010, "INTRO TO COMP SCI", "9:30-10:45", "TR");
-        assertEquals(1010, accessCourse.fetchStudent(course).getCourseId());
-    }
+
     @Test
     public void testInsertCourse(){
-        final Course c = new Course(1012, "INTRO TO COMP SCI PY", "9:30-10:45", "TR");
-        accessCourse.insertCourse(c);
-        assertEquals(1012,accessCourse.fetchStudent(c).getCourseId());
+        assertEquals(1010,accessCourse.getCourseSequential().get(0).getCourseId()); //since the first entry in the courseList is 1010
     }
 
     @After

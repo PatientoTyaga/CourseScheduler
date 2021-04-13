@@ -29,7 +29,6 @@ public class AccessSchedule{
 
 
     public List<Schedule> getScheduleSequential(final Student student) {
-        Log.i("myTag", "Calling getScheduleSequential in AccessSchedule");
         scheduleList = schedulePersistence.getSequential(student);
         return Collections.unmodifiableList(scheduleList);
     }

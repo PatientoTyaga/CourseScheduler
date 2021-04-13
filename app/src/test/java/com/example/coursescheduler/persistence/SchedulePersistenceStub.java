@@ -36,19 +36,6 @@ public class SchedulePersistenceStub implements ISchedule {
     }
 
     @Override
-    public boolean update(Schedule currentSchedule) {
-        int index;
-
-        index = schedule.indexOf(currentSchedule);
-        if (index >= 0)
-        {
-            schedule.set(index, currentSchedule);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     public boolean deleteSchedule(Student deleteObject){
         for(int i = 0; i<schedule.size(); i++){
             if (schedule.get(i).getStudentID()==deleteObject.getStudentID())
@@ -59,7 +46,12 @@ public class SchedulePersistenceStub implements ISchedule {
     }
 
     @Override
-    public boolean deleteCourse(Schedule deleteObject) {
+    public ArrayList<Integer> getCourseIDs(Student student) {
+        return null;
+    }
+
+    @Override
+    public boolean delete(Schedule deleteObject) {
         int index;
 
         index = schedule.indexOf(deleteObject);

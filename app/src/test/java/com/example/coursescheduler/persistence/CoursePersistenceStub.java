@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import com.example.coursescheduler.objects.Course;
 
-public class CoursePersistenceStub implements IDatabase<Course> {
+public class CoursePersistenceStub implements ICourse {
     private final List<Course> courses = new ArrayList<>();
 
     public CoursePersistenceStub() {
@@ -21,22 +21,26 @@ public class CoursePersistenceStub implements IDatabase<Course> {
     }
 
     @Override
-    public void insert(Course currentCourse) {
-        // don't bother checking for duplicates
-        courses.add(currentCourse);
+    public ArrayList<Course> getCourses(ArrayList<Integer> courseIds) {
+        ArrayList<Course> coursesArrayList = new ArrayList<Course>();
+
+        courseIds.add(3010);
+        courseIds.add(3020);
+        courseIds.add(3350);
+        courseIds.add(3380);
+
+        coursesArrayList.add(new Course(courseIds.get(0), "Distributed Computing","4","5"));
+        coursesArrayList.add(new Course(courseIds.get(1), "Human-Computer Interaction","2","5"));
+        coursesArrayList.add(new Course(courseIds.get(2), "Software Engineering I","5","3"));
+        coursesArrayList.add(new Course(courseIds.get(3), "Databases","2","1"));
+
+        return coursesArrayList;
     }
 
     @Override
-    public boolean update(Course currentCourse) {
-        int index;
-
-        index = courses.indexOf(currentCourse);
-        if (index >= 0)
-        {
-            courses.set(index, currentCourse);
-            return true;
-        }
-        return false;
+    public void insert(Course currentCourse) {
+        // don't bother checking for duplicates
+        courses.add(currentCourse);
     }
 
     @Override
