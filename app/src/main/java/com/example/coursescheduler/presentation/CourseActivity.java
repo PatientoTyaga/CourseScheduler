@@ -12,10 +12,18 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.coursescheduler.Message;
+import com.example.coursescheduler.Variables;
 import com.example.coursescheduler.business.AccessCourse;
 import com.example.coursescheduler.R;
+import com.example.coursescheduler.business.AccessSchedule;
+import com.example.coursescheduler.business.ValidatorCourse;
+import com.example.coursescheduler.business.exceptions.DuplicateCourseException;
 import com.example.coursescheduler.objects.Course;
+import com.example.coursescheduler.objects.Schedule;
+import com.example.coursescheduler.objects.Student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +31,19 @@ import java.util.List;
 public class CourseActivity extends AppCompatActivity {
 
     private AccessCourse accessCourse;
+    private ValidatorCourse validatorCourse;
+    private AccessSchedule accessSchedule;
     private List<Course> courseList;
     private ArrayAdapter<Course> courseArrayAdapter;
     private int selectedCoursePos = -1;
     private String studentID;
     private String studentName;
-    private static ArrayList<Course> courseArrayList = new ArrayList<>();
+    private static final ArrayList<Course> courseArrayList = new ArrayList<>();
     private Button addCourseButton;
+    private Student currentStudent;
+    private List<Schedule> schedule;
+    private ArrayList<Integer> courseIds;
+    private ArrayList<Course> courses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +52,17 @@ public class CourseActivity extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         if(b != null) {
-            studentID = b.getString("studentID");
-            studentName = b.getString("studentName");
+            studentID = b.getString(Variables.student_ID);
+            studentName = b.getString(Variables.student_Name);
+            currentStudent = new Student(Integer.parseInt(studentID), studentName);
         }
 
         accessCourse = new AccessCourse(this);
+        validatorCourse = new ValidatorCourse();
+        accessSchedule = new AccessSchedule(this);
+        schedule = new ArrayList<>();
+        courseIds = new ArrayList<>();
+        courses = new ArrayList<>();
 
         try {
             addCourseButton = (Button) findViewById(R.id.addCourseBtn_course);
@@ -51,7 +71,10 @@ public class CourseActivity extends AppCompatActivity {
                 getCourseList();
             }
             courseList.addAll(accessCourse.getCourseSequential());
-            Log.i("myTag", "id: "+courseList.get(0).getCourseId()+", name: "+courseList.get(0).getCourseName()+", time: "+courseList.get(0).getCourseTime()+", day: "+courseList.get(0).getCourseDay());
+
+            Log.i(Variables.tag, Variables.id + ": " + courseList.get(0).getCourseId() + ", " + Variables.name + ": " + courseList.get(0).getCourseName()
+                    + ", " + Variables.time + ": " + courseList.get(0).getCourseTime() + ", " + Variables.day + ": " + courseList.get(0).getCourseDay());
+
             courseArrayAdapter = new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, courseList) {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
@@ -80,18 +103,46 @@ public class CourseActivity extends AppCompatActivity {
                         addCourseButton.setEnabled(true);
                         selectedCoursePos = position;
                         Course selectedCourse = selectCourseAtPosition(position);
+
+                        schedule = accessSchedule.getScheduleSequential(currentStudent);
+
                         addCourseButton.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
                                 // Do something in response to button click
-                                Intent courseIntent = new Intent(CourseActivity.this, ScheduleActivity.class); //Goes to ScheduleActivity Page
-                                courseIntent.putExtra("courseID", String.valueOf(selectedCourse.getCourseId()));
-                                courseIntent.putExtra("courseName", selectedCourse.getCourseName());
-                                courseIntent.putExtra("courseTime", selectedCourse.getCourseTime());
-                                courseIntent.putExtra("courseDay", selectedCourse.getCourseDay());
-                                courseIntent.putExtra("studentID", studentID);
-                                courseIntent.putExtra("studentName", studentName);
-                                startActivity(courseIntent);
-                                finish();
+
+                                if(validatorCourse.scheduleIsEmpty(schedule)){
+                                    Intent courseIntent = new Intent(CourseActivity.this, ScheduleActivity.class); //Goes to ScheduleActivity Page
+                                    courseIntent.putExtra(Variables.course_ID, String.valueOf(selectedCourse.getCourseId()));
+                                    courseIntent.putExtra(Variables.student_ID, studentID);
+                                    courseIntent.putExtra(Variables.student_Name, studentName);
+                                    startActivity(courseIntent);
+                                    finish();
+                                }else{
+                                    Log.i(Variables.tag, "scheduleList: "+schedule);
+
+                                    try{
+                                        courseIds = accessSchedule.getCourseIDs(currentStudent);
+                                        courses = accessCourse.getCourses(courseIds);
+
+                                        if(!validatorCourse.courseAlreadyAdded(selectedCourse,courseIds)){
+                                            if(!validatorCourse.courseTimeOverlap(selectedCourse,courses)){
+                                                Intent courseIntent = new Intent(CourseActivity.this, ScheduleActivity.class); //Goes to ScheduleActivity Page
+                                                courseIntent.putExtra(Variables.course_ID, String.valueOf(selectedCourse.getCourseId()));
+                                                courseIntent.putExtra(Variables.student_ID, studentID);
+                                                courseIntent.putExtra(Variables.student_Name, studentName);
+                                                startActivity(courseIntent);
+                                                finish();
+                                            }else{
+                                                throw new DuplicateCourseException();
+                                            }
+                                        }else{
+                                            throw new DuplicateCourseException(Message.duplicate_Course);
+                                        }
+                                    }catch (DuplicateCourseException e){
+                                        Toast.makeText(CourseActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                                    }
+
+                                }//else
                             }
                         });
                     }
@@ -109,17 +160,20 @@ public class CourseActivity extends AppCompatActivity {
         Course course2 = new Course(2080,"Analysis of Algorithms",  "10:30-11:30", "TR");
         Course course3 = new Course(2150,"Object Orientation",  "10:30-11:30", "MWF");
         Course course4 = new Course(3020, "Human-Computer Interaction 1", "11:20-12:30", "TR");
+        Course course5 = new Course(3820,"Bio Informatics",  "10:30-11:30", "MWF");
 
         courseArrayList.add(course1);
         courseArrayList.add(course2);
         courseArrayList.add(course3);
         courseArrayList.add(course4);
+        courseArrayList.add(course5);
+
 
         for(Course c : courseArrayList){
             accessCourse.insertCourse(c);
         }
 
-        Log.i("myTag", "courseList: " + accessCourse.getCourseSequential());
+        Log.i(Variables.tag, "courseList: " + accessCourse.getCourseSequential());
     }
 
     public Course selectCourseAtPosition(int position) {

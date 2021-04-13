@@ -10,11 +10,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.basgeekball.awesomevalidation.AwesomeValidation;
-import com.basgeekball.awesomevalidation.ValidationStyle;
-import com.basgeekball.awesomevalidation.utility.RegexTemplate;
+import com.example.coursescheduler.Message;
 import com.example.coursescheduler.R;
+import com.example.coursescheduler.Variables;
 import com.example.coursescheduler.business.AccessStudent;
+import com.example.coursescheduler.business.Validator;
+import com.example.coursescheduler.business.exceptions.ExistingAccountException;
 import com.example.coursescheduler.objects.Student;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    private Validator validator;
     private EditText studentName;
     private EditText studentID;
     private Button register;
@@ -29,14 +31,13 @@ public class RegisterActivity extends AppCompatActivity {
     private List<Student> studentList;
     private AccessStudent accessStudents;
 
-    AwesomeValidation awesomeValidation;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
         accessStudents = new AccessStudent(this);
+        validator = new Validator();
 
         try {
             studentList = new ArrayList<>();
@@ -47,40 +48,29 @@ public class RegisterActivity extends AppCompatActivity {
             register = findViewById(R.id.registerBtn_register);
             login = findViewById(R.id.loginBtn_register);
 
-            String inputName = studentName.getText().toString();
-            String inputID = studentID.getText().toString();
 
-            //initialize validation style
-            awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
 
-            //adding validation for student name
-            awesomeValidation.addValidation(this,R.id.studentName_register,
-                    "^[a-zA-Z]*$",R.string.invalid_name);
-
-            //adding validation for student id
-            awesomeValidation.addValidation(this,R.id.studentID_register,
-                    "^[0-9]{7}",R.string.invalid_id);
 
             register.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (inputName == null || inputID == null) {
-                        Toast.makeText(RegisterActivity.this, "Please enter both student name and ID", Toast.LENGTH_LONG).show();
-                    } else {
-                        if(awesomeValidation.validate()) {
+                    if(validator.validateNameAndIdEntry(studentName,studentID)) {
 
-                            if(!accountExists()) {
-                                Log.i("myTag", "creating account");
+                        try{
+                            if(!accountExists(studentList, studentID)) {
+                                Log.i(Variables.tag, Message.create_Account);
                                 createAccount();
-                                Log.i("myTag", "account created");
-                                Toast.makeText(RegisterActivity.this, "Account created successfully", Toast.LENGTH_LONG).show();
+                                Log.i(Variables.tag, Message.account_Success);
+                                Toast.makeText(RegisterActivity.this, Message.account_Success, Toast.LENGTH_LONG).show();
                                 login();
                             }else {
-                                Toast.makeText(RegisterActivity.this, "Sorry, an account with the provided ID already exists. Please try loggin in with that ID or try using another ID", Toast.LENGTH_LONG).show();
+                                throw new ExistingAccountException();
                             }
-
+                        }catch (ExistingAccountException e){
+                            Toast.makeText(RegisterActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
                         }
                     }
+
                 }
             });
 
@@ -103,28 +93,17 @@ public class RegisterActivity extends AppCompatActivity {
         finish();
     }
 
-    private boolean accountExists() {
+    private boolean accountExists(List<Student> students, EditText studentID) {
         // add loop to check the input name match the database name
-        boolean valid = false;
-        for(Student s: studentList){
-            Log.i("myTag", s.getStudentName() + ", " + s.getStudentID());
-            if(s.getStudentID() == Integer.parseInt(studentID.getText().toString())){
-                valid = true;
-                break;
-            }
-            else{
-                valid = false;
-            }
-        }
-        return valid;
+        return(validator.accountExists(students,studentID));
     }
 
 
     protected void createAccount(){
-        Log.i("myTag", "inside method createAccount");
+        Log.i(Variables.tag, "inside method createAccount");
         Student student = new Student(Integer.parseInt(studentID.getText().toString()), studentName.getText().toString());
-        Log.i("myTag", student.getStudentName() + ", " + student.getStudentID());
+        Log.i(Variables.tag, student.getStudentName() + ", " + student.getStudentID());
         accessStudents.insertStudent(student);
-        Log.i("myTag", "account created");
+        Log.i(Variables.tag, Message.account_Success);
     }
 }

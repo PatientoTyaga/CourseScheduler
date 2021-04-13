@@ -8,7 +8,6 @@ import java.util.Objects;
 
 public class Schedule {
 
-   // private String scheduleName;
     private int studentID;
     private int courseID;
 
@@ -20,12 +19,6 @@ public class Schedule {
         this.courseID = courseID;
     }
 
-    /*
-    public String getScheduleName(){
-        return scheduleName;
-    }
-
-     */
 
     public int getCourseID(){
         return courseID;
@@ -34,13 +27,6 @@ public class Schedule {
     public int getStudentID(){
         return studentID;
     }
-
-/*
-    public void setCourseID(int courseID){
-        this.courseID = courseID;
-    }
-
- */
 
     public void setStudent(int studentID){
         this.studentID = studentID;
