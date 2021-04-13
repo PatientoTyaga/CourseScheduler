@@ -1,24 +1,22 @@
 package com.example.coursescheduler.objects;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import java.util.Objects;
 
 public class Schedule {
 
+    private String scheduleName;
     private int studentID;
     private int courseID;
 
-    public Schedule(){}
-
-
-    public Schedule(int studentID, int courseID){
+    public Schedule(String scheduleName, int studentID, int courseID){
+        this.scheduleName = scheduleName;
         this.studentID = studentID;
         this.courseID = courseID;
     }
 
+    public String getScheduleName(){
+        return scheduleName;
+    }
 
     public int getCourseID(){
         return courseID;
@@ -28,19 +26,30 @@ public class Schedule {
         return studentID;
     }
 
+//    public void setScheduleID(int scheduleID){
+//        this.scheduleID = scheduleID;
+//    }
+
+    public void setScheduleName(String scheduleName){
+        this.scheduleName = scheduleName;
+    }
+
+    public void setCourseID(int courseID){
+        this.courseID = courseID;
+    }
+
     public void setStudent(int studentID){
         this.studentID = studentID;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public boolean equals(final Schedule o) {
-        return Objects.equals(studentID, o.studentID) &&
+        return Objects.equals(scheduleName, o.scheduleName) &&
+                Objects.equals(studentID, o.studentID) &&
                 Objects.equals(courseID, o.courseID);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public int hashCode() {
-        return Objects.hash(studentID, courseID);
+        return Objects.hash(scheduleName, studentID, courseID);
     }
 }

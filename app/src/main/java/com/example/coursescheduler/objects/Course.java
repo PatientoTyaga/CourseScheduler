@@ -1,9 +1,5 @@
 package com.example.coursescheduler.objects;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import java.util.Objects;
 
 public class Course {
@@ -51,7 +47,6 @@ public class Course {
         this.courseDay = courseDay;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public boolean equals(final Course o) {
 
         return Objects.equals(courseName, o.courseName) &&
@@ -60,7 +55,6 @@ public class Course {
                 Objects.equals(courseDay, o.courseDay);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public int hashCode() {
         return Objects.hash(courseName, courseId, courseTime, courseDay);
     }

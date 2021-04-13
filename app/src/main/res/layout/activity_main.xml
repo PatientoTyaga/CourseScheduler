@@ -26,7 +26,7 @@
         android:id="@+id/scheduleBtn_main"
         android:layout_width="232dp"
         android:layout_height="57dp"
-        android:text="@string/openSchedule"
+        android:text="@string/newSchedule"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -131,18 +131,6 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.626" />
-
-    <TextView
-        android:id="@+id/userMsg_main"
-        android:layout_width="328dp"
-        android:layout_height="52dp"
-        android:text="Warning: Updating or Deleting student will make permanent changes to your account. Please contact at 204-123-4567 for any issues."
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.527" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

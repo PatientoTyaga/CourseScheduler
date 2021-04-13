@@ -1,34 +1,42 @@
 package com.example.coursescheduler.objects;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class CourseTest {
 
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
+
     @Test
     public void constructorTest(){
-        Course newCourse = new Course(1010, "INTRO TO COMP SCI", "9:30-10:45", "TR");
+        Course newCourse = new Course("Intro to COMP", "COMP1010", "1", "MWF");
         assertNotNull(newCourse);
-        assertTrue("INTRO TO COMP SCI".equals(newCourse.getCourseName()));
-        assertEquals(1010, newCourse.getCourseId());
-        assertTrue("9:30-10:45".equals(newCourse.getCourseTime()));
-        assertTrue("TR".equals(newCourse.getCourseDay()));
+        assertTrue("Intro to COMP".equals(newCourse.getCourseName()));
+        assertTrue("COMP1010".equals(newCourse.getCourseId()));
+        assertTrue("1".equals(newCourse.getCourseTime()));
 
     }
 
 
     @Test
     public void testEquals() {
-        Course newCourse1 = new Course(1010, "INTRO TO COMP SCI", "9:30-10:45", "TR");
-        Course newCourse2 = new Course(1010, "INTRO TO COMP SCI", "9:30-10:45", "TR");
-        Course newCourse3 = new Course(1010, "INTRO TO COMP SCI", "9:30-10:30", "TR");
-
+        Course newCourse1 = new Course("Intro to COMP", "COMP1010", "1", "MWF");
+        Course newCourse2 = new Course("Intro to COMP", "COMP1010", "1", "MWF");
+        Course newCourse3 = new Course("Intro to COMP", "COMP1010", "2", "MWF");
         assertNotNull(newCourse1);
         assertNotNull(newCourse2);
         assertFalse(newCourse1.equals(newCourse3));
         assertTrue(newCourse1.getCourseName().equals(newCourse2.getCourseName()));
-        assertEquals(newCourse1.getCourseId(),(newCourse2.getCourseId()));
+        assertTrue(newCourse1.getCourseId().equals(newCourse2.getCourseId()));
         assertTrue(newCourse1.getCourseTime().equals(newCourse2.getCourseTime()));
         assertTrue(newCourse1.getCourseDay().equals(newCourse2.getCourseDay()));
 
@@ -36,10 +44,9 @@ public class CourseTest {
 
     @Test
     public void testHashCode() {
-        Course newCourse1 = new Course(1010, "INTRO TO COMP SCI", "9:30-10:45", "TR");
-        Course newCourse2 = new Course(1010, "INTRO TO COMP SCI", "9:30-10:45", "TR");
-        Course newCourse3 = new Course(1010, "INTRO TO COMP SCI", "9:30-10:30", "TR");
-
+        Course newCourse1 = new Course("Intro to COMP", "COMP1010", "1", "MWF");
+        Course newCourse2 = new Course("Intro to COMP", "COMP1010", "1", "MWF");
+        Course newCourse3 = new Course("Intro to COMP", "COMP1010", "2", "MWF");
         assertNotNull(newCourse1);
         assertNotNull(newCourse2);
         assertEquals(newCourse1.hashCode(),newCourse2.hashCode());

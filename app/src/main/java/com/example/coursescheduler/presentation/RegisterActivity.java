@@ -10,12 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.coursescheduler.Message;
 import com.example.coursescheduler.R;
-import com.example.coursescheduler.Variables;
 import com.example.coursescheduler.business.AccessStudent;
-import com.example.coursescheduler.business.Validator;
-import com.example.coursescheduler.business.exceptions.ExistingAccountException;
 import com.example.coursescheduler.objects.Student;
 
 import java.util.ArrayList;
@@ -23,7 +19,6 @@ import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private Validator validator;
     private EditText studentName;
     private EditText studentID;
     private Button register;
@@ -37,7 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         accessStudents = new AccessStudent(this);
-        validator = new Validator();
 
         try {
             studentList = new ArrayList<>();
@@ -48,29 +42,25 @@ public class RegisterActivity extends AppCompatActivity {
             register = findViewById(R.id.registerBtn_register);
             login = findViewById(R.id.loginBtn_register);
 
-
-
+            String inputName = studentName.getText().toString();
+            String inputID = studentID.getText().toString();
 
             register.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(validator.validateNameAndIdEntry(studentName,studentID)) {
-
-                        try{
-                            if(!accountExists(studentList, studentID)) {
-                                Log.i(Variables.tag, Message.create_Account);
-                                createAccount();
-                                Log.i(Variables.tag, Message.account_Success);
-                                Toast.makeText(RegisterActivity.this, Message.account_Success, Toast.LENGTH_LONG).show();
-                                login();
-                            }else {
-                                throw new ExistingAccountException();
-                            }
-                        }catch (ExistingAccountException e){
-                            Toast.makeText(RegisterActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                    if (inputName == null || inputID == null) {
+                        Toast.makeText(RegisterActivity.this, "Please enter both student name and ID", Toast.LENGTH_LONG).show();
+                    } else {
+                        if (!accountExists()) {
+                            Log.i("myTag", "creating account");
+                            createAccount();
+                            Log.i("myTag", "account created");
+                            Toast.makeText(RegisterActivity.this, "Account created successfully", Toast.LENGTH_LONG).show();
+                            login();
+                        } else {
+                            Toast.makeText(RegisterActivity.this, "Account already exists", Toast.LENGTH_LONG).show();
                         }
                     }
-
                 }
             });
 
@@ -90,20 +80,29 @@ public class RegisterActivity extends AppCompatActivity {
         //to Login activity
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
-        finish();
     }
 
-    private boolean accountExists(List<Student> students, EditText studentID) {
+    private boolean accountExists() {
         // add loop to check the input name match the database name
-        return(validator.accountExists(students,studentID));
+        boolean valid = false;
+        for(Student s: studentList){
+            Log.i("myTag", s.getStudentName() + ", " + s.getStudentID());
+            if(s.getStudentID() == Integer.parseInt(studentID.getText().toString())){
+                valid = true;
+                break;
+            }
+            else{
+                valid = false;
+            }
+        }
+        return valid;
     }
-
 
     protected void createAccount(){
-        Log.i(Variables.tag, "inside method createAccount");
+        Log.i("myTag", "inside method createAccount");
         Student student = new Student(Integer.parseInt(studentID.getText().toString()), studentName.getText().toString());
-        Log.i(Variables.tag, student.getStudentName() + ", " + student.getStudentID());
+        Log.i("myTag", student.getStudentName() + ", " + student.getStudentID());
         accessStudents.insertStudent(student);
-        Log.i(Variables.tag, Message.account_Success);
+        Log.i("myTag", "account created");
     }
 }
