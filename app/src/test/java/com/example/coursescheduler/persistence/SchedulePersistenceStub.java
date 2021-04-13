@@ -9,10 +9,9 @@ import com.example.coursescheduler.objects.Student;
 
 
 public class SchedulePersistenceStub implements ISchedule {
-    private List<Schedule> schedule;
+    private final List<Schedule> schedule = new ArrayList<>();
 
     public SchedulePersistenceStub() {
-        this.schedule = new ArrayList<>();
 
         schedule.add(new Schedule(7834177,3010));
         schedule.add(new Schedule( 7834567,3020));

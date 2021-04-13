@@ -9,10 +9,9 @@ import java.util.List;
 import com.example.coursescheduler.objects.Student;
 
 public class StudentPersistenceStub implements IDatabase<Student> {
-    private List<Student> students;
+    private final List<Student> students = new ArrayList<>();
 
     public StudentPersistenceStub() {
-        this.students = new ArrayList<>();
 
         students.add(new Student(7834177, "Gary Chalmers"));
         students.add(new Student(7834567, "Selma Bouvier"));

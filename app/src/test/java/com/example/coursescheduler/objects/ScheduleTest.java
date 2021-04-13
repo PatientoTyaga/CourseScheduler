@@ -16,7 +16,6 @@ public class ScheduleTest {
         assertNotNull(newSchedule);
         assertEquals(1010,(newSchedule.getCourseID()));
         assertEquals(7888888,(newSchedule.getStudentID()));
-//        assertTrue("Schedule1".equals(newSchedule.getScheduleName()));
 
     }
 
