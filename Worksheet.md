@@ -8,3 +8,7 @@ As of now we don’t have anything that we need to fix or change. There might be
 
 Discuss a Feature or User Story that was cut/re-prioritized. When did you change the priority of a Feature or User Story? Why was it re-prioritized? Provide a link to the Feature or User Story. This can be from any iteration.
 We had to cut quite a few features. We had some ideas involving a calendar like show due dates for assignments for the courses student is registered in, add your own remainders in the calendar. Also attach images or text to the courses you registered in. Due to time constraints we had we had to abandon the idea of implementing those features at the end of iteration 2.
+
+
+
+![](Course_Schedule_Velocity.png)
