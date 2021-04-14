@@ -13,7 +13,6 @@ public class Schedule {
 
     public Schedule(){}
 
-
     public Schedule(int studentID, int courseID){
         this.studentID = studentID;
         this.courseID = courseID;
