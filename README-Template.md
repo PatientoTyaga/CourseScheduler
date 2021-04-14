@@ -1,6 +1,7 @@
-# Project Title
+# Course Scheduler
 
-One Paragraph of project description goes here
+Course scheduler is an app designed to simplify course selection and registering process for University of Manitoba students.
+The app allows the user to create schedules with different courses and gives an opportunity to decide what schedule a student will prefer more for their fall and winter terms.
 
 ## Getting Started
 
