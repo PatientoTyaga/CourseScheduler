@@ -13,6 +13,10 @@ This layer proves the method on how to contain logic, when to load data from Dat
 It acts as a "transit layer" between the UI and the database layer, providing method that we can use to interact with the database.
 It not only can transfer the database into instance and show in UI if needeed. But also transfer UI input instance to update database.
 
+Validator and ValidatorCourse are classes that take care of validation. Validator makes sure that the student entries such as name and student ids are being added correctly,
+making sure that invalid characters aren't being added. ValidatorCourse takes care of validation for course where it checks for timeconflict in courses and making sure
+a course isn't added twice.
+
 
 *Data Layers (Persistence)*:	
 IDatabase: Able to display object list on MainActivity from the HSQLdatabase.
