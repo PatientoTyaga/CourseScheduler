@@ -7,8 +7,11 @@
 
 
 3. Discuss a Feature or User Story that was cut/re-prioritized. When did you change the priority of a Feature or User Story? Why was it re-prioritized? Provide a link to the Feature or User Story. This can be from any iteration.
-    * We had to cut quite a few features. We had some ideas involving a calendar like show due dates for assignments for the courses student is registered in, add your own remainders in the calendar. Also attach images or text to the courses you registered in. Due to time constraints we had we had to abandon the idea of implementing those features at the end of iteration 2.
-
+    * We had to cut quite a few features. We had some ideas involving a calendar like show due dates for assignments for the courses student is registered in, add your own remainders in the calendar. Also attach images or text to the courses you registered in. Share your schedule with someone. Due to time constraints we had to abandon the idea of implementing those features at the end of iteration 2.
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/3
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/17
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/23
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/12
 
 
 ![](Course_Schedule_Velocity.png)
