@@ -23,6 +23,8 @@ public class Validator {
 
     public boolean validateNameAndIdEntry(EditText studentName, EditText studentID){
 
+        //checks if name and id fields aren't empty and checks if they are of the correct required format
+
         boolean toRet = false;
         boolean nameFieldIsEmpty = entryFieldIsEmpty(studentName, Variables.student_Name);
         boolean idFieldIsEmpty = entryFieldIsEmpty(studentID, Variables.student_ID);
@@ -40,7 +42,9 @@ public class Validator {
         return toRet;
     }
 
-    public boolean entryFieldIsEmpty(EditText editText, String identifier){
+    private boolean entryFieldIsEmpty(EditText editText, String identifier){
+        //checks if the name and id field are filled or left empty
+
         boolean toRet = false;
 
         try{
@@ -62,7 +66,7 @@ public class Validator {
     }
 
 
-    public boolean correctEntry(EditText editText, String identifier) {
+    private boolean correctEntry(EditText editText, String identifier) {
         //checks if ID or Name is of the correct format
 
         boolean toRet = false;
@@ -90,6 +94,8 @@ public class Validator {
     }
 
     public boolean validateStudent(Context context, Student student, EditText studentName){
+        //check if student name is present in database
+
         boolean toRet = false;
 
         try{
@@ -106,6 +112,8 @@ public class Validator {
     }
 
     public boolean validateStudentUpdate(EditText studentName){
+        //check if student name to be updated is of the correct format before perfoming update
+
         boolean toRet = false;
         boolean studentFieldIsEmpty = entryFieldIsEmpty(studentName, Variables.student_Name);
         boolean correctEntry = correctEntry(studentName, Variables.student_Name);

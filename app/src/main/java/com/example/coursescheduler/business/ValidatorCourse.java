@@ -34,6 +34,9 @@ public class ValidatorCourse {
     }
 
     public boolean courseAlreadyAdded(Course courseToAdd, ArrayList<Integer> courseIds){
+
+        //checks if course has already been added to schedule
+
         boolean toRet = false;
         for(int i =0; i < courseIds.size(); i++){
             if(courseIds.get(i) == courseToAdd.getCourseId()){
