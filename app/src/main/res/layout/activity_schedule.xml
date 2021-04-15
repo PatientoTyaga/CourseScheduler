@@ -20,8 +20,9 @@
 
     <ListView
         android:id="@+id/scheduleList_schedule"
-        android:layout_width="396dp"
-        android:layout_height="161dp"
+        android:layout_width="368dp"
+        android:layout_height="243dp"
+        android:choiceMode="singleChoice"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
@@ -30,63 +31,52 @@
         app:layout_constraintVertical_bias="0.11"
         tools:ignore="MissingConstraints" />
 
-<!--    <ListView-->
-<!--        android:id="@+id/courseList_schedule"-->
-<!--        android:layout_width="282dp"-->
-<!--        android:layout_height="159dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.496"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.409"-->
-<!--        tools:ignore="MissingConstraints" />-->
-
     <TextView
         android:id="@+id/courseID_schedule"
-        android:layout_width="146dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="114dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/addCourseBtn_schedule"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368"
+        app:layout_constraintTop_toBottomOf="@+id/scheduleList_schedule"
+        app:layout_constraintVertical_bias="0.251"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/courseName_schedule"
-        android:layout_width="144dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="194dp"
+        android:layout_height="53dp"
+        app:layout_constraintBottom_toTopOf="@+id/deleteCourseBtn_schedule"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.917"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.369"
+        app:layout_constraintTop_toBottomOf="@+id/scheduleList_schedule"
+        app:layout_constraintVertical_bias="0.202"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/courseTime_schedule"
         android:layout_width="144dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/addCourseBtn_schedule"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseID_schedule"
+        app:layout_constraintVertical_bias="0.388"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/courseDay_schedule"
         android:layout_width="137dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/deleteCourseBtn_schedule"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintHorizontal_bias="0.839"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.505"
+        app:layout_constraintTop_toBottomOf="@+id/courseName_schedule"
+        app:layout_constraintVertical_bias="0.34"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -120,10 +110,10 @@
         android:text="@string/addSchedule"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.632" />
+        app:layout_constraintVertical_bias="0.681" />
 
     <Button
         android:id="@+id/deleteScheduleBtn_schedule"
