@@ -4,6 +4,8 @@ Our main technical debt for iteration 2 is testing, because database implementat
 
 Another technical debt is cleaning of our code. For iteration 3 we need to remove all hardcoded information and create variables for those. Implement more error handling (try catch, throws exception, all that good stuff). Remove all unused dead code. Success will be measured by paid debts (If all cleaning tasks will be done).
 
+Also our project has an OCP violation https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/71 , but we won’t be able to fix it because to add a new button we would have to change SO much code in this file. We are sure there is a way around it with lists and ENUMs so we could avoid having to modify code in so many places just to add or remove a button. 
+
 As said before, due to the problems with the database, we had to change what features will be delivered for iteration 2, and since the DB was fixed, we can now work on intended features and try to implement all of them before the due date. Success will be measured based on number of features implemented. 
 
 For the workflow, there were some issues where group members were now following the branching strategy, but as a team we explained what the issue was, why doing it the wrong way is bad for our project, and also showed the proper way and clarified any questions about our branching strategy to all group members.  

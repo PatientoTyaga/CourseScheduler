@@ -1,4 +1,74 @@
-# CourseScheduler-Comp3350-A03-Group9
+# Course Scheduler
+
+Course scheduler is an app designed to simplify course selection and registering process for University of Manitoba students.
+The app allows the user to create schedules with different courses and gives an opportunity to decide what schedule a student will prefer more for their fall and winter terms.
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+What things you need to install the software and how to install them
+
+```
+Install Android Studio, and install Git to clone the repository.
+```
+
+### Installing
+
+A step by step series of examples that tell you how to get a development env running
+
+Say what the step will be
+
+```
+Install Android Studio and install Git to clone the repository.
+
+ * Open Gitlab.
+ * Clone the project on your machine, switch to master, do a pull. 
+ * Open Android Studio, when you select the device to run the application make sure that API 24 or above(Any modern device). 
+ * Click “build” and then “run”. Android Studio will automatically download any required packages to run the application. 
+ * In the application go to “register”, then enter your first name(letters only) in the first field and your student id in the second field(7 digits only). Click on “Register Student” button.
+ * Enter the credentials that you used during registering process and click on the “login” button.
+ * To add courses to your schedule click on “Open Schedule Page” then “Add Schedule”. Click on a course that you want to add from the list provided and then on a “add course” button in the bottom right corner. And repeat this process for all courses that you want to add to your schedule.
+ * If you try to add courses that start at the same time or overlap with each other the app will notify you about the courses that conflict.
+ * After you done, you can go back to the main page with “back” button and then click on “logout”.
+ * If you want to edit your profile information click on “Edit” button on the main page, then you can type your new name and click on “update student” or if you want, you can delete this account with “delete student” button. 
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9
+
+```
+
+## Running the tests
+
+In android studio, next to the “build” button select from the dropdown menu what kind of test you want to run(AllUnitTest, All_IT_Test, AcceptanceTest) and click “run”
+
+
+
+## Built With
+
+* [Robolecrtic](http://robolectric.org/) - Used for integration testing
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [Espresso](https://developer.android.com/training/testing/espresso) - Used for acceptance test
+
+
+# Branching Strategy
+We used gitlab for versioning. 
+Create own Branch and merge them togther helps us working as a team.
+Branching strategy help the development team move forward quickly. It can coordinate parallel development, allowing developers to work on tasks simultaneously as part of a team.
+Parallel building and testing ensure that developers get the feedback they need quickly.
+But with the growth of projects and teams, working in parallel become more complex. Because it's not only about merging change files in the team, but also the complex code need merging by people.
+Because code may have conflict.
+The “merge early and often” strategy helps us fix the merge problem at start.
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/branches
+
+### Important Links
+
+* Architecture diagram https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/develop/ARCHITECTURE.pdf  
+* Architecture description https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/develop/ARCHITECTURE.md
+* Vision Statement https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/develop/VISION.md
+* Website https://simrandeep.sappal.gitlab.io/jekyll/
+
+## Authors
 
 | Member Name | Student Number |
 | ------ | ------ |
@@ -8,44 +78,3 @@
 | Guannan zhu | 7834178 |
 | Mohammad Inan | 7853346 |
 | Patient Ndayizeye | 7795261 |
-
-
-# Course Scheduler Vision Statement
-
-Course Scheduler app will permit students to plan their studentCourse and simplify course slot selection.
-The app will output a calendar like UM Aurora’s ‘Week at a Glance’ that would allow the user to view their studentCourse for the desired courses before registering for them.
-The user can save multiple schedules based on different time slots that a course offers and allow them to plan accordingly.
-
-This system is designed primarily for University of Manitoba students, but also might be used by student advisors. 
-The app will be used by students during their course registration period to help them plan their courses. 
-Other faculty members such as student advisors can use the system to plan out schedules for students seeking advise for their course planning. 
-
-The app will permit user to input course information such as available terms, time slots, CRN numbers and instructor name. 
-The app will process all possible combinations for the schedules from the provided input and allow the user to select the preferred studentCourse.
-Users can also edit a studentCourse’s time slots, available term, or instructor name to generate a modified studentCourse.
-
-Since the system will be used by all levels of users to view the possible schedules for the desired courses, there is no necessity for a security implementation. 
-The system is not for registering courses, so the system does not need to recognize the dependencies of course prerequisites. 
-It needs to maintain a record of different course schedules with its corresponding information such as term, time slot, CRN number and instructor name.
-
-The system is envisioned as an android application but can be modified in future to be released on multiple platforms. 
-Future improvements such as keeping a record of the different courses and prerequisite information can allow the application to be widely used and be more user friendly.
-
-The system will significantly improve the process of planning course loads for students. 
-There is currently no system for students to preplan their courses. 
-With Aurora system, students must keep a tab open for each course they want to register in and then compare available sections by going through every tab. 
-Our course scheduler app will eliminate the problem by displaying all the necessary information on one screen. 
-It will be easier for the user to alter the input values and create schedules. 
-After the user is done creating the schedules for both terms, they just need to copy CRN numbers for those courses sections from the app and insert them in Aurora to register.
-
-This app will be considered successful if more than 50% of surveyed students would decide to use it to make schedules for the rest of their education.
-
-
-
-# Branching Strategy
-Create own Branch and merge them togther helps us working as a team.
-Branching strategy help the development team move forward quickly. It can coordinate parallel development, allowing developers to work on tasks simultaneously as part of a team.
-Parallel building and testing ensure that developers get the feedback they need quickly.
-But with the growth of projects and teams, working in parallel become more complex. Because it's not only about merging change files in the team, but also the complex code need merging by people.
-Because code may have conflict.
-The “merge early and often” strategy helps us fix the merge problem at start.
