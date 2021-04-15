@@ -12,7 +12,7 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Give examples
+Install Android Studio, and install Git to clone the repository.
 ```
 
 ### Installing
@@ -22,46 +22,29 @@ A step by step series of examples that tell you how to get a development env run
 Say what the step will be
 
 ```
-Give the example
-```
+Install Android Studio and install Git to clone the repository.
 
-And repeat
+Open Gitlab.
+Clone the project on your machine, switch to master, do a pull. Open Android Studio, when you select the device to run the application make sure that API 24 or above(Any modern device). Click “build” and then “run”. Android Studio will automatically download any required packages to run the application. 
+In the application go to “register”, then enter your first name(letters only) in the first field and your student id in the second field(7 digits only). Click on “Register Student” button. Now enter the credentials that you used during registering process and click on the “login” button.
+To add courses to your schedule click on “Open Schedule Page” then “Add Schedule”. Click on a course that you want to add from the list provided and then on a “add course” button in the bottom right corner. And repeat this process for all courses that you want to add to your schedule.
+If you try to add courses that start at the same time or overlap with each other the app will notify you about the courses that conflict.  After you done, you can go back to the main page with “back” button and then click on “logout”.
+If you want to edit your profile information click on “Edit” button on the main page, then you can type your new name and click on “update student” or if you want you can delete this account with “delete student” button. 
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9
 
 ```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+In android studio, next to the “build” button select from the dropdown menu what kind of test you want to run(AllUnitTest, All_IT_Test, AcceptanceTest) and click “run”
 
-### Break down into end to end tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Robolecrtic](http://robolectric.org/) - Used for integration testing
 * [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Espresso](https://developer.android.com/training/testing/espresso) - Used for acceptance test
 
 ## Contributing
 
@@ -69,21 +52,17 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We used gitlab for versioning.
+https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/branches
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+| Member Name | Student Number |
+| ------ | ------ |
+| Simrandeep Sappal | 7784215 |
+| Jianzhi Wang | 7840671|
+| Ruslan Yanyshyn| 7850109 |
+| Guannan zhu | 7834178 |
+| Mohammad Inan | 7853346 |
+| Patient Ndayizeye | 7795261 |
 
