@@ -25,11 +25,15 @@ Say what the step will be
 Install Android Studio and install Git to clone the repository.
 
  * Open Gitlab.
- * Clone the project on your machine, switch to master, do a pull. Open Android Studio, when you select the device to run the application make sure that API 24 or above(Any modern device). Click “build” and then “run”. Android Studio will automatically download any required packages to run the application. 
-In the application go to “register”, then enter your first name(letters only) in the first field and your student id in the second field(7 digits only). Click on “Register Student” button. Now enter the credentials that you used during registering process and click on the “login” button.
-To add courses to your schedule click on “Open Schedule Page” then “Add Schedule”. Click on a course that you want to add from the list provided and then on a “add course” button in the bottom right corner. And repeat this process for all courses that you want to add to your schedule.
-If you try to add courses that start at the same time or overlap with each other the app will notify you about the courses that conflict.  After you done, you can go back to the main page with “back” button and then click on “logout”.
-If you want to edit your profile information click on “Edit” button on the main page, then you can type your new name and click on “update student” or if you want you can delete this account with “delete student” button. 
+ * Clone the project on your machine, switch to master, do a pull. 
+ * Open Android Studio, when you select the device to run the application make sure that API 24 or above(Any modern device). 
+ * Click “build” and then “run”. Android Studio will automatically download any required packages to run the application. 
+ * In the application go to “register”, then enter your first name(letters only) in the first field and your student id in the second field(7 digits only). Click on “Register Student” button.
+ * Enter the credentials that you used during registering process and click on the “login” button.
+ * To add courses to your schedule click on “Open Schedule Page” then “Add Schedule”. Click on a course that you want to add from the list provided and then on a “add course” button in the bottom right corner. And repeat this process for all courses that you want to add to your schedule.
+ * If you try to add courses that start at the same time or overlap with each other the app will notify you about the courses that conflict.
+ * After you done, you can go back to the main page with “back” button and then click on “logout”.
+ * If you want to edit your profile information click on “Edit” button on the main page, then you can type your new name and click on “update student” or if you want, you can delete this account with “delete student” button. 
 https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9
 
 ```
