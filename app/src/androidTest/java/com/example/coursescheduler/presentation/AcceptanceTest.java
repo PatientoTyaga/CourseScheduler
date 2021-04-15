@@ -10,6 +10,7 @@ import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+import androidx.test.rule.ActivityTestRule;
 
 import com.example.coursescheduler.R;
 
@@ -43,8 +44,8 @@ public class AcceptanceTest {
     public ActivityScenarioRule<LoginActivity> mActivityTestRule = new ActivityScenarioRule<>(LoginActivity.class);
 
     @Test
-    public void acceptanceTest2() {
-        ViewInteraction materialButton = onView(
+    public void acceptanceTest() {
+                ViewInteraction materialButton2 = onView(
                 allOf(withId(R.id.registerBtn_login), withText("Register"),
                         childAtPosition(
                                 childAtPosition(
@@ -52,9 +53,9 @@ public class AcceptanceTest {
                                         0),
                                 3),
                         isDisplayed()));
-        materialButton.perform(click());
+        materialButton2.perform(click());
 
-        ViewInteraction appCompatEditText = onView(
+        ViewInteraction appCompatEditText3 = onView(
                 allOf(withId(R.id.studentName_register),
                         childAtPosition(
                                 allOf(withId(R.id.studentid),
@@ -63,9 +64,9 @@ public class AcceptanceTest {
                                                 0)),
                                 0),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("chris"), closeSoftKeyboard());
+        appCompatEditText3.perform(replaceText("chris"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText2 = onView(
+        ViewInteraction appCompatEditText4 = onView(
                 allOf(withId(R.id.studentID_register),
                         childAtPosition(
                                 allOf(withId(R.id.studentid),
@@ -74,9 +75,9 @@ public class AcceptanceTest {
                                                 0)),
                                 1),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("1111119"), closeSoftKeyboard());
+        appCompatEditText4.perform(replaceText("1111119"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText3 = onView(
+        ViewInteraction appCompatEditText5 = onView(
                 allOf(withId(R.id.studentID_register), withText("1111119"),
                         childAtPosition(
                                 allOf(withId(R.id.studentid),
@@ -85,9 +86,9 @@ public class AcceptanceTest {
                                                 0)),
                                 1),
                         isDisplayed()));
-        appCompatEditText3.perform(pressImeActionButton());
+        appCompatEditText5.perform(pressImeActionButton());
 
-        ViewInteraction materialButton2 = onView(
+        ViewInteraction materialButton3 = onView(
                 allOf(withId(R.id.registerBtn_register), withText("Register Student"),
                         childAtPosition(
                                 allOf(withId(R.id.studentid),
@@ -96,9 +97,9 @@ public class AcceptanceTest {
                                                 0)),
                                 3),
                         isDisplayed()));
-        materialButton2.perform(click());
+        materialButton3.perform(click());
 
-        ViewInteraction appCompatEditText4 = onView(
+        ViewInteraction appCompatEditText6 = onView(
                 allOf(withId(R.id.studentName_login),
                         childAtPosition(
                                 childAtPosition(
@@ -106,9 +107,9 @@ public class AcceptanceTest {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText4.perform(replaceText("chris"), closeSoftKeyboard());
+        appCompatEditText6.perform(replaceText("chris"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText5 = onView(
+        ViewInteraction appCompatEditText7 = onView(
                 allOf(withId(R.id.studentID_login),
                         childAtPosition(
                                 childAtPosition(
@@ -116,109 +117,19 @@ public class AcceptanceTest {
                                         0),
                                 0),
                         isDisplayed()));
-        appCompatEditText5.perform(replaceText("1111119"), closeSoftKeyboard());
+        appCompatEditText7.perform(replaceText("1111119"), closeSoftKeyboard());
 
-        ViewInteraction materialButton3 = onView(
+        ViewInteraction materialButton4 = onView(
                 allOf(withId(R.id.loginBtn_login), withText("Login"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
                                 2),
-                        isDisplayed()));
-        materialButton3.perform(click());
-
-        ViewInteraction materialButton4 = onView(
-                allOf(withId(R.id.editBtn_main), withText("Edit"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                7),
                         isDisplayed()));
         materialButton4.perform(click());
 
-        ViewInteraction appCompatEditText6 = onView(
-                allOf(withId(R.id.studentName_editText_main),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                9),
-                        isDisplayed()));
-        appCompatEditText6.perform(replaceText("christina"), closeSoftKeyboard());
-
         ViewInteraction materialButton5 = onView(
-                allOf(withId(R.id.updateBtn_main), withText("Update Student"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        materialButton5.perform(click());
-
-        ViewInteraction appCompatEditText7 = onView(
-                allOf(withId(R.id.studentName_login),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText7.perform(replaceText("chris"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText8 = onView(
-                allOf(withId(R.id.studentID_login),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText8.perform(replaceText("1111119"), closeSoftKeyboard());
-
-        ViewInteraction materialButton6 = onView(
-                allOf(withId(R.id.loginBtn_login), withText("Login"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        materialButton6.perform(click());
-
-        ViewInteraction appCompatEditText9 = onView(
-                allOf(withId(R.id.studentName_login), withText("chris"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText9.perform(replaceText("christina"));
-
-        ViewInteraction appCompatEditText10 = onView(
-                allOf(withId(R.id.studentName_login), withText("christina"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText10.perform(closeSoftKeyboard());
-
-        ViewInteraction materialButton7 = onView(
-                allOf(withId(R.id.loginBtn_login), withText("Login"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        materialButton7.perform(click());
-
-        ViewInteraction materialButton8 = onView(
                 allOf(withId(R.id.scheduleBtn_main), withText("Open Schedule Page"),
                         childAtPosition(
                                 childAtPosition(
@@ -226,9 +137,9 @@ public class AcceptanceTest {
                                         0),
                                 1),
                         isDisplayed()));
-        materialButton8.perform(click());
+        materialButton5.perform(click());
 
-        ViewInteraction materialButton9 = onView(
+        ViewInteraction materialButton6 = onView(
                 allOf(withId(R.id.addScheduleBtn_schedule), withText("Add Schedule"),
                         childAtPosition(
                                 childAtPosition(
@@ -236,15 +147,61 @@ public class AcceptanceTest {
                                         0),
                                 8),
                         isDisplayed()));
-        materialButton9.perform(click());
+        materialButton6.perform(click());
 
         DataInteraction twoLineListItem = onData(anything())
                 .inAdapterView(allOf(withId(R.id.courseList_course),
                         childAtPosition(
                                 withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                1)))
-                .atPosition(0);
+                                2)))
+                .atPosition(1);
         twoLineListItem.perform(click());
+
+        ViewInteraction materialButton7 = onView(
+                allOf(withId(R.id.addCourseBtn_course), withText("Add Course"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                0),
+                        isDisplayed()));
+        materialButton7.perform(click());
+
+        ViewInteraction materialButton8 = onView(
+                allOf(withId(R.id.addCourseBtn_schedule), withText("Add Course"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                6),
+                        isDisplayed()));
+        materialButton8.perform(click());
+
+        DataInteraction twoLineListItem2 = onData(anything())
+                .inAdapterView(allOf(withId(R.id.courseList_course),
+                        childAtPosition(
+                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                2)))
+                .atPosition(1);
+        twoLineListItem2.perform(click());
+
+        ViewInteraction materialButton9 = onView(
+                allOf(withId(R.id.addCourseBtn_course), withText("Add Course"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                0),
+                        isDisplayed()));
+        materialButton9.perform(click());
+
+        DataInteraction twoLineListItem3 = onData(anything())
+                .inAdapterView(allOf(withId(R.id.courseList_course),
+                        childAtPosition(
+                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                2)))
+                .atPosition(2);
+        twoLineListItem3.perform(click());
 
         ViewInteraction materialButton10 = onView(
                 allOf(withId(R.id.addCourseBtn_course), withText("Add Course"),
@@ -256,31 +213,39 @@ public class AcceptanceTest {
                         isDisplayed()));
         materialButton10.perform(click());
 
-        ViewInteraction materialButton11 = onView(
-                allOf(withId(R.id.addCourseBtn_schedule), withText("Add Course"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                6),
-                        isDisplayed()));
-        materialButton11.perform(click());
-
-        DataInteraction twoLineListItem2 = onData(anything())
+        DataInteraction twoLineListItem4 = onData(anything())
                 .inAdapterView(allOf(withId(R.id.courseList_course),
                         childAtPosition(
                                 withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                1)))
-                .atPosition(1);
-        twoLineListItem2.perform(click());
+                                2)))
+                .atPosition(0);
+        twoLineListItem4.perform(click());
 
-        ViewInteraction materialButton12 = onView(
+        ViewInteraction materialButton11 = onView(
                 allOf(withId(R.id.addCourseBtn_course), withText("Add Course"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
                                 0),
+                        isDisplayed()));
+        materialButton11.perform(click());
+
+        DataInteraction twoLineListItem5 = onData(anything())
+                .inAdapterView(allOf(withId(R.id.scheduleList_schedule),
+                        childAtPosition(
+                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                1)))
+                .atPosition(1);
+        twoLineListItem5.perform(click());
+
+        ViewInteraction materialButton12 = onView(
+                allOf(withId(R.id.deleteCourseBtn_schedule), withText("Delete Course"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                7),
                         isDisplayed()));
         materialButton12.perform(click());
 
@@ -294,13 +259,13 @@ public class AcceptanceTest {
                         isDisplayed()));
         materialButton13.perform(click());
 
-        DataInteraction twoLineListItem3 = onData(anything())
+        DataInteraction twoLineListItem6 = onData(anything())
                 .inAdapterView(allOf(withId(R.id.courseList_course),
                         childAtPosition(
                                 withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                1)))
+                                2)))
                 .atPosition(2);
-        twoLineListItem3.perform(click());
+        twoLineListItem6.perform(click());
 
         ViewInteraction materialButton14 = onView(
                 allOf(withId(R.id.addCourseBtn_course), withText("Add Course"),
@@ -312,89 +277,25 @@ public class AcceptanceTest {
                         isDisplayed()));
         materialButton14.perform(click());
 
-        DataInteraction twoLineListItem4 = onData(anything())
-                .inAdapterView(allOf(withId(R.id.scheduleList_schedule),
-                        childAtPosition(
-                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                1)))
-                .atPosition(2);
-        twoLineListItem4.perform(click());
-
         ViewInteraction materialButton15 = onView(
-                allOf(withId(R.id.deleteCourseBtn_schedule), withText("Delete Course"),
+                allOf(withId(R.id.addCourseBtn_schedule), withText("Add Course"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                7),
+                                6),
                         isDisplayed()));
         materialButton15.perform(click());
-
-        DataInteraction twoLineListItem5 = onData(anything())
-                .inAdapterView(allOf(withId(R.id.scheduleList_schedule),
-                        childAtPosition(
-                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                1)))
-                .atPosition(1);
-        twoLineListItem5.perform(click());
-
-        ViewInteraction materialButton16 = onView(
-                allOf(withId(R.id.deleteCourseBtn_schedule), withText("Delete Course"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                7),
-                        isDisplayed()));
-        materialButton16.perform(click());
-
-        ViewInteraction materialButton17 = onView(
-                allOf(withId(R.id.addCourseBtn_schedule), withText("Add Course"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                6),
-                        isDisplayed()));
-        materialButton17.perform(click());
-
-        DataInteraction twoLineListItem6 = onData(anything())
-                .inAdapterView(allOf(withId(R.id.courseList_course),
-                        childAtPosition(
-                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                1)))
-                .atPosition(3);
-        twoLineListItem6.perform(click());
-
-        ViewInteraction materialButton18 = onView(
-                allOf(withId(R.id.addCourseBtn_course), withText("Add Course"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        materialButton18.perform(click());
-
-        ViewInteraction materialButton19 = onView(
-                allOf(withId(R.id.addCourseBtn_schedule), withText("Add Course"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                6),
-                        isDisplayed()));
-        materialButton19.perform(click());
 
         DataInteraction twoLineListItem7 = onData(anything())
                 .inAdapterView(allOf(withId(R.id.courseList_course),
                         childAtPosition(
                                 withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                1)))
-                .atPosition(1);
+                                2)))
+                .atPosition(2);
         twoLineListItem7.perform(click());
 
-        ViewInteraction materialButton20 = onView(
+        ViewInteraction materialButton16 = onView(
                 allOf(withId(R.id.addCourseBtn_course), withText("Add Course"),
                         childAtPosition(
                                 childAtPosition(
@@ -402,49 +303,127 @@ public class AcceptanceTest {
                                         0),
                                 0),
                         isDisplayed()));
-        materialButton20.perform(click());
+        materialButton16.perform(click());
 
-        pressBack();
-
-        ViewInteraction materialButton21 = onView(
-                allOf(withId(R.id.scheduleBtn_main), withText("Open Schedule Page"),
+        ViewInteraction materialButton17 = onView(
+                allOf(withId(R.id.backBtn_course), withText("Back"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
                                 1),
                         isDisplayed()));
-        materialButton21.perform(click());
+        materialButton17.perform(click());
 
-        ViewInteraction materialButton22 = onView(
-                allOf(withId(R.id.addCourseBtn_schedule), withText("Add Course"),
+        ViewInteraction materialButton18 = onView(
+                allOf(withId(R.id.deleteScheduleBtn_schedule), withText("Delete Schedule"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                6),
+                                9),
                         isDisplayed()));
-        materialButton22.perform(click());
+        materialButton18.perform(click());
 
-        DataInteraction twoLineListItem8 = onData(anything())
-                .inAdapterView(allOf(withId(R.id.courseList_course),
+        ViewInteraction materialButton19 = onView(
+                allOf(withId(R.id.backToLogin_schedule), withText("Back"),
                         childAtPosition(
-                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                1)))
-                .atPosition(0);
-        twoLineListItem8.perform(click());
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                10),
+                        isDisplayed()));
+        materialButton19.perform(click());
 
-        ViewInteraction materialButton23 = onView(
-                allOf(withId(R.id.addCourseBtn_course), withText("Add Course"),
+        ViewInteraction materialButton20 = onView(
+                allOf(withId(R.id.editBtn_main), withText("Edit"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                7),
+                        isDisplayed()));
+        materialButton20.perform(click());
+
+        ViewInteraction appCompatEditText8 = onView(
+                allOf(withId(R.id.studentName_editText_main),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                9),
+                        isDisplayed()));
+        appCompatEditText8.perform(replaceText("christina"), closeSoftKeyboard());
+
+        ViewInteraction materialButton21 = onView(
+                allOf(withId(R.id.updateBtn_main), withText("Update Student"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
+        materialButton21.perform(click());
+
+        ViewInteraction appCompatEditText9 = onView(
+                allOf(withId(R.id.studentName_login),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText9.perform(replaceText("chris"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText10 = onView(
+                allOf(withId(R.id.studentID_login),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
                                 0),
                         isDisplayed()));
-        materialButton23.perform(click());
+        appCompatEditText10.perform(replaceText("1111119"), closeSoftKeyboard());
 
-        pressBack();
+        ViewInteraction materialButton22 = onView(
+                allOf(withId(R.id.loginBtn_login), withText("Login"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
+        materialButton22.perform(click());
+
+        ViewInteraction appCompatEditText11 = onView(
+                allOf(withId(R.id.studentName_login), withText("chris"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText11.perform(replaceText("christina"));
+
+        ViewInteraction appCompatEditText12 = onView(
+                allOf(withId(R.id.studentName_login), withText("christina"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatEditText12.perform(closeSoftKeyboard());
+
+        ViewInteraction materialButton23 = onView(
+                allOf(withId(R.id.loginBtn_login), withText("Login"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
+        materialButton23.perform(click());
 
         ViewInteraction materialButton24 = onView(
                 allOf(withId(R.id.scheduleBtn_main), withText("Open Schedule Page"),
@@ -457,16 +436,6 @@ public class AcceptanceTest {
         materialButton24.perform(click());
 
         ViewInteraction materialButton25 = onView(
-                allOf(withId(R.id.deleteScheduleBtn_schedule), withText("Delete Schedule"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                9),
-                        isDisplayed()));
-        materialButton25.perform(click());
-
-        ViewInteraction materialButton26 = onView(
                 allOf(withId(R.id.backToLogin_schedule), withText("Back"),
                         childAtPosition(
                                 childAtPosition(
@@ -474,9 +443,9 @@ public class AcceptanceTest {
                                         0),
                                 10),
                         isDisplayed()));
-        materialButton26.perform(click());
+        materialButton25.perform(click());
 
-        ViewInteraction materialButton27 = onView(
+        ViewInteraction materialButton26 = onView(
                 allOf(withId(R.id.editBtn_main), withText("Edit"),
                         childAtPosition(
                                 childAtPosition(
@@ -484,9 +453,9 @@ public class AcceptanceTest {
                                         0),
                                 7),
                         isDisplayed()));
-        materialButton27.perform(click());
+        materialButton26.perform(click());
 
-        ViewInteraction appCompatEditText11 = onView(
+        ViewInteraction appCompatEditText13 = onView(
                 allOf(withId(R.id.studentName_editText_main),
                         childAtPosition(
                                 childAtPosition(
@@ -494,57 +463,17 @@ public class AcceptanceTest {
                                         0),
                                 9),
                         isDisplayed()));
-        appCompatEditText11.perform(replaceText("chris"), closeSoftKeyboard());
+        appCompatEditText13.perform(replaceText("christina"), closeSoftKeyboard());
 
-        ViewInteraction materialButton28 = onView(
-                allOf(withId(R.id.updateBtn_main), withText("Update Student"),
+        ViewInteraction materialButton27 = onView(
+                allOf(withId(R.id.deleteBtn_main), withText("Delete Student"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                2),
+                                3),
                         isDisplayed()));
-        materialButton28.perform(click());
-
-        ViewInteraction appCompatEditText12 = onView(
-                allOf(withId(R.id.studentName_login),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText12.perform(replaceText("chris"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText13 = onView(
-                allOf(withId(R.id.studentID_login),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText13.perform(replaceText("1111119"), closeSoftKeyboard());
-
-        ViewInteraction materialButton29 = onView(
-                allOf(withId(R.id.loginBtn_login), withText("Login"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        materialButton29.perform(click());
-
-        ViewInteraction materialButton30 = onView(
-                allOf(withId(R.id.logoutBtn_main), withText("Logout"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                6),
-                        isDisplayed()));
-        materialButton30.perform(click());
+        materialButton27.perform(click());
 
         ViewInteraction appCompatEditText14 = onView(
                 allOf(withId(R.id.studentName_login),
@@ -554,7 +483,7 @@ public class AcceptanceTest {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText14.perform(replaceText("chris"), closeSoftKeyboard());
+        appCompatEditText14.perform(replaceText("christina"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText15 = onView(
                 allOf(withId(R.id.studentID_login),
@@ -566,7 +495,7 @@ public class AcceptanceTest {
                         isDisplayed()));
         appCompatEditText15.perform(replaceText("1111119"), closeSoftKeyboard());
 
-        ViewInteraction materialButton31 = onView(
+        ViewInteraction materialButton28 = onView(
                 allOf(withId(R.id.loginBtn_login), withText("Login"),
                         childAtPosition(
                                 childAtPosition(
@@ -574,67 +503,7 @@ public class AcceptanceTest {
                                         0),
                                 2),
                         isDisplayed()));
-        materialButton31.perform(click());
-
-        ViewInteraction materialButton32 = onView(
-                allOf(withId(R.id.editBtn_main), withText("Edit"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                7),
-                        isDisplayed()));
-        materialButton32.perform(click());
-
-        ViewInteraction appCompatEditText16 = onView(
-                allOf(withId(R.id.studentName_editText_main),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                9),
-                        isDisplayed()));
-        appCompatEditText16.perform(replaceText("chris"), closeSoftKeyboard());
-
-        ViewInteraction materialButton33 = onView(
-                allOf(withId(R.id.deleteBtn_main), withText("Delete Student"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                3),
-                        isDisplayed()));
-        materialButton33.perform(click());
-
-        ViewInteraction appCompatEditText17 = onView(
-                allOf(withId(R.id.studentName_login),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText17.perform(replaceText("chris"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText18 = onView(
-                allOf(withId(R.id.studentID_login),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText18.perform(replaceText("1111119"), closeSoftKeyboard());
-
-        ViewInteraction materialButton34 = onView(
-                allOf(withId(R.id.loginBtn_login), withText("Login"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        materialButton34.perform(click());
+        materialButton28.perform(click());
     }
 
     private static Matcher<View> childAtPosition(
