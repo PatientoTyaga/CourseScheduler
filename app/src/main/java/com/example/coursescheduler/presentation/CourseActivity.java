@@ -20,6 +20,7 @@ import com.example.coursescheduler.business.AccessCourse;
 import com.example.coursescheduler.R;
 import com.example.coursescheduler.business.AccessSchedule;
 import com.example.coursescheduler.business.ValidatorCourse;
+import com.example.coursescheduler.business.exceptions.CourseList;
 import com.example.coursescheduler.business.exceptions.DuplicateCourseException;
 import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Schedule;
@@ -154,24 +155,9 @@ public class CourseActivity extends AppCompatActivity {
     }
 
     protected void getCourseList(){
-        //add the course to the database if not there.
-        //can put the course list in a file and use the file to return values to be added in the database
-        Course course1 = new Course(1010, "Intro Computer Science", "08:30-09:30", "TR");
-        Course course2 = new Course(2080,"Analysis of Algorithms",  "10:30-11:30", "TR");
-        Course course3 = new Course(2150,"Object Orientation",  "10:30-11:30", "MWF");
-        Course course4 = new Course(3020, "Human-Computer Interaction 1", "11:20-12:30", "TR");
-        Course course5 = new Course(3820,"Bio Informatics",  "10:30-11:30", "MWF");
 
-        courseArrayList.add(course1);
-        courseArrayList.add(course2);
-        courseArrayList.add(course3);
-        courseArrayList.add(course4);
-        courseArrayList.add(course5);
-
-
-        for(Course c : courseArrayList){
-            accessCourse.insertCourse(c);
-        }
+        CourseList courseList = new CourseList();
+        courseList.createList(accessCourse);
 
         Log.i(Variables.tag, "courseList: " + accessCourse.getCourseSequential());
     }
