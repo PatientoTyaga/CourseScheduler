@@ -39,7 +39,6 @@ public class CourseActivity extends AppCompatActivity {
     private int selectedCoursePos = -1;
     private String studentID;
     private String studentName;
-    private static final ArrayList<Course> courseArrayList = new ArrayList<>();
     private Button addCourseButton;
     private Button backBtn;
     private Student currentStudent;
@@ -138,7 +137,8 @@ public class CourseActivity extends AppCompatActivity {
                                         courses = accessCourse.getCourses(courseIds);
 
                                         if(!validatorCourse.courseAlreadyAdded(selectedCourse,courseIds)){
-                                            if(!validatorCourse.courseTimeOverlap(selectedCourse,courses)){
+                                            Course clashCourse = validatorCourse.courseTimeOverlap(selectedCourse,courses);
+                                            if(clashCourse == null){
                                                 Intent courseIntent = new Intent(CourseActivity.this, ScheduleActivity.class); //Goes to ScheduleActivity Page
                                                 courseIntent.putExtra(Variables.course_ID, String.valueOf(selectedCourse.getCourseId()));
                                                 courseIntent.putExtra(Variables.student_ID, studentID);
@@ -146,7 +146,7 @@ public class CourseActivity extends AppCompatActivity {
                                                 startActivity(courseIntent);
                                                 finish();
                                             }else{
-                                                throw new DuplicateCourseException();
+                                                throw new DuplicateCourseException(Message.time_Conflict + "COMP " + clashCourse.getCourseId());
                                             }
                                         }else{
                                             throw new DuplicateCourseException(Message.duplicate_Course);
