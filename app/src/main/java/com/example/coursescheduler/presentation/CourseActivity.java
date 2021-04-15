@@ -39,8 +39,8 @@ public class CourseActivity extends AppCompatActivity {
     private int selectedCoursePos = -1;
     private String studentID;
     private String studentName;
-    private static final ArrayList<Course> courseArrayList = new ArrayList<>();
     private Button addCourseButton;
+    private Button backBtn;
     private Student currentStudent;
     private List<Schedule> schedule;
     private ArrayList<Integer> courseIds;
@@ -67,6 +67,7 @@ public class CourseActivity extends AppCompatActivity {
 
         try {
             addCourseButton = (Button) findViewById(R.id.addCourseBtn_course);
+            backBtn = findViewById(R.id.backBtn_course);
             courseList = new ArrayList<>();
             if(accessCourse.getCourseSequential().isEmpty()){
                 getCourseList();
@@ -107,6 +108,16 @@ public class CourseActivity extends AppCompatActivity {
 
                         schedule = accessSchedule.getScheduleSequential(currentStudent);
 
+                        backBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent courseIntent = new Intent(CourseActivity.this, ScheduleActivity.class);
+                                courseIntent.putExtra(Variables.student_ID, studentID);
+                                courseIntent.putExtra(Variables.student_Name, studentName);
+                                startActivity(courseIntent);
+                            }
+                        });
+
                         addCourseButton.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
                                 // Do something in response to button click
@@ -126,7 +137,8 @@ public class CourseActivity extends AppCompatActivity {
                                         courses = accessCourse.getCourses(courseIds);
 
                                         if(!validatorCourse.courseAlreadyAdded(selectedCourse,courseIds)){
-                                            if(!validatorCourse.courseTimeOverlap(selectedCourse,courses)){
+                                            Course clashCourse = validatorCourse.courseTimeOverlap(selectedCourse,courses);
+                                            if(clashCourse == null){
                                                 Intent courseIntent = new Intent(CourseActivity.this, ScheduleActivity.class); //Goes to ScheduleActivity Page
                                                 courseIntent.putExtra(Variables.course_ID, String.valueOf(selectedCourse.getCourseId()));
                                                 courseIntent.putExtra(Variables.student_ID, studentID);
@@ -134,7 +146,7 @@ public class CourseActivity extends AppCompatActivity {
                                                 startActivity(courseIntent);
                                                 finish();
                                             }else{
-                                                throw new DuplicateCourseException();
+                                                throw new DuplicateCourseException(Message.time_Conflict + "COMP " + clashCourse.getCourseId());
                                             }
                                         }else{
                                             throw new DuplicateCourseException(Message.duplicate_Course);

@@ -12,6 +12,7 @@ public class Message {
 
     public static String student_Not_Found = "Sorry, Student Not Found. Unable To Delete";
     public static String duplicate_Course = "Sorry, This Course Has Already Been Added To Your Schedule";
+    public static String time_Conflict = "Sorry, This Course time clashes with course: ";
 
     public static String delete_Student_Warning = "WARNING!! PLEASE KNOW ANY UPDATE IS FINAL. PLEASE SAVE YOUR NEW NAME SOMEWHERE BEFORE CONFIRMING UPDATE";
     public static String update_Student_Success = "Update Successful. Please login with new credentials";
