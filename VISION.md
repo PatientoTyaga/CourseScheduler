@@ -1,14 +1,3 @@
-# CourseScheduler-Comp3350-A03-Group9
-
-| Member Name | Student Number |
-| ------ | ------ |
-| Simrandeep Sappal | 7784215 |
-| Jianzhi Wang | 7840671|
-| Ruslan Yanyshyn| 7850109 |
-| Guannan zhu | 7834178 |
-| Mohammad Inan | 7853346 |
-| Patient Ndayizeye | 7795261 |
-
 
 # Course Scheduler Vision Statement
 
@@ -39,13 +28,3 @@ It will be easier for the user to alter the input values and create schedules.
 After the user is done creating the schedules for both terms, they just need to copy CRN numbers for those courses sections from the app and insert them in Aurora to register.
 
 This app will be considered successful if more than 50% of surveyed students would decide to use it to make schedules for the rest of their education.
-
-
-
-# Branching Strategy
-Create own Branch and merge them togther helps us working as a team.
-Branching strategy help the development team move forward quickly. It can coordinate parallel development, allowing developers to work on tasks simultaneously as part of a team.
-Parallel building and testing ensure that developers get the feedback they need quickly.
-But with the growth of projects and teams, working in parallel become more complex. Because it's not only about merging change files in the team, but also the complex code need merging by people.
-Because code may have conflict.
-The “merge early and often” strategy helps us fix the merge problem at start.
