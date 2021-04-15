@@ -46,11 +46,6 @@ In android studio, next to the “build” button select from the dropdown menu 
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Espresso](https://developer.android.com/training/testing/espresso) - Used for acceptance test
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-
 
 # Branching Strategy
 We used gitlab for versioning. 
