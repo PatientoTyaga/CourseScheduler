@@ -13,5 +13,10 @@ https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-g
 https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/23
 https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/12
 
+4. Acceptance test/end-to-end. Write a discussion about an end-to-end test that you wrote. What did you test, how did you set up the test so it was not flaky? Provide a link to that test.
+
+5. Acceptance test, untestable. What challenges did you face when creating acceptance tests? What was difficult or impossible to test?
+
+6. Velocity/teamwork. Did your estimates get better or worse through the course? Show some evidence of the estimates/actuals from tasks.
 
 ![](Course_Schedule_Velocity.png)
