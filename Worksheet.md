@@ -3,7 +3,7 @@
 
 
 2. What technical debt did you leave? What one item would you like to fix, and can't? Anything you write will not be marked negatively. Classify this debt.
-    * As of now we don’t have anything that we need to fix or change. There might be a bug that our team is missing, but everything that was planned for iteration 3 was implemented and thoroughly tested. 
+    * Technical debt for the project: OCP violation https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/issues/71 , but we won’t be able to fix it because to add a new button we would have to change SO much code in this file. We are sure there is a way around it with lists and ENUMs so we could avoid having to modify code in so many places just to add or remove a button.  
 
 
 3. Discuss a Feature or User Story that was cut/re-prioritized. When did you change the priority of a Feature or User Story? Why was it re-prioritized? Provide a link to the Feature or User Story. This can be from any iteration.
