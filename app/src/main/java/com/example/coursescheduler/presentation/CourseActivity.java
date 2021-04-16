@@ -20,7 +20,7 @@ import com.example.coursescheduler.business.AccessCourse;
 import com.example.coursescheduler.R;
 import com.example.coursescheduler.business.AccessSchedule;
 import com.example.coursescheduler.business.ValidatorCourse;
-import com.example.coursescheduler.business.exceptions.CourseList;
+import com.example.coursescheduler.business.CourseList;
 import com.example.coursescheduler.business.exceptions.DuplicateCourseException;
 import com.example.coursescheduler.objects.Course;
 import com.example.coursescheduler.objects.Schedule;
