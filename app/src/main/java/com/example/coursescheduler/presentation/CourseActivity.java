@@ -87,6 +87,16 @@ public class CourseActivity extends AppCompatActivity {
                 }
             };
 
+            backBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent courseIntent = new Intent(CourseActivity.this, ScheduleActivity.class);
+                    courseIntent.putExtra(Variables.student_ID, studentID);
+                    courseIntent.putExtra(Variables.student_Name, studentName);
+                    startActivity(courseIntent);
+                }
+            });
+
             addCourseButton.setEnabled(false);
 
             final ListView listView = (ListView) findViewById(R.id.courseList_course);
@@ -108,15 +118,7 @@ public class CourseActivity extends AppCompatActivity {
 
                         schedule = accessSchedule.getScheduleSequential(currentStudent);
 
-                        backBtn.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent courseIntent = new Intent(CourseActivity.this, ScheduleActivity.class);
-                                courseIntent.putExtra(Variables.student_ID, studentID);
-                                courseIntent.putExtra(Variables.student_Name, studentName);
-                                startActivity(courseIntent);
-                            }
-                        });
+
 
                         addCourseButton.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
