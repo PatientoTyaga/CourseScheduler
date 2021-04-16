@@ -1,4 +1,4 @@
-package com.example.coursescheduler.business.exceptions;
+package com.example.coursescheduler.business;
 
 import com.example.coursescheduler.business.AccessCourse;
 import com.example.coursescheduler.objects.Course;
