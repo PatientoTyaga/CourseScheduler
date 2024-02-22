@@ -66,7 +66,6 @@ https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-g
 * Architecture diagram https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/develop/ARCHITECTURE.pdf  
 * Architecture description https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/develop/ARCHITECTURE.md
 * Vision Statement https://code.cs.umanitoba.ca/3350-winter-2021-a03/coursescheduler-comp3350-a03-group9/-/blob/develop/VISION.md
-* Website https://simrandeep.sappal.gitlab.io/jekyll/
 
 ## Authors
 
